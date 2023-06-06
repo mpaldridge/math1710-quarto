@@ -1,1 +1,1 @@
-{"options":{"chapters":true,"chapter-id":"sec-L01-stats"},"entries":[{"key":"sec-L01-stats","order":{"section":[1,0,0,0,0,0,0],"number":1}}],"headings":["what-is-eda","what-is-R","stat-central","stat-spread","summary-01","sec-L01-stats"]}
+{"options":{"chapter-id":"sec-L01-stats","chapters":true},"entries":[{"order":{"section":[1,0,0,0,0,0,0],"number":1},"key":"sec-L01-stats"}],"headings":["what-is-eda","what-is-R","stat-central","stat-spread","summary-01","sec-L01-stats"]}

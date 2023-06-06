@@ -5,8 +5,7 @@
 %
 \documentclass[
   letterpaper,
-  DIV=11,
-  numbers=noendperiod]{scrreprt}
+]{report}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -115,7 +114,6 @@
 \def\fps@figure{htbp}
 \makeatother
 
-\KOMAoption{captions}{tableheading}
 \makeatletter
 \makeatother
 \makeatletter
@@ -156,6 +154,10 @@
 \floatname{codelisting}{Listing}
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[chapter]
 \theoremstyle{remark}
 \renewcommand*{\proofname}{Proof}
 \newtheorem*{remark}{Remark}
@@ -181,7 +183,7 @@
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
   pdftitle={MATH1710 Probability and Statistics 1},
-  pdfauthor={Matthew Aldridge},
+  pdfauthor={Matthew Aldridge, University of Leeds},
   colorlinks=true,
   linkcolor={blue},
   filecolor={Maroon},
@@ -190,12 +192,12 @@
   pdfcreator={LaTeX via pandoc}}
 
 \title{MATH1710 Probability and Statistics 1}
-\author{Matthew Aldridge}
-\date{1/1/23}
+\author{Matthew Aldridge, University of Leeds}
+\date{Semester 1, 2022-23}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, enhanced, frame hidden, sharp corners, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, breakable]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, frame hidden, borderline west={3pt}{0pt}{shadecolor}, breakable, enhanced, interior hidden, boxrule=0pt]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -353,7 +355,6 @@ My recommended approach to problem sheets and tutorials is the
 following:
 
 \begin{itemize}
-\tightlist
 \item
   Work through the problem sheet before the tutorial, spending plenty of
   time on it, and making multiple efforts at questions you get stuck on.
@@ -727,8 +728,8 @@ If you have accessibility difficulties with these notes,
 
 \part{Exploratory data analysis}
 
-\hypertarget{L01-stats}{%
-\chapter{Summary statistics}\label{L01-stats}}
+\hypertarget{sec-L01-stats}{%
+\chapter{Summary statistics}\label{sec-L01-stats}}
 
 \hypertarget{what-is-eda}{%
 \section{What is EDA?}\label{what-is-eda}}
@@ -1518,12 +1519,20 @@ This will be easier to understand with some concrete examples. We write
 a set (such as a sample space or an event) by writing all the elements
 of that set inside curly brackets \(\{\ \}\), separated by commas.
 
+\leavevmode\vadjust pre{\hypertarget{exm-coin-space}{}}%
+\begin{example}[]\label{exm-coin-space}
+
 Suppose we toss a (possibly biased) coin, and record whether it lands
 heads or tails. Then our sample space is
 \(\Omega = \{\mathrm H, \mathrm T\}\), where the sample outcome H
 denotes heads and the sample outcome T denotes tails.
 
 The event that the coin lands heads is \(\{\mathrm H\}\).
+
+\end{example}
+
+\leavevmode\vadjust pre{\hypertarget{exm-dice-space}{}}%
+\begin{example}[]\label{exm-dice-space}
 
 Suppose we roll a dice, and record the number rolled. Then our sample
 space is \(\Omega = \{1,2,3,4,5,6\}\), where the sample outcome \(1\)
@@ -1532,6 +1541,11 @@ corresponds to rolling a one, and so on.
 The event ``we roll an even number'' is \(\{2,4,6\}\). The event ``we
 roll at least a five'' is \(\{5,6\}\).
 
+\end{example}
+
+\leavevmode\vadjust pre{\hypertarget{exm-claim-space}{}}%
+\begin{example}[]\label{exm-claim-space}
+
 Suppose we wish to count how many claims are made to an insurance
 company in a year. We could model this by taking the sample space
 \(\Omega\) to be \(\mathbb Z_+ = \{0, 1, 2, \dots\}\), the set of all
@@ -1539,6 +1553,11 @@ non-negative integers.
 
 The event ``the company receives less than 1000 claims'' is
 \(\{0, 1, 2, \dots, 998, 999\}\).
+
+\end{example}
+
+\leavevmode\vadjust pre{\hypertarget{exm-rng-space}{}}%
+\begin{example}[]\label{exm-rng-space}
 
 Suppose we want a computer to pick a random number between 0 and 1. We
 could model this by taking the sample space \(\Omega\) to be the
@@ -1549,6 +1568,8 @@ The event ``the number is bigger than \(\frac12\)'' is the sub-interval
 bigger than 1. The event ``the first digit is a 7'' is the sub-interval
 \([0.7, 0.8)\). The event ``the random number is exactly
 \(1/\sqrt{2}\)'' is \(\{1/\sqrt{2}\}\).
+
+\end{example}
 
 In the first two examples, the sample space \(\Omega\) was finite. In
 third example, the sample space was infinite but ``countably infinite'',
@@ -1597,6 +1618,9 @@ know this:
   read as ``the set of sample points \(\omega\) in the sample space
   \(\Omega\) such that the fact is true''.
 \end{itemize}
+
+\leavevmode\vadjust pre{\hypertarget{def-sample-space}{}}%
+\begin{definition}[]\label{def-sample-space}
 
 Consider a sample space \(\Omega\), and let \(A\) and \(B\) be events in
 that sample space.
@@ -1653,6 +1677,11 @@ that sample space.
 
 \end{figure}
 
+\end{definition}
+
+\leavevmode\vadjust pre{\hypertarget{exm-dice-events}{}}%
+\begin{example}[]\label{exm-dice-events}
+
 Suppose we are rolling a dice, so our sample space is
 \(\Omega = \{1,2,3,4,5,6\}\). Let \(A = \{2,4,6\}\) be the event that we
 roll and even number, and let \(B = \{5,6\}\) be the event that we roll
@@ -1661,6 +1690,8 @@ A^\mathsf{c}&= \{1,3,5\} = \{\text{roll an odd number}\} ,\\
 A \cap B &= \{6\} = \{\text{roll a 6}\} ,\\
 A \cup B &= \{2,4,5,6\} .
 \end{align*}
+
+\end{example}
 
 An important case is when two events \(A, B\) cannot happen at the same
 time; that is, \(A \cap B = \varnothing\) (``\(A\) intersect \(B\) is
@@ -1717,8 +1748,9 @@ For this module, these mostly count as ``common sense'' -- but if you
 ever do need to prove one of these statements (or a similar one), one
 way is to use a Venn diagram.
 
-Let's prove the second distributive law, {[} A \cup (B \cap C) = (A
-\cup B) \cap (A \cup C) , {]} with a Venn diagram as an example.
+Let's prove the second distributive law,
+\[   A \cup (B \cap C) = (A \cup B) \cap (A \cup C) , \] with a Venn
+diagram as an example.
 
 We can build the left-hand side of the law as:
 
