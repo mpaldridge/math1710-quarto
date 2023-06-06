@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>MATH1710 Probability and Statistics 1 - 19&nbsp; The Bayesian idea</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../sections/L20-bayes-models.html" rel="next">
+<link href="../sections/L18-limit.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">The Bayesian idea</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">MATH1710 Probability and Statistics 1</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../about.html" class="sidebar-item-text sidebar-link">About MATH1710</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Exploratory data analysis</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L01-stats.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Summary statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L02-dataviz.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data visualisations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Probability</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L03-events.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sample spaces and events</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L04-probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L05-classical-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Classical probability I</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L06-classical-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Classical probability II</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L07-conditional.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Independence and conditional probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L08-two-theorems.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Two theorems on conditional probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L09-discrete-rv.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Discrete random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L10-expectation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Expectation and variance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L11-binomial-geometric.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Binomial and geometric distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L12-poisson.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Poisson distribution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L13-multi-rv.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Multiple random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L14-covariance.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Expectation and covariance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L15-continuous.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Continuous random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L17-normal.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Normal distribution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L16-exponential-multi.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Exponential distribution and multiple continuous random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L18-limit.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Limit theorems</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Bayesian statistics</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L19-bayes-idea.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">The Bayesian idea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L20-bayes-models.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">More Bayesian models</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Other stuff</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L21-summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">All questions answered</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L22-exam.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Exam</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R/R.html" class="sidebar-item-text sidebar-link">R Worksheets</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../writing.html" class="sidebar-item-text sidebar-link">Tips on writing mathematics</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">MATH1710</h2>
+   
+  <ul>
+  <li><a href="#fake-coin" id="toc-fake-coin" class="nav-link active" data-scroll-target="#fake-coin"><span class="toc-section-number">19.1</span>  Example: fake coin?</a></li>
+  <li><a href="#bayesian-framework" id="toc-bayesian-framework" class="nav-link" data-scroll-target="#bayesian-framework"><span class="toc-section-number">19.2</span>  Bayesian framework</a></li>
+  <li><a href="#normal-normal" id="toc-normal-normal" class="nav-link" data-scroll-target="#normal-normal"><span class="toc-section-number">19.3</span>  Normal–normal model</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="L19-bayes-idea" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">The Bayesian idea</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>In this final section of the module, we return to statistics, where we will look at an approach to data analysis known as “Bayesian statistics”.</p>
+<p><strong>Statistics</strong> concerns how to draw conclusions from data; and <strong>Bayesian statistics</strong> is one particular framework for doing this. The idea of Bayesian statistics is that we start with “prior” (“before”) beliefs about the underlying model, then use the data (together with Bayes’ theorem) to update our to our “posterior” (“after”) beliefs about the model <em>given</em> the data we have observed.</p>
+<section id="fake-coin" class="level2" data-number="19.1">
+<h2 data-number="19.1" class="anchored" data-anchor-id="fake-coin"><span class="header-section-number">19.1</span> Example: fake coin?</h2>
+<!--
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/BUZ_4DqHjIM"></iframe>
+:::
+::::
+-->
+<p>We will start by illustrating the main idea with an example.</p>
+<div class="example">
+<p><em>A joke shop sells three types of coins: normal fair coins; Heads-biased coins, which land Heads with probability 0.8; and Tails-biased coins, which land Heads with probability 0.2. I pick up a coin and examine it; since it looks mostly like a normal coin, I believe there’s 60% chance it’s s fair coin, and a 20% chance it’s biased either way. I decide to toss the coin three times, to gather some more evidence. The result is that all three are Heads. How should I update my beliefs?</em></p>
+<p>So, we start with the “prior” (before) belief [ P() = 0.6 P() = 0.2 P() = 0.2 ]</p>
+<p>We know how to update our beliefs after seeing the data: we use Bayes’ theorem. We have <span class="math display">\[\begin{align*}
+\mathbb P(\text{fair} \mid \text{HHH}) &amp;= \frac{\mathbb P(\text{fair})\, \mathbb P(\text{HHH}\mid \text{fair})}{\mathbb P(\text{HHH})} = \frac{0.6 \times 0.5^3}{\mathbb P(\text{HHH})} = \frac{0.075}{\mathbb P(\text{HHH})} \\
+\mathbb P(\text{H-bias} \mid \text{HHH}) &amp;= \frac{\mathbb P(\text{H-bias})\, \mathbb P(\text{HHH}\mid \text{H-bias})}{\mathbb P(\text{HHH})} = \frac{0.2 \times 0.8^3}{\mathbb P(\text{HHH})} = \frac{0.1024}{\mathbb P(\text{HHH})} \\
+\mathbb P(\text{T-bias} \mid \text{HHH}) &amp;= \frac{\mathbb P(\text{H-bias})\, \mathbb P(\text{HHH}\mid \text{T-bias})}{\mathbb P(\text{HHH})} = \frac{0.2 \times 0.2^3}{\mathbb P(\text{HHH})} = \frac{0.0016}{\mathbb P(\text{HHH})}  .
+\end{align*}\]</span> We also need to find common denominator <span class="math inline">\(\mathbb P(\text{HHH})\)</span>. We could do that using the law of total probability. But a convenient short-cut is to notice that the above three probabilities have to add up to 1, and so that common denominator must be $0.075 + 0.1024 + 0.0016 = 0.179, so we have <span class="math display">\[\begin{align*}
+  \mathbb P(\text{fair} \mid \text{data}) &amp;= \frac{0.075}{0.179} = 0.419 \\
+  \mathbb P(\text{H-bias}\mid \text{data}) &amp;= \frac{0.1024}{0.179} = 0.572 \\
+  \mathbb P(\text{T-bias}\mid \text{data}) &amp;= \frac{0.0016}{0.179} = 0.009 .
+\end{align*}\]</span></p>
+<p>So, after tossing the coin three times, our belief has been updated from the “prior” (before) belief [ P() = 0.6 P() = 0.2 P() = 0.2 ] to the “posterior” (after) belief [ P( ) = 0.419 P() = 0.572 P() = 0.009 . ] Compared to our prior beliefs, our belief that the coin is fair has decreased a little bit; our belief the coin is biased towards Heads has shot up, and is now our most likely belief; while our belief the coin is biased towards Tails has plummeted to just 1%.</p>
+</div>
+</section>
+<section id="bayesian-framework" class="level2" data-number="19.2">
+<h2 data-number="19.2" class="anchored" data-anchor-id="bayesian-framework"><span class="header-section-number">19.2</span> Bayesian framework</h2>
+<!--
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/9moh0KYc6fE"></iframe>
+:::
+::::
+-->
+<p>Let’s think more systematically about what we did in the previous example.</p>
+<ul>
+<li><strong>Model:</strong> The three coin tosses were modelled as three IID Bernoulli trials <span class="math inline">\(X_1, X_2, X_3 \sim \text{Bern}(\theta)\)</span> (if we let <span class="math inline">\(X_i = 1\)</span> denote that the <span class="math inline">\(i\)</span>th coin was Heads). Here, the probability of Heads is some unknown parameter <span class="math inline">\(\theta\)</span>. (Recall we talked about parametric models for data in Subsection @ref(models).) This model gives a distribution that depends on the parameter. Here we had a conditional PMF for one trial [ p(x ) = ^{x} (1 - )^{1- x} ] (this is a convenient way of writing the PMF for a Bernoulli trial). So the joint PMF for the IID trials is [ p(x ) = _{i=1}^3 ^{x_i} (1 - )^{1- x_i} = ^{_i x_i} (1 - )^{3- _i x_i} . ] (Here and throughout, <span class="math inline">\(\prod\)</span>, the Greek capital Pi, means a product – it’s the multiplication equivalent of the summation Sigma, <span class="math inline">\(\Sigma\)</span>.)</li>
+<li><strong>Prior:</strong> We started with a prior belief <span class="math inline">\(\pi(\theta)\)</span> on the value of the unknown parameter. In our case, we had the PMF [ (0.2) = 0.2 (0.5) = 0.6 (0.8) = 0.2 . ]</li>
+<li><strong>Data:</strong> We collected the data <span class="math inline">\(\mathbf x\)</span>, which here had <span class="math inline">\(x_1 = 1\)</span>, <span class="math inline">\(x_2 = 1\)</span>, <span class="math inline">\(x_3 = 1\)</span> (with 1 denoting Heads and 0 denoting Tails).</li>
+<li><strong>Posterior:</strong> We calculated the posterior distribution <span class="math inline">\(\pi(\theta \mid \mathbf x)\)</span> for the parameter <em>given</em> the data. We did this using Bayes’ theorem: [ (x) = () , p(x ) .] We recovered the constant of proportionality – that is, the denominator of Bayes’ theorem – because we knew <span class="math inline">\(\pi(\theta \mid \mathbf x)\)</span> was a conditional PMF so must add up to 1. We ended up with [ (0.2 x) = 0.009 (0.5 x) = 0.419 (0.8 x) = 0.572 . ]</li>
+</ul>
+<p>This is the framework of how Bayesian statistics works: model, prior, data, posterior. To lay it out more generally, the procedure goes like this:</p>
+<div class="thpart">
+<ul>
+<li><strong>Model:</strong> We start with a model for the data <span class="math inline">\(\mathbf x\)</span> that depends on one or more parameters <span class="math inline">\(\theta\)</span>, as expressed by a conditional PMF (for discrete data) or PDF (for continuous data) <span class="math inline">\(p(\mathbf x \mid \theta)\)</span>. This normally represents <span class="math inline">\(n\)</span> IID experiments, so [ p(x ) = _{i=1}^n p(x_i ) . ] This conditional distribution is often called the <strong>likelihood</strong>.</li>
+<li><strong>Prior:</strong> We have a prior distribution <span class="math inline">\(\pi(\theta)\)</span> for the parameter <span class="math inline">\(\theta\)</span>, which can be either a PMF or PDF. The prior distribution represents our beliefs about the parameter before we collect the data; this can be based on previous evidence, expert opinion, personal intuition, etc.</li>
+<li><strong>Data:</strong> We collect the data <span class="math inline">\(\mathbf x\)</span>.</li>
+<li><strong>Posterior:</strong> We then form the posterior distribution <span class="math inline">\(\pi(\theta \mid \mathbf x)\)</span> for the parameter given the data, using Bayes’ theorem: <span class="math display">\[\begin{align*}
+\pi(\theta \mid \mathbf x) &amp;\propto \pi(\theta)\, p(\mathbf x \mid \theta) \\
+\text{posterior} &amp;\propto \text{prior} \times \text{likelihood} .
+\end{align*}\]</span> This can either be a conditional PMF or PDF, but will be the same type as the prior <span class="math inline">\(\pi(\theta)\)</span>.</li>
+</ul>
+</div>
+</section>
+<section id="normal-normal" class="level2" data-number="19.3">
+<h2 data-number="19.3" class="anchored" data-anchor-id="normal-normal"><span class="header-section-number">19.3</span> Normal–normal model</h2>
+<p>In our first example, the “joke coins” was a bit artificial, giving us a prior with only three points in its range. Its often more appropriate to have a prior distribution for a parameter that is continuous over a wide range of possibilities (although concentrated towards the more parameters values we believe are more probable.).</p>
+<p>Consider a normal likelihood, where <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> are IID <span class="math inline">\(\text{N}(\theta, \sigma^2)\)</span>, and where the expectation <span class="math inline">\(\theta\)</span> is the unknown parameter but the variance <span class="math inline">\(\sigma^2\)</span> is known. This could model trying to measure some quantity <span class="math inline">\(\theta\)</span> with an instrument which is known to have a <span class="math inline">\(\text{N}(0,\sigma^2)\)</span> error. So the model has joint PDF <span class="math display">\[\begin{align*}
+p(\mathbf x \mid \theta)
+  &amp;\propto \prod_{i=1}^n \exp \left(- \frac{(x_i - \theta)^2}{2\sigma^2}\right)
+  &amp;= \exp \left( - \frac{1}{2} \sum_{i=1}^n \frac{(x_i - \theta)^2}{\sigma^2} \right) \\
+  &amp;= \exp \left( - \frac{1}{2\sigma^2} \sum_{i=1}^n (x_i - \theta)^2 \right).
+\end{align*}\]</span> (Again, we only worry about distributions up to proportionality, because we work out the multiplicative constant at the end.)</p>
+<p>In fact, when doing Bayesian statistics, it’s often convenient to write <span class="math inline">\(\tau = 1/\sigma^2\)</span> for the inverse of the known variance; this <span class="math inline">\(\tau\)</span> is called the <strong>precision</strong> and is also known. So with this notation, the model is that <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> are IID <span class="math inline">\(\text{N}(\theta, 1 / \tau^2)\)</span>, with joint PDF [ p(x ) ( - _{i=1}^n (x_i - )^2 ) . ]</p>
+<p>What about a prior for the unknown expectation <span class="math inline">\(\theta\)</span>. Often an appropriate choice is a normal <span class="math inline">\(\text{N}(\mu_0, 1/\tau_0)\)</span> prior for the unknown expectation parameter <span class="math inline">\(\theta\)</span>. This represents that we expect the quantity we are trying to mention to be around <span class="math inline">\(\mu_0\)</span>, with an amount of uncertainty captured by the precision <span class="math inline">\(\tau_0\)</span> on the prior. So the prior PDF is [ () ( - (- _0)^2 ) ]</p>
+<p>Because both the prior distribution and the model for the data are normal, this is known as the <strong>normal–normal model</strong>.</p>
+<p>Suppose we collect data <span class="math inline">\(\mathbf x = (x_1, x_2, \dots, x_n)\)</span>, and recall that we write <span class="math inline">\(\bar x = (\sum_i x_i)/n\)</span> for the sample mean.</p>
+<p>To get the posterior distribution requires a bit of an algebra slog (see below), but the outcome is that the posterior distribution is [ (x) ( - ( - )^{!2} ) , ] which is (proportional to) the PDF for yet another normal distribution [ x ( _0 + x, &nbsp; ) . ] In other words, the posterior expectation [ E(x) = _0 + x ] is a weighted average of the prior expectation <span class="math inline">\(\mu_0\)</span> and the mean of the data <span class="math inline">\(\bar x\)</span>, and the more datapoints <span class="math inline">\(n\)</span> you get, the heavier the weighting on the data compared to the prior. Further, the precision has increased from the prior precision <span class="math inline">\(\tau_0\)</span> to the posterior precision <span class="math inline">\(\tau_0 + n\tau\)</span>; so the more data we get, the larger the precision gets, so the smaller the variance gets, and the more sure we get about the true value of <span class="math inline">\(\theta\)</span>.</p>
+<div class="thpart">
+<p><em>The algebra slog (non-examinable).</em> Recall that we can ignore multiplicative terms that don’t contain <span class="math inline">\(\theta\)</span>, thanks to our proportionality trick. But note also that a multiplicative term becomes an additive term inside an exponential. So, within an exponential, we can always ignore any “plus constants” that don’t involve <span class="math inline">\(\theta\)</span>.</p>
+<p>So the prior can be written as <span class="math display">\[\begin{align*}
+\pi(\theta) &amp;\propto \exp\left(-\frac{\tau_0}{2} (\theta - \mu_0)^2 \right) \\
+  &amp;= \exp\left(-\frac{\tau_0}{2}\theta^2 + \tau_0\mu_0\theta -  \frac{\tau_0}{2}\mu_0^2 \right) \\
+  &amp;\propto \exp\left(-\frac{\tau_0}{2}\theta^2 + \tau_0\mu_0\theta \right) ,
+\end{align*}\]</span> where we ignored the final constant term.</p>
+<p>Similarly, the likelihood can be written as <span class="math display">\[\begin{align*}
+p(\mathbf x \mid \theta) &amp;= \exp \left( - \frac{\tau}{2} \sum_{i=1}^n (x_i - \theta)^2 \right) \\
+  &amp;= \exp \left( - \frac{\tau}{2} \sum_{i=1}^n x_i^2 + \tau \theta \sum_{i=1}^n x_i - \frac{\tau}{2} n\theta^2 \right) \\
+  &amp;\propto \exp \left(n \tau \theta \bar x - \frac{\tau}{2} n\theta^2 \right) ,
+\end{align*}\]</span> where we ignored the first constant term in the second line, and recognised <span class="math inline">\(\sum_i x_i\)</span> as <span class="math inline">\(n\bar x\)</span>, as we have done before.</p>
+<p>Then Bayes’ theorem gives us <span class="math display">\[\begin{align*}
+\pi(\mathbf x \mid \theta)
+  &amp;\propto \pi(\theta) \, p(\mathbf x \mid \theta) \\
+  &amp;\propto \exp\left(-\frac{\tau_0}{2}\theta^2 + \tau_0\mu_0\theta \right) \times \exp \left(n \tau \theta \bar x - \frac{\tau}{2} n\theta^2 \right) \\
+  &amp;= \exp\left(-\frac{\tau_0}{2}\theta^2 + \tau_0\mu_0\theta + n \tau \theta \bar x - \frac{\tau}{2} n\theta^2 \right) \\
+  &amp;= \exp \left( -\frac{\tau_0 + n\tau}{2} \theta^2 + (\tau_0\mu_0 + n\tau\bar x)\theta \right) \\
+  &amp;= \exp \left( -\left(\frac{\tau_0 + n\tau}{2}\right) \left(\theta^2 - 2 \frac{\tau_0\mu_0 + n\tau\bar x}{\tau_0 + n\tau}\theta \right) \right) \\
+  &amp;\propto \exp \left( - \tfrac{\tau_0 + n\tau}{2} \left( \theta - \frac{\tau_0 \mu_0 +n\tau \bar x }{\tau_0 + n\tau} \right)^{\!2} \right) .
+\end{align*}\]</span> In the final line, the squared term differs from the line above only by some additive constant. But this is exactly (proportional to) the PDF of a normal distribution with expectation [ ] and precision <span class="math inline">\(\tau_0 + n\tau\)</span>. <!--
+
+Before even getting to Bayes, let's remind ourselves from [Problem Sheet 4 Question B5](#P4-long) that
+\[ \sum_{i=1}^n (x_i - \theta)^2 = \sum_{i=1}^n (x_i - \bar x)^2 + n(\theta - \bar x)^2 . \]
+ Thus we get
+\begin{align*}
+ \exp \left( - \frac{\tau}{2} \sum_{i=1}^n  (x_i - \theta)^2 \right)
+ &=  \exp \left( - \frac{\tau}{2} \sum_{i=1}^n (x_i - \bar x)^2 - n\tau(\theta - \bar x)^2 \right)\\
+ &\propto \exp \left( -\frac{\tau}{2} n(\theta - \bar x)^2 \right) \\
+ &= \exp \left( -\tfrac{1}{2} (n\tau\theta^2 - 2n\tau\bar x\theta + n\tau \bar{x}^2 ) \right) \\
+ &\propto \exp \left( -\tfrac{1}{2} (n\tau\theta^2 - 2n\tau\bar x\theta) \right),
+\end{align*}
+where we indeed ignored the first constant terms in the first line and the last constant term in the third line.
+
+Now we can invoke Bayes' theorem, and continue to ignore "plus constants", to get
+\begin{align*}
+\pi(\mathbf x \mid \theta)
+  &\propto \pi(\theta) \, p(\mathbf x \mid \theta) \\
+  &\propto \exp \left( -\tfrac{1}{2} \tau_0(\theta - \mu_0)^2  \right) \times \exp \left( -\tfrac{1}{2} (n\tau\theta^2 - 2n\tau\bar x\theta ) \right) \\
+  &= \exp \left( -\tfrac{1}{2} (\tau_0(\theta - \mu_0)^2 + n\tau\theta^2 - 2n\tau\bar x\theta ) \right) \\
+  &=\exp \left( - \tfrac{1}{2} (\tau_0\theta^2 - 2\tau_0\mu_0\theta + \tau_0 \mu_0^2 + n\tau\theta^2 - 2n\tau\bar x\theta)\right) \\
+  &\propto \exp \left( - \tfrac{1}{2} \big( (\tau_0 + n\tau)\theta^2 - 2 (\tau_0 \mu_0 +n\tau \bar x )\theta \big)\right) \\
+  &= \exp \left( - \tfrac{1}{2}(\tau_0 + n\tau) \left( \theta^2 - 2 \frac{\tau_0 \mu_0 +n\tau \bar x }{\tau_0 + n\tau} \theta \right)\right)  \\
+  &\propto \exp \left( - \tfrac{1}{2}(\tau_0 + n\tau) \left( \theta - \frac{\tau_0 \mu_0 +n\tau \bar x }{\tau_0 + n\tau} \right)^{\!2} \right) . 
+\end{align*}
+This is (proportional to) the PDF for a normal distribution with expectation
+\[ \frac{\tau_0 \mu_0 +n\tau \bar x }{\tau_0 + n\tau} \]
+and precision $\tau_0 + n\tau$.
+--></p>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../sections/L18-limit.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Limit theorems</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../sections/L20-bayes-models.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">More Bayesian models</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

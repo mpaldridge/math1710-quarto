@@ -1,0 +1,67 @@
+::::: {.myq}
+**C1.** Let $X$ be a continuous random variable with PDF
+\[ f(x) = \tfrac29 (2 - x) \qquad \text{for $-1 \leq x \leq c$} \]
+and $f(x) = 0$ otherwise.
+
+:::: {.subq}
+**(a)** Explaining your work, find the value of the constant $c$.
+
+::: {.myanswers data-latex=""}
+*Hint.* Remember that the integral under a PDF must equal 1.
+:::
+::::
+
+:::: {.subq}
+**(b)** 
+What is $\mathbb P(X > 1)$?
+
+::: {.myanswers data-latex=""}
+*Hint.* This is standard.
+:::
+::::
+
+:::: {.subq}
+**(c)** Calculate the expectation of$X$.
+
+::: {.myanswers data-latex=""}
+*Hint.* This is standard.
+:::
+::::
+
+:::: {.subq}
+**(d)** Calculate the variance of $X$.
+
+::: {.myanswers data-latex=""}
+*Hint.* This is standard. I recommend using the computational formula, so start by finding $\mathbb EX^2$.
+:::
+::::
+:::::
+
+
+::::: {.myq}
+**C2.** For each of the following, **(a)** calculate the *exact* value using R; **(b)** get an approximate value using an appropriate approximation and *without* using R. ([Statistical tables](https://mpaldridge.github.io/math1710/stat-tab.pdf) are available.)
+
+:::: {.subq}
+**(i)** $\mathbb P(X \leq 3)$, where $X \sim \mathrm{Bin}(1000, 0.005)$.
+
+::: {.myanswers data-latex=""}
+*Hint.* For the approximation, note that $n$ is large and $p$ is small.
+:::
+::::
+
+:::: {.subq}
+**(ii)** $\mathbb P(296 \leq Y \leq 307)$, where $Y \sim \mathrm{Bin}(1200, 0.25)$.
+
+::: {.myanswers data-latex=""}
+*Hint.* For the approximation, note that $n$ is large and $p$ is *not* small.
+:::
+::::
+
+:::: {.subq}
+**(iii)** $\mathbb P(Z \geq 398)$, where $Z \sim \mathrm{Bin}(400, 0.995)$.
+
+::: {.myanswers data-latex=""}
+*Hint.* This one will require you to think for yourself! I have not told you how to do this question. You might notice it looks a bit like the Poisson `small $p$' case, but mirror-imaged. How can you use this to your advantage.
+:::
+::::
+:::::

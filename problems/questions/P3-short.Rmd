@@ -1,0 +1,193 @@
+::::: {.myq}
+
+**A1.** Consider dealing two cards (without replacement) from a pack of cards. Which of the following pairs of events are independent?
+
+::::{ .subq}
+**(a)** "The first card is a Heart" and "The first card is Red".
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+We have
+\begin{align*}
+\mathbb P(\text{first Heart}) &= \frac{13}{52} = \frac14 \\
+\mathbb P(\text{first Red}) &= \frac{26}{52} = \frac12 \\
+\mathbb P(\text{first Heart and first Red}) &= \mathbb P(\text{first Heart}) = \frac14 .
+\end{align*}
+So $\mathbb P(\text{first Heart and first Red}) \neq \mathbb P(\text{first Heart})\,\mathbb P(\text{first Red})$, and the events are not independent.
+:::
+::::
+
+::::{ .subq}
+**(b)** "The first card is a Heart" and "The first card is a Spade".
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+We have
+\begin{align*}
+\mathbb P(\text{first Heart}) &= \frac{13}{52} = \frac14 \\
+\mathbb P(\text{first Spade}) &= \frac{13}{52} = \frac14 \\
+\mathbb P(\text{first Heart and first Spade}) &= 0 .
+\end{align*}
+So $\mathbb P(\text{first Heart and first Spade}) \neq \mathbb P(\text{first Heart})\,\mathbb P(\text{first Spade})$, and the events are not independent.
+:::
+::::
+
+::::{ .subq}
+**(c)** "The first card is a Heart" and "The first card is an Ace".
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+We have
+\begin{align*}
+\mathbb P(\text{first Heart}) &= \frac{13}{52} = \frac14 \\
+\mathbb P(\text{first Ace}) &= \frac{4}{52} = \frac1{13} \\
+\mathbb P(\text{first Heart and first Ace}) &= \mathbb P(\text{first Ace of Hearts}) = \frac1{52} .
+\end{align*}
+So $\mathbb P(\text{first Heart and first Ace}) = \mathbb P(\text{first Heart})\,\mathbb P(\text{first Ace})$, and the events are independent.
+:::
+::::
+
+::::{ .subq}
+**(d)** "The first card is a Heart" and "The second card is a Heart".
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+We have
+\begin{align*}
+\mathbb P(\text{first Heart}) &= \frac{13}{52} = \frac14 \\
+\mathbb P(\text{second Heart}) &= \frac{13}{52} = \frac14 \\
+\mathbb P(\text{first Heart and second Heart}) &= \frac{13\times 12}{52 \times 51} = \frac{1}{17}
+\end{align*}
+So $\mathbb P(\text{first Heart and second Heart}) \neq \mathbb P(\text{first Heart})\,\mathbb P(\text{second Heart})$, and the events are not independent.
+:::
+::::
+
+::::{ .subq}
+**(e)** "The first card is a Heart" and "The second card is an Ace".
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+We have
+\begin{align*}
+\mathbb P(\text{first Heart}) &= \frac{13}{52} = \frac14 \\
+\mathbb P(\text{second Ace}) &= \frac{4}{52} = \frac1{13} \\
+\mathbb P(\text{first Heart and second Ace}) &= \frac{12\times4 + 1\times 3}{52\times 51} = \frac{51}{52\times 51} = \frac{1}{52}
+\end{align*}
+Here, the $12 \times 4$ counted "a non-Ace Heart, followed by an Ace", while the $1 \times 3$ counted "the Ace of Hearts, followed by a non-Heart Ace". So $\mathbb P(\text{first Heart and second Ace}) = \mathbb P(\text{first Heart})\,\mathbb P(\text{second Ace})$, and the events are independent.
+:::
+::::
+:::::
+
+::::: {.myq}
+**A2.** Consider rolling two dice. Let $A$ be the event that the first roll is even, let $B$ be the event that the second roll is even, and let $C$ be the event that the total score is even. You may assume the dice rolls are independent; so, in particular, events $A$ and $B$ are independent.
+
+:::: {.subq}
+**(a)** Are $A$ and $C$ independent?
+
+::: {.myanswers data-latex=""}
+*Solution.* Let us first note that $\mathbb P(A) = \mathbb P(B) = \frac36 = \frac12$. It's also the case that $\mathbb P(C) = \frac{18}{36} = \frac12$, for example by counting the 18 even outcomes out of the 36 equally likely possibilities.
+
+We need to test is $\mathbb P(A \cap C) = \mathbb P(A) \, \mathbb P(C) = \frac14$ or not. By counting from the 36 possibilities, we see that indeed $\mathbb P(A \cap C) = \frac{9}{36} = \frac{1}{4}$. Alternatively, we could note that $\mathbb P(C \mid A) = \mathbb P(B) = \frac12$, since if the first dice is even, the second must be also even to get an even total. Then $\mathbb P(A \cap C) = \mathbb P(A) \, \mathbb P(C \mid A) = \frac14$.
+
+So the events are independent.
+:::
+::::
+
+:::: {.subq}
+**(b)** Are $B$ and $C$ independent?
+
+::: {.myanswers data-latex=""}
+*Solution.* Yes. The solution is essentially identical to part (a).
+:::
+::::
+
+:::: {.subq}
+**(c)** Is it true that $\mathbb P(A \cap B \cap C) = \mathbb P(A) \, \mathbb P(B) \, \mathbb P(C)$?
+
+::: {.myanswers data-latex=""}
+*Solution.*
+By checking the 36 possibilities, one sees that
+\[ \mathbb P(A \cap B \cap C) = \frac{9}{36} = \frac{1}{4} \neq \frac{1}{8} = \frac12 \times \frac12 \times \frac12 = \mathbb P(A)\, \mathbb P(B) \, \mathbb P(C) . \]
+
+Alternatively, note that the total being even is certain if both dice rolls are certain, so
+\[ \mathbb P(A \cap B \cap C) = \mathbb P(A \cap B) \, \mathbb P(C \mid A \cap B) = \frac14 \times 1 = \frac14 , \]
+to get the same result.
+
+**Group feedback:** This shows that just because events are "pairwise independent", it does not mean they are "mutually independent".
+:::
+::::
+:::::
+
+:::: {.myq}
+**A3.** Consider the random variable $X$ with the following PMF:
+
+| $x$ | $-1$ | $0$ | $0.5$ | $1$ | $2$ |
+|:--:|:--:|:--:|:--:|:--:|:--:|
+| $p(x)$ | $0.1$ | $0.3$ | $0.3$ | $0.2$ | $0.1$ |
+
+Find the expectation and variance of $X$.
+
+::: {.myanswers data-latex=""}
+*Solution.*
+For the expectation,
+\[ \mathbb EX = -1\times0.1 + 0\times0.3 + 0.5\times0.3+1\times0.2+2\times0.1 = 0.45. \]
+
+For the variance, we start with
+\[ \mathbb EX^2 = (-1)^2\times0.1 + 0^2\times0.3 + 0.5^2\times0.3+1^2\times0.2+2^2\times0.1 = 0.775 . \]
+Then, using the computational formula,
+\[ \Var(X) = \mathbb EX^2 - \mu^2 = 0.775 - 0.45^2 = 0.5725. \]
+:::
+::::
+
+:::: {.myq}
+**A4.** Consider the random variable $X$ with the following PMF:
+
+| $x$ | $1$ | $2$ | $4$ | $5$ | $a$ |
+|:--:|:--:|:--:|:--:|:--:|:--:|
+| $p(x)$ | $0.1$ | $0.2$ | $0.1$ | $b$ | $0.1$ |
+
+This random variable has $\mathbb EX = 4.3$. Find the values of $a$ and $b$.
+
+::: {.myanswers data-latex=""}
+*Solution.*
+First, a PMF must sum to 1, so
+\[ 1 = 0.1 + 0.2 + 0.1 + b + 0.1 , \]
+so $b = 0.5$.
+
+Second, the expectation is
+\[
+\mathbb EX = 1\times0.1 + 2 \times 0.2 + 4 \times 0.1 + 5b + 0.1a 
+           = 3.6 + 0.1a 
+           = 4.3 .
+\]
+So $a = 7$.
+:::
+::::
+
+::::: {.myq}
+**A5.** A temperature $T_C$ measured in degrees Celsius can be converted to a temperature $T_F$ in degrees Fahrenheit using the formula $T_F = \frac95 T_C + 32$.
+
+The average daily maximum temperature in Leeds in July is 19.0 °C. The variance of the daily maximum temperature measured in degrees Celsius is 10.4.
+
+:::: {.subq}
+**(a)** What is the average daily maximum temperature in degrees Fahrenheit?
+
+::: {.myanswers data-latex=""}
+*Solution.*
+By linearity of expectation,
+\[ \mathbb E T_F = \mathbb E\left(\tfrac95T_C + 32\right) = \tfrac95 \mathbb ET_C + 32 . \]
+So the answer is $\frac95 \times 19.0 + 32 = 66.2$ °F.
+:::
+::::
+
+:::: {.subq}
+**(b)** What is the variance of the daily maximum temperature when measured in degrees Fahrenheit?
+
+::: {.myanswers data-latex=""}
+*Solution.*
+For the variance,
+\[ \Var(T_F) = \Var\left(\tfrac95T_C + 32\right) = \left(\tfrac95\right)^2 \Var(T_C) = \tfrac{81}{25}\Var(T_C). \]
+So the answer is $\frac{81}{25} \times 10.4 = 33.7$.
+:::
+::::
+:::::

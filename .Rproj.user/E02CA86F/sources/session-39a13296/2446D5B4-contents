@@ -1,0 +1,62 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "MATH1710 Probability and Statistics 1"
+  author: "Matthew Aldridge, University of Leeds"
+  date: today
+  date-format: "[Semester 1, 2022-23]"
+  sidebar:
+    title: "MATH1710"
+  chapters:
+    - index.qmd
+    - about.qmd
+    - part: "Exploratory data analysis"
+      chapters: 
+        - sections/L01-stats.qmd
+        - sections/L02-dataviz.qmd
+        #- problems/P1.qmd
+    - part: "Probability"
+      chapters: 
+        - sections/L03-events.qmd
+        - sections/L04-probability.qmd
+        - sections/L05-classical-i.qmd
+        - sections/L06-classical-ii.qmd
+        #- problems/P2.qmd
+        - sections/L07-conditional.qmd
+        - sections/L08-two-theorems.qmd
+        - sections/L09-discrete-rv.qmd
+        - sections/L10-expectation.qmd
+        #- problems/P3.qmd
+        - sections/L11-binomial-geometric.qmd
+        - sections/L12-poisson.qmd
+        - sections/L13-multi-rv.qmd
+        - sections/L14-covariance.qmd
+        #- problems/P4.qmd
+        - sections/L15-continuous.qmd
+        - sections/L17-normal.qmd
+        - sections/L16-exponential-multi.qmd
+        - sections/L18-limit.qmd
+        #- problems/P5.qmd
+    - part: "Bayesian statistics"
+      chapters:
+        - sections/L19-bayes-idea.qmd
+        - sections/L20-bayes-models.qmd
+        #- problems/P6.qmd
+    - part: "Other stuff"
+      chapters:
+        - sections/L21-summary.qmd
+        - sections/L22-exam.qmd
+        - R/R.qmd
+        - writing.qmd
+        #- problems/solutions.qmd
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: report
+
+
+

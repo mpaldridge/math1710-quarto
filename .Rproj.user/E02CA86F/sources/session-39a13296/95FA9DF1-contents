@@ -1,0 +1,46 @@
+## Generate N = 2500 Terms from a Normal (0,1) Distribution
+
+set.seed(1)
+N = 2500
+X = abs(rnorm(N))
+ben.X = benford(X,number.of.digits = 1)
+plot(ben.X)
+ben.X
+
+## Z Statistic
+
+sn.X = formatC(X,format = "e", digits = 1) # scientific notation
+fc.X = substr(sn.X,1,1) # takes first character of string
+fd.X = as.integer(fc.X) # converts into integer, 1-9
+
+frq.fd.X = c() # actual frequency of first digit i.e. 1-9
+EP = c() # expected proportion i.e. P(d) = log10(1+1/d)
+for (d in 1:9) {
+  frq.fd.X[d] = sum(fd.X == d)
+  EP[d] = log10(1 + 1/d)
+}
+AP = frq.fd.X / N # actual proportion
+Z = (abs(AP-EP)-1/(2*N))/(sqrt(EP*(1-EP)/N)) # Z-statistic for d=1,...,9
+for (d in 1:9) {
+  if (Z[d]<0) {
+    Z[d] = (abs(AP[d]-EP[d]))/(sqrt(EP[d]*(1-EP[d])/N)) # continuity correction check
+  }
+}
+
+## Chi-Squared
+
+ben.X$stats$chisq$statistic ## Chi-squared Statistic
+qchisq(0.05,9-1) ## Critical Value: df = 8, sig. level = 5%
+ben.X$stats$chisq$statistic > qchisq(0.05,9-1) ## Statistically significant?
+## K-S
+kscv.X = 1.36/sqrt(N) ## Critical Value
+ksts.X.values = c() ## Generating K-S stats
+for (d in 1:9) {
+  ksts.X.values[d]=abs(sum(AP[1:d]-EP[1:d]))
+}
+ksts.X = max(ksts.X.values) ## Picking max/supremum as test statistic
+ksts.X > kscv.X ## Statistically significant?
+## MAD
+ben.X$MAD ## MAD test statistic
+ben.X$MAD.conformity ## MAD test conclusion
+## Mantissa Arc

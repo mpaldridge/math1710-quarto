@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.475">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>MATH1710 Probability and Statistics 1 - 11&nbsp; Binomial and geometric distributions</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../sections/L12-poisson.html" rel="next">
+<link href="../sections/L10-expectation.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Binomial and geometric distributions</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">MATH1710</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../about.html" class="sidebar-item-text sidebar-link">About MATH1710</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Exploratory data analysis</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L01-stats.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Summary statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L02-dataviz.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data visualisations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Probability</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L03-events.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sample spaces and events</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L04-probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L05-classical-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Classical probability I</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L06-classical-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Classical probability II</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L07-conditional.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Independence and conditional probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L08-two-theorems.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Two theorems on conditional probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L09-discrete-rv.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Discrete random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L10-expectation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Expectation and variance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L11-binomial-geometric.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Binomial and geometric distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L12-poisson.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Poisson distribution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L13-multi-rv.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Multiple random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L14-covariance.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Expectation and covariance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L15-continuous.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Continuous random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L17-normal.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Normal distribution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L16-exponential-multi.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Exponential distribution and multiple continuous random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L18-limit.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Limit theorems</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Bayesian statistics</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L19-bayes-idea.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">The Bayesian idea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L20-bayes-models.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">More Bayesian models</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Other stuff</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L21-summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">All questions answered</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L22-exam.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Exam</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R/R.html" class="sidebar-item-text sidebar-link">R Worksheets</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../writing.html" class="sidebar-item-text sidebar-link">Tips on writing mathematics</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#binomial" id="toc-binomial" class="nav-link active" data-scroll-target="#binomial"><span class="toc-section-number">11.1</span>  Binomial distribution</a></li>
+  <li><a href="#geometric" id="toc-geometric" class="nav-link" data-scroll-target="#geometric"><span class="toc-section-number">11.2</span>  Geometric distribution</a></li>
+  <li><a href="#models" id="toc-models" class="nav-link" data-scroll-target="#models"><span class="toc-section-number">11.3</span>  Distributions as models for data</a></li>
+  <li><a href="#summary-L11" id="toc-summary-L11" class="nav-link" data-scroll-target="#summary-L11">Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="L11-binomial-poisson" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Binomial and geometric distributions</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Last week, we developed the idea of random variables, and in particular discrete random variables. We saw that the benefit of random variables is that we can just worry about their distribution, which often allows us to move the sample space <span class="math inline">\(\Omega\)</span> and other more technical matters into the background. (Here, we informally use the word “distribution” to refer to the probability mass function of a random variable – or, later, the continuous equivalent, the probability density function).</p>
+<p>There are some distributions – or, rather, some families of distributions – that are so useful that we often want to use them for modelling real-world quantities. This week, we will look at a number of useful discrete distributions.</p>
+<section id="binomial" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="binomial"><span class="header-section-number">11.1</span> Binomial distribution</h2>
+<!--
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/x6pVSCBjuzk"></iframe>
+:::
+::::
+-->
+<p>One family of distributions we have already seen is the Bernoulli trial <span class="math inline">\(\text{Bern}(p)\)</span>, which is 1 with probability <span class="math inline">\(p\)</span> and 0 with probability <span class="math inline">\(1-p\)</span>. We saw that this could model whether or a biased coin lands Heads, or more generally whether an experiment is successful.</p>
+<div class="example">
+<p><em>Suppose we toss 10 independent biased coins, each of which lands Heads with probability 0.7 and Tails with probability 0.3. What is the probability we get exactly 8 Heads altogether?</em></p>
+<p>The probability that any specific 8 coins land Heads and the other 2 land Tails is <span class="math inline">\(0.7^8\times 0.3^2\)</span>. However, there are <span class="math inline">\(\binom{10}{8}\)</span> choices for which 8 coins are the ones that land Heads. Hence, the probability is [ P() = ^8 ^2 = 0.23.]</p>
+</div>
+<p>This is a special case of the binomial distribution.</p>
+<div class="definition">
+<p>Let <span class="math inline">\(X\)</span> be a discrete random variable with range <span class="math inline">\(\{0,1,2,\dots,n\}\)</span> and PMF [ p(x) = p^x (1-p)^{n-x} . ] Then we say that <span class="math inline">\(X\)</span> follows the <strong>binomial distribution</strong> with parameters <span class="math inline">\(n\)</span> and <span class="math inline">\(k\)</span>, and write <span class="math inline">\(X \sim \text{Bin}(n,p)\)</span>.</p>
+</div>
+<p>So a binomial random variable represents the number of successes in <span class="math inline">\(n\)</span> Bernoulli trials. In our previous example, the number of Heads from the coin tosses was <span class="math inline">\(\text{Bin}(10, 0.7)\)</span>.</p>
+<div class="cell" data-hash="L11-binomial-geometric_cache/html/binom-pic_e7bbc73b9353693f35e040ca3c36970f">
+<div class="cell-output-display">
+<p><img src="L11-binomial-geometric_files/figure-html/binom-pic-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="example">
+<p><em>Let <span class="math inline">\(X \sim \mathrm{Bin}(8, 0.2)\)</span>. What is (a) <span class="math inline">\(\mathbb P(X = 3)\)</span>? (b) <span class="math inline">\(\mathbb P(X \geq 2)\)</span>?</em></p>
+<p>For (a), we have from the definition [ P(X = 3) = 0.2^3 (1 - 0.2)^{8-3} = 56<sup>3</sup>5 = 0.147 .]</p>
+<p>For (b), this is an “at least” question, so it’s more convenient to look at the complementary event, <span class="math inline">\(\mathbb P(X &lt; 2)\)</span>. So <span class="math display">\[\begin{align*}
+\mathbb P(X \geq 2) &amp;= 1 - \mathbb P(X &lt; 2) \\
+  &amp;= 1 - \mathbb P(X = 0) - \mathbb P(X = 1) \\
+  &amp;= 1 - 0.8^8 - 8\times 0.2 \times 0.8^7 \\
+  &amp;= 1 - 0.168 - 0.336 \\
+  &amp; = 0.497 .
+\end{align*}\]</span></p>
+</div>
+<p>What about the expectation and variance of a binomial random variable?</p>
+<div class="theorem">
+<p>Let <span class="math inline">\(X \sim \text{Bin}(n, p)\)</span>. Then</p>
+<ul>
+<li><span class="math inline">\(\mathbb EX = np\)</span>,</li>
+<li><span class="math inline">\(\Var(X) =np(1-p)\)</span>.</li>
+</ul>
+</div>
+<p>One can prove this by working out the sums – for example, the expectation is the value of the sum [ EX = _{x=0}^n x p^x (1-p)^{n-x} , ] which is a bit tricky to calculate, but not fundamentally difficult mathematics. However, in next section we will see an easier way, so we’ll reserve the proof until then instead.</p>
+<p>For my 10 biased coins that are each Heads with probability <span class="math inline">\(0.7\)</span>, the expectation and variance are <span class="math display">\[\begin{align*}
+  \mathbb EX &amp;= 10 \times 0.7 = 7 \\
+  \Var(X) &amp;= 10 \times 0.7 \times 0.3 = 2.1
+\end{align*}\]</span></p>
+</section>
+<section id="geometric" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="geometric"><span class="header-section-number">11.2</span> Geometric distribution</h2>
+<!--
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/kQsgZ-kF6PY"></iframe>
+:::
+::::
+-->
+<div class="example">
+<p><em>I decide to roll a fair dice until I first roll a six, and then stop. What’s the probability I get the first six on my 5th roll of the dice?</em></p>
+<p>For the first six to be on the 5th attempt, the first 4 rolls have to be non-sixes, and then the fifth roll has to be a six. This has probability [ ()^4 = = 0.08.]</p>
+</div>
+<p>This is a special case of the geometric distribution.</p>
+<div class="definition">
+<p>Let <span class="math inline">\(X\)</span> be a discrete random variable with range <span class="math inline">\(\{1,2,\dots\}\)</span> and PMF [ p(x) = (1-p)^{x-1}p . ] Then we say that <span class="math inline">\(X\)</span> follows the <strong>geometric distribution</strong> with parameter <span class="math inline">\(p\)</span>, and write <span class="math inline">\(X \sim \text{Geom}(p)\)</span>.</p>
+</div>
+<p>So a geometric random variable represents the number of Bernoulli<span class="math inline">\((p)\)</span> trials until the first success. In our previous example, the number of dice rolls until a six was <span class="math inline">\(\text{Geom}(\frac16)\)</span>.</p>
+<div class="cell" data-hash="L11-binomial-geometric_cache/html/geom-pic_f999ca7e61fe763a715fcdb9b380e05e">
+<div class="cell-output-display">
+<p><img src="L11-binomial-geometric_files/figure-html/geom-pic-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="example">
+<p><em>Let <span class="math inline">\(X \sim \mathrm{Geom}(0.4)\)</span>. What is (a) <span class="math inline">\(\mathbb P(X = 3)\)</span>? (b) <span class="math inline">\(\mathbb P(X \geq 3)\)</span>.</em></p>
+<p>For part (a), we have [ P(X = 3) = (1 - 0.4)^2 = 0.144 . ]</p>
+<p>For part (b), we have [ P(X ) = 1 - P(X =1) - P(X = 2) = 1 - 0.4 - (1-0.4) = 1- 0.64 = 0.36 . ]</p>
+</div>
+<div class="theorem">
+<p>Let <span class="math inline">\(X \sim \text{Geom}(p)\)</span>. Then</p>
+<ul>
+<li><span class="math inline">\(\mathbb EX = \displaystyle\frac1p\)</span>,</li>
+<li><span class="math inline">\(\Var(X) = \displaystyle\frac{1-p}{p^2}\)</span>.</li>
+</ul>
+</div>
+<p>So the expected number of rolls until rolling a six is [ EX = = 6 , ] with variance [ (X) = = 30 . ]</p>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><em>(Non-examinable)</em> For the expectation, we want to calculate [ EX = <em>{x=1}^x (1-p)^{x-1} p = p </em>{x=0}^x (1-p)^{x-1}. ] (We can include the <span class="math inline">\(x = 0\)</span> term in the sum since it is equal to 0.)</p>
+<p>At this point we will invoke the identity [ <em>{x = 0}^x a^{x-1} = , ] which can be proved by differentiating the standard sum of a geometric progression [ </em>{x = 0}<sup>a</sup>x = ] with respect to <span class="math inline">\(a\)</span>.</p>
+<p>Using that identity with <span class="math inline">\(a = 1-p\)</span>, we get [ EX = p _{x=0}^x (1-p)^{x-1} = p, = , ] as required.</p>
+<p>For the variance, we will use a trick that sometimes comes in useful, which is to start by calculating <span class="math inline">\(\mathbb EX(X-1)\)</span>. Here we get [ EX(X-1) = <em>{x=1}^x (x-1) (1-p)^{x-1} p = p(1-p) </em>{x=0}^x(x-1) (1-p)^{x-2} . ] To calculate the sum, we note that differentiating the geometric progression formula twice gives [ <em>{x = 0}^x(x-1) a^{x-2} = , ] so we get [ EX(X-1) = p(1-p) </em>{x=0}^x(x-1) (1-p)^{x-2} = p(1 -p) , = . ]</p>
+<p>We now want to use the computational formula <span class="math inline">\(\Var(X) = \mathbb EX^2 - \mu^2\)</span> to get the variance. We know <span class="math inline">\(\mu = 1/p\)</span>, and from the calculation above, we have [ EX(X-1) = EX^2 - EX = EX^2 - = . ] So <span class="math display">\[\begin{align*}
+\Var(X) = \mathbb EX^2 - \mu^2
+&amp;= \left(\frac{2(1-p)}{p^2} + \frac{1}{p}\right) - \left(\frac{1}{p}\right)^2 \\
+&amp;= \frac{2(1-p) + p - 1}{p^2} \\
+&amp;= \frac{1-p}{p^2} .
+\end{align*}\]</span></p>
+</div>
+<p><em>Note:</em> Here, we defined a geometric random variable as being the number of trials up to <em>and including</em> the first success, which is a number in <span class="math inline">\(\{1, 2, \dots\}\)</span>. However, some authors define it as the number of failures <em>before</em> the first success, which is a number in <span class="math inline">\(\{0, 1, 2,\dots\}\)</span>. If <span class="math inline">\(X\)</span> is our definition and <span class="math inline">\(Y\)</span> is the second “number of failures” definition, then <span class="math inline">\(X\)</span> and <span class="math inline">\(Y+1\)</span> have the same distribution. Annoyingly, R uses the “number of failures before success” definition, as we will discuss in a later R worksheet.</p>
+</section>
+<section id="models" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="models"><span class="header-section-number">11.3</span> Distributions as models for data</h2>
+<p>Families of distributions – like the Bernoulli, binomial and geometric distributions we have seen so far in this module – are very useful for models in statistics. This idea is developed Bayesian statistics we will discuss in Lectures 19 and 20 of this module, and is an idea that is extremely important throughout the whole MATH1712 Probability and Statistics II.</p>
+<p>The families of distributions we have looked at here are sometimes called “parametric families”, in that each of the distributions depended on one or more parameters: <span class="math inline">\(p\)</span> for the Bernoulli and geometric distributions; and both <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span> for the binomial distribution. (In the next lecture we will see another discrete distribution, the Poisson distribution, and later in the module we will also see some continuous parametric families: the exponential, normal and beta distributions.) This means we can adopt a model that data comes from one of the distributions within a family, then use data to estimate the value of that parameter.</p>
+<p>For example:</p>
+<ul>
+<li>When testing the bias of a coin, you might assume, counting Heads as 1 and Tails as 0, that the outcome of each test is Bernoulli distributed with parameter <span class="math inline">\(p\)</span>, but where the value of the Heads probability <span class="math inline">\(p\)</span> is unknown. You could then toss the coin many times and use this data to estimate <span class="math inline">\(p\)</span>.</li>
+<li>The number of years between severe summer floods in a tropical climate could be modelled as geometrically distributed where the flood risk parameter <span class="math inline">\(p\)</span> is unknown. By look at the gaps between severe floods in historical data, a statistician could try to estimate <span class="math inline">\(p\)</span>.</li>
+<li>A tutor might assume that the number of students that turn up to each tutorial is binomially distributed where <span class="math inline">\(n\)</span> is known to be 12, the number of students assigned to the group, but <span class="math inline">\(p\)</span>, the “turning-up probability” is unknown. The tutor could then take records of how many students turned up to all the tutorials, and use this to estimate <span class="math inline">\(p\)</span>.</li>
+</ul>
+<p>There are two main methods statisticians use to estimate parameters:</p>
+<ul>
+<li><strong>Bayesian statistics:</strong> Here, one starts with a subjective “prior” distribution for the parameters, which represents one’s personal belief about which possible values for that parameter are more or less likely before conducting any experiment. After the experiment, one then uses Bayes’ theorem to update that belief to a “posterior” distribution of one’s beliefs about the parameter <em>given</em> the data. The Bayesian approach will be introduced in Lecture 19 of this module.</li>
+<li><strong>Frequentist statistics:</strong> Frequentist statistics does not involve any subjective prior views. Rather, frequentism is about assessing the extent to which the data is consistent with certain hypotheses. For example, one might try to find the value for the parameter that would seem “most consistent” with the data, and use that as an “estimate” of the parameter: “My best guess of the Heads probability <span class="math inline">\(p\)</span> of the coin is <span class="math inline">\(p = 0.53\)</span>.” Alternatively, one might find a range of values for the parameter that are all at least somewhat consistent with the data: “I am confident the value of the Heads probability lies in the range <span class="math inline">\(0.49 \leq p \leq 0.57\)</span>, as these values are all consistent with the data.” Third, one could text if a specific hypothesis is consistent with the data or not: “The data is consistent with the hypothesis that <span class="math inline">\(p = 0.50\)</span>, whih would mean the coin is fair, so I have no strong evidence for disbelieving that.” The frequentist approach will pursued in detail in MATH1712.</li>
+</ul>
+</section>
+<section id="summary-L11" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="summary-L11">Summary</h2>
+<table class="table">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Distribution</th>
+<th style="text-align: center;">Range</th>
+<th style="text-align: center;">PMF</th>
+<th style="text-align: center;">Expectation</th>
+<th style="text-align: center;">Variance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Bernoulli:</strong> <span class="math inline">\(\text{Bern}(p)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\{0,1\}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(p(0) = 1- p\)</span>, <span class="math inline">\(p(1) = p\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(p\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(p(1-p)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Binomial:</strong> <span class="math inline">\(\text{Bin}(n,p)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\{0,1,\dots,n\}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\displaystyle\binom{n}{x} p^x (1-p)^{n-x}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(np\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(np(1-p)\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Geometric:</strong> <span class="math inline">\(\text{Geom}(p)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\{1,2,\dots\}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\((1-p)^{x-1}p\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\displaystyle\frac{1}{p}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\displaystyle\frac{1-p}{p^2}\)</span></td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../sections/L10-expectation.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Expectation and variance</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../sections/L12-poisson.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Poisson distribution</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

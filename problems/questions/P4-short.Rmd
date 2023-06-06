@@ -1,0 +1,150 @@
+::::: {.myq}
+**A1.** Let $X \sim \text{Bin}(20, 0.4)$. Calculate
+
+:::: {.subq}
+**(a)** $\mathbb P(X = 8)$
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+\[ \mathbb P(X = 8) = \binom{20}{8} 0.4^8 \times 0.6^{12} = 0.180 . \]
+:::
+::::
+
+:::: {.subq}
+**(b)** $\mathbb P(8 \leq X \leq 11)$
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+\begin{align*}
+\mathbb P(8 \leq X \leq 11) &= \mathbb P(X = 8) + \mathbb P(X = 9) + \mathbb P(X = 10) + \mathbb P(X = 11) \\ 
+&= \binom{20}{8} 0.4^8 \times 0.6^{12} + \binom{20}{9} 0.4^9 \times 0.6^{11} + \binom{20}{10} 0.4^10 \times 0.6^{10} + \binom{20}{11} 0.4^8 \times 0.6^{11} \\
+&= 0.180 + 0.160 + 0.117 + 0.071 \\
+&= 0.528 .
+\end{align*}
+:::
+::::
+
+:::: {.subq}
+**(c)** $\mathbb EX$
+
+::: {.myanswers data-latex=""}
+*Solution.* $\mathbb EX = 20 \times 0.4 = 8$.
+:::
+::::
+:::::
+
+::::: {.myq}
+**A2.** Let $X \sim \text{Geom}(0.2)$. Calculate
+
+:::: {.subq}
+**(a)** $\mathbb P(X = 2)$
+
+::: {.myanswers data-latex=""}
+*Solution.* $\mathbb P(X = 2) = 0.8^1 \times 0.2^1 = 0.16$.
+:::
+::::
+
+:::: {.subq}
+**(b)** $\mathbb P(X \geq 3)$
+
+::: {.myanswers data-latex=""}
+*Solution.*  $\mathbb P(X \geq 3) = 1 - \mathbb P(X =1) - \mathbb P(X = 2)  = 1 - 0.2 - 0.8\times 0.2 = 0.64$.
+:::
+::::
+
+:::: {.subq}
+**(c)** $\Var(X)$
+
+::: {.myanswers data-latex=""}
+*Solution.* ${\displaystyle \Var(X) = \frac{1 - 0.2}{0.2^2} = 20}$.
+:::
+::::
+:::::
+
+::::: {.myq}
+**A3.** Let $X \sim \text{Po}(2.5)$. Calculate
+
+:::: {.subq}
+**(a)** $\mathbb P(X = 3)$
+
+::: {.myanswers data-latex=""}
+*Solution.*
+$\mathbb P(X = 3) = \mathrm e^{-2.5} \displaystyle\frac{2.5^3}{3!} = 0.214$.
+:::
+::::
+
+:::: {.subq}
+**(b)** $\mathbb P(X \geq \mathbb EX)$
+
+::: {.myanswers data-latex=""}
+*Solution.* First, $\mathbb EX = 2.5$. So
+\begin{align*}
+\mathbb P(X \geq \mathbb EX) &= \mathbb P(X \geq 2.5) \\
+  &= 1 - \mathbb P(X = 0) - \mathbb P(X = 1) - \mathbb P(X = 2) \\
+  &= 1 - \mathrm e^{-2.5} - 2.5 \mathrm e^{-2.5} - \frac{2.5^2}{2} \mathrm e^{-2.5} \\
+  &= 1 - 0.082 - 0.204 - 0.257 \\
+  &= 0.456.
+\end{align*}
+:::
+::::
+:::::
+
+::::: {.myq}
+**A4.** Consider the following joint PMF:
+
+| $p_{X,Y}(x,y)$ | $y = 0$ | $y = 1$ | $y = 2$ | $y = 3$ | $\phantom{p_X(x)}$ |
+|:-:|:-:|:-:|:-:|:-:|:-:|
+| $x=0$ | $2k$ | $2k$ | $k$ | $0$ | |
+| $x=1$ | $k$ | $3k$ | $k$ | $k$ | |
+| $x=2$ | $0$ | $k$ | $k$ | $2k$ | |
+| $\vphantom{p_Y(y)}$ | | | | |
+
+:::: {.subq}
+**(a)** Find the value of $k$ that makes this a joint PMF.
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+The total of the joint PMF is
+\[ 2k + 2k + k + k + 3k + k + k + k + k + 2k = 15k \]
+which must be 1, so $k = \frac{1}{15}$.
+:::
+::::
+
+:::: {.subq}
+**(b)** Find the marginal PMFs of $X$ and $Y$.
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+By summing across the rows and down the columns, respectively, we get this:
+
+| $p_{X,Y}(x,y)$ | $y = 0$ | $y = 1$ | $y = 2$ | $y = 3$ | $p_X(x)$ |
+|:-:|:-:|:-:|:-:|:-:|:-:|
+| $x=0$ | $\frac{2}{15}$ | $\frac{2}{15}$ | $\frac{1}{15}$ | $0$ | $\frac{5}{15}$ |
+| $x=1$ | $\frac{1}{15}$ | $\frac{3}{15}$ | $\frac{1}{15}$ | $\frac{1}{15}$ | $\frac{6}{15}$ |
+| $x=2$ | $0$ | $\frac{1}{15}$ | $\frac{1}{15}$ | $\frac{2}{15}$ | $\frac{4}{15}$ |
+| $p_Y(y)$ | $\frac{3}{15}$ | $\frac{6}{15}$ | $\frac{3}{15}$ | $\frac{3}{15}$ |
+:::
+::::
+
+:::: {.subq}
+**(c)** What is the conditional distribution of $Y$ given $X = 1$?
+
+::: {.myanswers data-latex=""}
+*Solution.* We get this by taking the $x = 1$ row of the table, than normalising it by dividing through by $p_X(1) = \frac{6}{15}$. This gives
+\[ p_{Y\mid X} (0 \mid 1) = \frac{1}{6} \qquad p_{Y\mid X} (1 \mid 1) = \frac{3}{6} \qquad p_{Y\mid X} (2 \mid 1) = \frac{1}{6} \qquad p_{Y\mid X} (3 \mid 1) = \frac{1}{6} . \]
+:::
+::::
+
+:::: {.subq}
+**(d)** Are $X$ and $Y$ independent?
+
+::: {.myanswers data-latex=""}
+*Solution.* No. For one example, $p_{X,Y}(0,0) = \frac{2}{15}$, while $p_X(0) \, p_Y(0) = \frac{5}{15} \times \frac{3}{15} = \frac{1}{15}$, so they are not equal.
+:::
+::::
+::::
+
+
+
+
+

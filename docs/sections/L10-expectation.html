@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>MATH1710 Probability and Statistics 1 - 10&nbsp; Expectation and variance</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../sections/L11-binomial-geometric.html" rel="next">
+<link href="../sections/L09-discrete-rv.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Expectation and variance</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">MATH1710 Probability and Statistics 1</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../about.html" class="sidebar-item-text sidebar-link">About MATH1710</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Exploratory data analysis</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L01-stats.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Summary statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L02-dataviz.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data visualisations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Probability</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L03-events.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sample spaces and events</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L04-probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L05-classical-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Classical probability I</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L06-classical-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Classical probability II</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L07-conditional.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Independence and conditional probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L08-two-theorems.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Two theorems on conditional probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L09-discrete-rv.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Discrete random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L10-expectation.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Expectation and variance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L11-binomial-geometric.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Binomial and geometric distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L12-poisson.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Poisson distribution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L13-multi-rv.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Multiple random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L14-covariance.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Expectation and covariance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L15-continuous.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Continuous random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L17-normal.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Normal distribution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L16-exponential-multi.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Exponential distribution and multiple continuous random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L18-limit.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Limit theorems</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Bayesian statistics</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L19-bayes-idea.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">The Bayesian idea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L20-bayes-models.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">More Bayesian models</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Other stuff</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L21-summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">All questions answered</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L22-exam.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Exam</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R/R.html" class="sidebar-item-text sidebar-link">R Worksheets</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../writing.html" class="sidebar-item-text sidebar-link">Tips on writing mathematics</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">MATH1710</h2>
+   
+  <ul>
+  <li><a href="#expectation" id="toc-expectation" class="nav-link active" data-scroll-target="#expectation"><span class="toc-section-number">10.1</span>  Expectation</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="toc-section-number">10.2</span>  Functions of random variables</a></li>
+  <li><a href="#variance" id="toc-variance" class="nav-link" data-scroll-target="#variance"><span class="toc-section-number">10.3</span>  Variance</a></li>
+  <li><a href="#summary-L10" id="toc-summary-L10" class="nav-link" data-scroll-target="#summary-L10">Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="L10-expectation" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Expectation and variance</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>We continue our study of discrete random variables. Recall that the PMF <span class="math inline">\(p_X\)</span> of a discrete random variable <span class="math inline">\(X\)</span> is <span class="math inline">\(p_X(x) = \mathbb P(X = x)\)</span>.</p>
+<section id="expectation" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="expectation"><span class="header-section-number">10.1</span> Expectation</h2>
+<!--
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/l9Pizg01Zbg"></iframe>
+:::
+::::
+-->
+<p>Often, we will be interested in the “average” value of a random variable – for example, the “average” total from two dice rolls – which represents what the “central” value of the random variable is. This average is called the “expectation”.</p>
+<div class="definition">
+<p>Let <span class="math inline">\(\Omega\)</span> be a finite or countably infinite sample space, <span class="math inline">\(\mathbb P\)</span> be a probability measure on <span class="math inline">\(\Omega\)</span>, and <span class="math inline">\(X\)</span> be a discrete random variable on <span class="math inline">\(\Omega\)</span>. Then the <strong>expectation</strong> (or <strong>expected value</strong>) of <span class="math inline">\(X\)</span> is [ EX = _{} X() , P({}) . ]</p>
+<p>If <span class="math inline">\(p_X\)</span> is the PMF of <span class="math inline">\(X\)</span>, then a more convenient formula is [ EX = _{x (X)} x,p_X(x) . ]</p>
+</div>
+<p>We get the second formula from the first by grouping together all outcomes <span class="math inline">\(\omega\)</span> that lead to the same value <span class="math inline">\(x = X(\omega)\)</span> of <span class="math inline">\(X\)</span>. It’s only this second formula we actually use when calculating expectations.</p>
+<p>Note that “expectation” is simply the name that mathematicians give to the value <span class="math inline">\(\mathbb EX = \sum_x x\, p(x)\)</span>. We don’t necessarily “expect” to get the value <span class="math inline">\(\mathbb EX\)</span> as the outcome in the normal English-language sense of the word “expect”. (Indeed, you might like to check that the expectation of a single dice roll is 3.5, but you certainly don’t “expect” to get the number 3.5 in a single roll of the dice!) We will see later in the module that the the expectation can be interpreted as a sort of “long-run mean outcome”.</p>
+<div class="example">
+<p><em>Let <span class="math inline">\(X \sim \text{Bern}(p)\)</span> be a Bernoulli trial with success probability <span class="math inline">\(p\)</span>. What is the expectation <span class="math inline">\(\mathbb EX\)</span>?</em></p>
+<p>We know that the PMF is <span class="math inline">\(p(0) = 1- p\)</span> and <span class="math inline">\(p(1) = p\)</span>. So, using the second formula in the definition, we have [ EX = _{x} x,p(x) = 0(1-p) + 1p = p.&nbsp;]</p>
+</div>
+<div class="example">
+<p><em>What is the expected value of the sum of two dice rolls?</em></p>
+<p>When <span class="math inline">\(X\)</span> is the total of two dice rolls, we found the PMF of <span class="math inline">\(X\)</span> last time. The expectation is <span class="math display">\[\begin{align*}
+  \mathbb EX &amp;= \sum_{x \in \Range(X)} x\,p(x)  \\
+    &amp;= 2 \times \tfrac{1}{36} + 3 \times \tfrac{2}{36} + \cdots + 12 \times \tfrac{1}{36} \\
+    &amp;= \tfrac{252}{36} \\
+    &amp;= 7 .
+\end{align*}\]</span></p>
+</div>
+</section>
+<section id="functions" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="functions"><span class="header-section-number">10.2</span> Functions of random variables</h2>
+<p>In previous examples, we looked at <span class="math inline">\(X\)</span> being the total of the dice rolls. But we could equally well chosen to have looked at a different random variable that is a function of that total <span class="math inline">\(X\)</span>, like “double the total and add 1” <span class="math inline">\(Y = 2X + 1\)</span>, or “the total minus 4, all squared” <span class="math inline">\(Z = (X-4)^2\)</span>. (I’m not sure <em>why</em> you’d care about these, but you could study them if you wanted to…)</p>
+<!--
+::: {.example}
+Let $Y = 2X + 1$. Then for each potential outcome $x$ of $X$, there is a matching outcome $y = 2x +1$ of $Y$. So we can find the PMF for $Y$ by keeping the same probabilities as for $X$, but changing the values $x$ to the values $y = 2x +1$.
+
+| $y$ | $5$ | $7$ | $9$ | $\cdots$ | $23$ | $25$ |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| $p_Y(y)$ | $\frac{1}{36}$ | $\frac{2}{36}$ | $\frac{3}{36}$ | $\cdots$ | $\frac{2}{36}$ | $\frac{1}{36}$ |
+:::
+
+::: {.example}
+What about $Z = (X - 4)^2$? This is a bit trickier, because more than one outcome $x$ can lead to the same outcome $z = (x - 4)^2$: for example, $(2 - 4)^2 = (6 - 4)^2 = 4$. So, more precisely, we have
+  \[ \mathbb P(Z = z) = \mathbb P\big(X \in \{x : (x - 4)^2 = z\}\big) , \]
+or, in terms of PMFs,
+  \[   p_Z(z) = \sum_{x : (x - 4)^2 = z} p_X(x) . \]
+  
+| $z$ | $0$ | $1$ | $4$ | $\cdots$ | $49$ | $64$ |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| $p_Z(z)$ | $\frac{3}{36}$ | $\frac{2}{36} + \frac{4}{36} = \frac{6}{36}$ | $\frac{1}{36} + \frac{5}{36} = \frac{6}{36}$ | $\cdots$ | $\frac{2}{36}$ | $\frac{1}{36}$ |
+:::
+-->
+<p>It is possible, although sometimes a bit tricky, to work out the whole PMF of these new random variables that are functions of <span class="math inline">\(X\)</span> – and indeed you may learn how to do this if you take more probability or statistics modules next year. Here, we will stick to the easier problem of just calculating the expectation of the new random variables.</p>
+<!--
+So if we wanted to find the expectation of a function of a random variable, we could first find the PMF, like in the above examples, and then use that PMF to find the expectation. But there is a quicker way.
+-->
+<div id="unconscious" class="theorem" name="Law of the unconscious statistician">
+<p>Let <span class="math inline">\(X\)</span> be a random variable, and let <span class="math inline">\(Y = g(X)\)</span> be another random variable that is a function <span class="math inline">\(g\)</span> of <span class="math inline">\(X\)</span>. Then [ EY = E,g(X) = _{x} g(x) , p_X(x) . ]</p>
+</div>
+<p>(The rather cruel name of this theorem is, I think, because this is the formula you might carelessly write down for <span class="math inline">\(\mathbb Eg(X)\)</span> if you weren’t thinking carefully – but it turns out it’s correct!)</p>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><em>(Non-examinable)</em> <!--As in the previous example, the idea is to group together $x$s that give the same $y$.--> The PMF of <span class="math inline">\(y\)</span> can be given in terms of the PMF of <span class="math inline">\(x\)</span> – we just need to add up all the <span class="math inline">\(x\)</span>s that lead to the same <span class="math inline">\(y\)</span>. That is, [ p_Y(y) = _{x, :, g(x) = y} p_X(x) . ] (Remember that the colon <span class="math inline">\(:\)</span> here means “such that”, so this is a sum over all the <span class="math inline">\(x\)</span> such that <span class="math inline">\(g(x) = y\)</span>.)</p>
+<p>Using this, and from the definition of expectation, we have <span class="math display">\[\begin{align*}
+  \mathbb EY &amp;= \sum_y y \, p_Y(y) \\
+    &amp;= \sum_y y \sum_{x : g(x) = y} p_X(x) \\
+    &amp;= \sum_y \sum_{x : g(x) = y} y\,p_X(x) \\
+    &amp;= \sum_y \sum_{x : g(x) = y} g(x) \, p_X(x) ,
+\end{align*}\]</span> since <span class="math inline">\(y = g(x)\)</span> inside the second sum. But these two sums together are summing over all <span class="math inline">\(x\)</span>, just partitioned by which value of <span class="math inline">\(y\)</span> they lead to, so they can be replaced by just a single sum over <span class="math inline">\(x\)</span>. That gives the theorem.</p>
+</div>
+<p>There are some functions for which this expression becomes particularly simple.</p>
+<div id="linearity1" class="theorem" name="Linearity of expectation, 1">
+<p>Let <span class="math inline">\(X\)</span> be a random variable. Then</p>
+<ol type="1">
+<li><span class="math inline">\(\mathbb E(aX) = a\mathbb EX\)</span>;</li>
+<li><span class="math inline">\(\mathbb E(X + b) = \mathbb EX + b\)</span>.</li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>We use the law of the unconscious statistician.</p>
+<p>For part 1, we can take the <span class="math inline">\(a\)</span> outside the sum, to get [ E(aX) = _x ax, p_X(x) = a_x x, p_X(x) = aEX . ]</p>
+<p>For part 2, we have <span class="math display">\[\begin{align*}
+  \mathbb E(X+b) &amp;= \sum_x (x + b)\, p_X(x) \\
+    &amp;= \sum_x \big( x\, p_X(x) + b\,p_X(x) \big) \\
+    &amp;= \sum_x x\, p_X(x) + \sum_x b\,p_X(x) \\
+    &amp;= \mathbb E(X) + b \sum_x p_X(x) \\
+    &amp;= \mathbb E(X) + b .
+\end{align*}\]</span> The last line was because PMFs always add up to 1, so <span class="math inline">\(\sum_x p_X(x) = 1\)</span>.</p>
+</div>
+<p>So for our “double the dice total and add 1” random variable <span class="math inline">\(Y = 2X + 1\)</span>, we have [ EY = E(2X+1) = 2EX + 1 = 2 + 1 = 15. ]</p>
+</section>
+<section id="variance" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="variance"><span class="header-section-number">10.3</span> Variance</h2>
+<!--
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/_I4tCExElec"></iframe>
+:::
+::::
+-->
+<!-- \newcommand{\Var}{\operatorname{Var}} -->
+<p>In the same way as the expectation of a random variable tells us about central values of it, the “variance” of a random variable tells us about the spread of typical values.</p>
+<div class="definition">
+<p>Let <span class="math inline">\(X\)</span> be a random variable with expectation <span class="math inline">\(\mathbb EX = \mu\)</span>. Then the <strong>variance</strong> of <span class="math inline">\(X\)</span> is [ (X) = E(X - )^2 . ]</p>
+</div>
+<p>(To be clear, the notation here means the expectation of <span class="math inline">\((X-\mu)^2\)</span>; and <em>not</em> <span class="math inline">\(\mathbb E(X - \mu)\)</span> then squared, which would be <span class="math inline">\(0^2 = 0\)</span>.)</p>
+<p>Note that <span class="math inline">\((X - \mu)^2 \geq 0\)</span> is a square, so always non-negative, and hence the variance <span class="math inline">\(\Var(X) \geq 0\)</span> is always non-negative also. Sometimes we call the square-root of the variance the <strong>standard deviation</strong>.</p>
+<p>It may not surprise you, if you remember <a href="#L01-stats">Lecture 1</a> that to go along with this “definitional formula” for the variance, we also have a “computational formula”, which can sometimes be more convenient.</p>
+<div class="theorem">
+<p>Let <span class="math inline">\(X\)</span> be a random variable with expectation <span class="math inline">\(\mathbb EX = \mu\)</span>. Then the variance <span class="math inline">\(\Var(X) = \mathbb E(X - \mu)^2\)</span> can also be calculated as [ (X) = EX^2 - ^2 . ]</p>
+</div>
+<p>(Again, <span class="math inline">\(\mathbb EX^2\)</span> means the expectation of <span class="math inline">\(X^2\)</span>.)</p>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>As previously we expand out the brackets, and use linearity of expectation (in the same way we “brought the sum inside” with the sample variance previously). We get <span class="math display">\[\begin{align*}
+  \Var(X) &amp;= \mathbb E(X - \mu)^2 \\
+    &amp;= \mathbb E(X^2 - 2\mu X + \mu^2) \\
+    &amp;= \mathbb EX^2 - \mathbb E(2\mu X) + \mathbb E \mu^2 \\
+    &amp;= \mathbb EX^2 - 2\mu \,\mathbb EX + \mu^2 .
+\end{align*}\]</span> But we said that <span class="math inline">\(\mathbb EX\)</span> would be called <span class="math inline">\(\mu\)</span>, so we can substitute in <span class="math inline">\(\mathbb EX = \mu\)</span>, to get [ (X) = E X^2 - 2^2 + ^2 = E X^2 - ^2 , ] as required.</p>
+</div>
+<p>(A brief optional note for pedants: Writing <span class="math inline">\(\mathbb E(X^2 - 2\mu X) = \mathbb EX^2 - \mathbb 2\mu X\)</span> is not, strictly speaking, justified by the result that above we called “linearity of expectation, 1”. However, you can check that it easily follows from the law of the unconscious statistician, and we will also later see a result we call “linearity of expectation, 2”, of which it is a special case.)</p>
+<div class="example">
+<p>Let <span class="math inline">\(X \sim \text{Bern}(p)\)</span> be a Bernoulli trial, and recall that <span class="math inline">\(\mathbb EX = p\)</span>.</p>
+<p>Using the definitional formula, we have <span class="math display">\[\begin{align*}
+\Var(X) &amp;= \mathbb E(X-p)^2 \\
+        &amp;= (0 - p)^2 \,p_X(0) + (1-p)^2\, p_X(1) \\
+        &amp;= p^2\times(1-p) + (1-p)^2 \times p \\
+        &amp;= p(1-p)\big(p + (1-p)\big) \\
+        &amp;= p(1-p) .
+\end{align*}\]</span></p>
+<p>Alternatively, using the computational formula, we have <span class="math display">\[\begin{align*}
+\Var(X) &amp;= \mathbb EX^2 - p^2 \\
+        &amp;= \big(0^2\,p_X(0) + 1^2 p_X(1)\big) - p^2 \\
+        &amp;= 0\times(1-p) + 1\times p - p^2 \\
+        &amp;= p - p^2 \\
+        &amp;= p(1-p) .
+\end{align*}\]</span></p>
+</div>
+<div class="example">
+<p>For the total of two dice, using the computational formula, we have <span class="math display">\[\begin{align*}
+\Var(X) &amp;= \mathbb EX^2 - \mu^2 \\
+        &amp;= \left(2^2 \times \frac{1}{36} + 3^2 \times \frac{2}{36} + \cdots + 12^2 \times \frac{1}{36}\right) - 7^2 \\
+        &amp;= \frac{1974}{36} - 49 \\
+        &amp;= \frac{70}{12} \approx 5.8 .
+\end{align*}\]</span></p>
+</div>
+<p>Finally, a result on what happens to the variance of simple functions of random variables.</p>
+<div class="theorem">
+<p>Let <span class="math inline">\(X\)</span> be a random variable. Then</p>
+<ol type="1">
+<li><span class="math inline">\(\Var(aX) = a^2\Var (X)\)</span>;</li>
+<li><span class="math inline">\(\Var(X + b) = \Var(X)\)</span>.</li>
+</ol>
+</div>
+<p>You will prove this on <a href="#P3">the problem sheet</a>.</p>
+<!--
+## Discrete uniform distribution  {#discrete-uniform}
+
+As a sort of equivalent to the classical probability we saw in [Section 3](#S03-classical), we can consider a random variable that also takes finitely many values with equal probability. 
+
+Let $X$ take the values $\{1,2,\dots,n\}$ each with equal probability $1/n$. This is called the **discrete uniform distribution** on $\{1,2,\dots,n\}$.
+
+Then the PMF of $X$ is
+\[ p(x) = \frac 1n \qquad \text{for $x \in \{1,2,\dots, n\}$.} \]
+The CDF of $X$ is
+\[ F(x) = \begin{cases} 0 & \text{for $x < 1$,} \\
+              \displaystyle\frac in & \text{if $i \leq x < i+1$ for some $i \in \{1,2,\dots,n-1\}$,} \\
+              1 & \text{for $x \geq n$.} \end{cases} \]
+              
+The expectation of $X$ is
+\begin{align*}
+\mathbb EX &= 1\times\frac1n + 2\times\frac1n + \cdots n \times \frac1n \\
+  &= \frac 1n (1 + 2 + \cdots + n) \\
+  &= \frac 1n \cdot \frac{n(n+1)}{2} \\
+  &= \frac{n+1}{2} .
+\end{align*}
+
+To variance of $X$, we first calculate $\mathbb EX^2$ as
+\begin{align*}
+\mathbb EX^2 &= 1^2\times\frac1n + 2^2\times\frac1n + \cdots n^2 \times \frac1n \\
+  &= \frac 1n (1^2 + 2^2 + \cdots + n^2) \\
+  &= \frac 1n \cdot \frac{n(n+1)(2n + 1)}{6} \\
+  &= \frac{(n+1)(2n+1)}{6} .
+\end{align*}
+Hence,
+\begin{align*}
+  \Var(X) &= \mathbb EX^2 - \mu^2 \\
+    &= \frac{(n+1)(2n+1)}{6} - \left( \frac{n+1}{2}\right)^2 \\
+    &= \frac{(n+1)(2n+1)}{6} - \frac{(n+1)^2}{4} \\
+    &= \frac{2(n+1)(2n+1) - 3(n+1)^2}{12} \\
+    &= \frac{4n^2 + 6n + 2 - 3n^2 - 6n - 3}{12} \\
+    &= \frac{n^2 - 1}{12} .
+\end{align*}
+
+(In the example calculations, we used the facts
+\[  \sum_{i=1}^n i = \frac{n(n+1)}{2} \qquad \sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6} .   \]
+You are not expected to know or memorise these for an exam.)
+-->
+</section>
+<section id="summary-L10" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="summary-L10">Summary</h2>
+<div class="mysummary">
+<ul>
+<li>The expectation of a random variable <span class="math inline">\(X\)</span> is <span class="math inline">\(\mathbb EX = \sum_x x\, p_X(x)\)</span>.</li>
+<li>The variance of a random variable <span class="math inline">\(X\)</span> with expectation <span class="math inline">\(\mu\)</span> is <span class="math inline">\(\Var(X) = \mathbb E(X - \mu)^2\)</span>.</li>
+<li><span class="math inline">\(\mathbb E(aX+b) = a\mathbb EX + b\)</span> and <span class="math inline">\(\Var(aX+b) = a^2\Var(X)\)</span>.</li>
+</ul>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../sections/L09-discrete-rv.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Discrete random variables</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../sections/L11-binomial-geometric.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Binomial and geometric distributions</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

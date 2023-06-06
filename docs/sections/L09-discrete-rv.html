@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>MATH1710 Probability and Statistics 1 - 9&nbsp; Discrete random variables</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../sections/L10-expectation.html" rel="next">
+<link href="../sections/L08-two-theorems.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Discrete random variables</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">MATH1710 Probability and Statistics 1</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../about.html" class="sidebar-item-text sidebar-link">About MATH1710</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Exploratory data analysis</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L01-stats.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Summary statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L02-dataviz.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data visualisations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Probability</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L03-events.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sample spaces and events</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L04-probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L05-classical-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Classical probability I</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L06-classical-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Classical probability II</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L07-conditional.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Independence and conditional probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L08-two-theorems.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Two theorems on conditional probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L09-discrete-rv.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Discrete random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L10-expectation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Expectation and variance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L11-binomial-geometric.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Binomial and geometric distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L12-poisson.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Poisson distribution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L13-multi-rv.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Multiple random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L14-covariance.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Expectation and covariance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L15-continuous.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Continuous random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L17-normal.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Normal distribution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L16-exponential-multi.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Exponential distribution and multiple continuous random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L18-limit.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Limit theorems</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Bayesian statistics</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L19-bayes-idea.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">The Bayesian idea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L20-bayes-models.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">More Bayesian models</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Other stuff</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L21-summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">All questions answered</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L22-exam.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Exam</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R/R.html" class="sidebar-item-text sidebar-link">R Worksheets</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../writing.html" class="sidebar-item-text sidebar-link">Tips on writing mathematics</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">MATH1710</h2>
+   
+  <ul>
+  <li><a href="#rv" id="toc-rv" class="nav-link active" data-scroll-target="#rv"><span class="toc-section-number">9.1</span>  What is a random variable?</a></li>
+  <li><a href="#pmf" id="toc-pmf" class="nav-link" data-scroll-target="#pmf"><span class="toc-section-number">9.2</span>  Probability mass function</a></li>
+  <li><a href="#cdf" id="toc-cdf" class="nav-link" data-scroll-target="#cdf"><span class="toc-section-number">9.3</span>  Cumulative distribution function</a></li>
+  <li><a href="#summary-L09" id="toc-summary-L09" class="nav-link" data-scroll-target="#summary-L09">Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="L09-discrete-rv" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Discrete random variables</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="rv" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="rv"><span class="header-section-number">9.1</span> What is a random variable?</h2>
+<p>Let’s consider again the case of rolling two dice. We know that the sample space is the set of pairs of numbers between 1 and 6. But if we are rolling the two dice as part of a board game, we might only care about the <em>total</em> score on the two dice, and the actual the two individual dice scores might be irrelevant. Let us wrote write <span class="math inline">\(X\)</span> for the total score. This <span class="math inline">\(X\)</span> is a sort of “numerical summary” of the experiment. Probabilists call such a numerical summary a <strong>random variable</strong>.</p>
+<p>One we’ve defined this random variable <span class="math inline">\(X\)</span>, it can be easier to work with <span class="math inline">\(X\)</span> than with sample spaces and events. For example, if we want to know the probability that our two dice rolls add up to 5, it’s more convenient to write [ P(X = 5) ] rather than [ P(A) A = { (1,4), (2,3), (3,2), (4,1) } . ] The probability that <span class="math inline">\(X = 5\)</span> is <span class="math inline">\(\mathbb P(X = 5) = \frac{4}{36} = \frac{1}{9}\)</span>. We might also be interested in other things about the total score <span class="math inline">\(X\)</span>, like what the average total score over many pairs if dice rolls is.</p>
+<p>The good news is that, once we have properly set up our random variable <span class="math inline">\(X\)</span>, we can often then choose to ignore things like the sample space, the probability measure, and individual events.</p>
+<p>Random variables are typically given capital letters from late in the alphabet, like <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span>, <span class="math inline">\(Z\)</span>. Values that those random variables take are often given the lower-case equivalent, like <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>, <span class="math inline">\(z\)</span>.</p>
+<p>This idea of a random variable as a numerical summary of an experiment is how we <em>think</em> about random variables when solving problems. On the other hand, as mathematicians, we also want to define carefully what a random variable is as a mathematical object. We’ll discuss that now (but if you find the next couple of paragraphs difficult to follow, you won’t miss much if you skip them).</p>
+<p>In this formal mathematical view, our experiment of rolling two dice is represented by a sample space [ = { = (_1, _2) : _1, _2 {1,2,3,4,5,6} } ] of pairs <span class="math inline">\(\boldsymbol\omega = (\omega_1, \omega_2)\)</span> of numbers from 1 to 6, where <span class="math inline">\(\omega_1\)</span> represents the first dice roll and <span class="math inline">\(\omega_2\)</span> the second dice roll. The random variable <span class="math inline">\(X\)</span> is the score on the first dice plus the score on the second dice – that is, [ X() = _1 + _2 . ] In other words, <span class="math inline">\(X\)</span> is a <em>function</em> which takes in a sample outcome <span class="math inline">\(\boldsymbol\omega \in \Omega\)</span> and outputs a real number <span class="math inline">\(X = X(\boldsymbol\omega) = \omega_1 + \omega_2\)</span>.</p>
+<!--
+Here, $X$ is an example of what we call a **random variable**. A random variable can be thought of as a numerical summary of an experiment (like the total summarising the two individual dice rolls). But by considering the random variable directly, it often means we don't have to worry so much about exactly what the sample space is, or what probability measure is being used, or which sample outcomes are in a particular event. This often makes our life easier when thinking about probability problems.
+
+
+
+The formal definition of a random variable is as a function that turns the outcome into this numerical summary.
+-->
+<div class="definition">
+<p>Let <span class="math inline">\(\Omega\)</span> be a sample space. Then a <strong>random variable</strong> is a function <span class="math inline">\(X\)</span> from <span class="math inline">\(\Omega\)</span> to the real numbers <span class="math inline">\(\mathbb R\)</span>; that is, to each sample outcome <span class="math inline">\(\omega\)</span> it assigns a real number <span class="math inline">\(X(\omega)\)</span>.</p>
+<p>Expressions like <span class="math inline">\(\mathbb P(X = x)\)</span> or <span class="math inline">\(\mathbb P(X \in A)\)</span> should be understood as representing more formal probabilities [ P ( {: X() = x }) P ( {: X() A }) . ]</p>
+</div>
+<!--
+This formal definition of a random variable as a function was summarised by my own first-year probability lecturer as "There's only two things you need to know about the definition of a random variable: first, it's not random; second, it's not a variable."
+
+However, the way we actually *think* about random variables *is* as random and is as variables. In this more informal way of thinking, a random variable is a variable that can take different values with different probabilities -- just as the total of the two dice can be 2 with probability $\frac{1}{36}$, or the value 3 with probability $\frac{2}{36}$, and so on.
+-->
+<p>It’s useful to have a notation for the values a random variable can take.</p>
+<div class="definition">
+<p>The set of values a random variable <span class="math inline">\(X\)</span> can take is called its <strong>range</strong>, <span class="math inline">\(\operatorname{Range}(X) = \{X(\omega) : \omega \in \Omega \}\)</span>.</p>
+</div>
+<p>So, for example, the range of the dice total <span class="math inline">\(X\)</span> is <span class="math inline">\(\operatorname{Range}(X) = \{2, 3, \dots, 12\}\)</span>, because those are the possible outcome from the sum of two dice rolls.</p>
+<p>Random variables that we will consider in this module will be one of two types:</p>
+<ul>
+<li><strong>Discrete random variables</strong> have a range that is a collection of discrete separate counts, so <span class="math inline">\(\operatorname{Range}(X)\)</span> is finite (like the dice total being an integer between 2 and 12) or countably infinite (like the positive integers). Discrete random variables can be used as models for “count data”.</li>
+<li><strong>Continuous random variables</strong> have a range that is a continuum of slowly varying measurements, so <span class="math inline">\(\operatorname{Range}(X)\)</span> is uncountably infinite (like the real numbers, the positive real numbers, or the interval <span class="math inline">\([0,1]\)</span>). Continuous random variables can be used as models for “measurement data”.</li>
+</ul>
+<p>For this week and the two weeks after, we will look at discrete random variables; later in Lectures 15 to 17 we will look at continuous random variables.</p>
+</section>
+<section id="pmf" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="pmf"><span class="header-section-number">9.2</span> Probability mass function</h2>
+<!--
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/ZYYTNk7F4KI"></iframe>
+:::
+::::
+-->
+<p>We now consider only discrete random variables <span class="math inline">\(X\)</span>, where the range <span class="math inline">\(\operatorname{Range}(X)\)</span> is finite or countably infinite. To fully understand a discrete random variable <span class="math inline">\(X\)</span>, we need only understand the probabilities <span class="math inline">\(p(x) = \mathbb P(X = x)\)</span>. These are captured by the probability mass function.</p>
+<div class="definition">
+<p>For a discrete random variable <span class="math inline">\(X\)</span>, its <strong>probability mass function</strong> (or <strong>PMF</strong>) is the function <span class="math inline">\(p_X\)</span> where [ p_X(x) = P(X = x) ] (When the random variable <span class="math inline">\(X\)</span> is obvious from context, we’ll just write <span class="math inline">\(p(x)\)</span> without the subscript.)</p>
+</div>
+<p>Once we have the PMF, then Axiom 3 tells us that for any set <span class="math inline">\(A\)</span>, we have [ P(X A) = <em>{x A} P(X = x) = </em>{x A} p(x) . ] (Recall that the symbol <span class="math inline">\(\in\)</span> means “is an element of”, or just “is in” for short.) So the probability that <span class="math inline">\(X\)</span> is in some set <span class="math inline">\(A\)</span> can be found by simply adding up <span class="math inline">\(p(x)\)</span> for all the values <span class="math inline">\(x\)</span> in <span class="math inline">\(A\)</span>. Thus the PMF <span class="math inline">\(p(x)\)</span> is the only thing we need to know.</p>
+<!--
+The key idea about random variables is that, once we are thinking in terms of a random variable via its PMF, we can (usually) stop worrying to much about what the underlying sample space is and how the random variable acts on that space.
+-->
+<div class="example">
+<p>Consider tossing a biased coin, that is Heads with probability <span class="math inline">\(p\)</span> and Tails with probability <span class="math inline">\(1-p\)</span>. Let <span class="math inline">\(X = 1\)</span> if the coin lands Heads, and <span class="math inline">\(X = 0\)</span> if the coin lands Tails. The PMF <span class="math inline">\(p_X\)</span> of this random variable is given by [ p_X(0) = 1 - p p_X(1) = p . ]</p>
+<p>We could alternatively think of the same random variable <span class="math inline">\(X\)</span> as representing the result of an experiment, where <span class="math inline">\(X = 1\)</span> represents a success, with probability <span class="math inline">\(p_X(1) = p\)</span>, and <span class="math inline">\(X = 0\)</span> represents a failure, with probability <span class="math inline">\(p_X(0) = 1 - p\)</span>.</p>
+<p>A random variable <span class="math inline">\(X\)</span> with this PMF is called a <strong>Bernoulli trial</strong> (or a “Bernoulli random variable”, or is said to “follow the Bernoulli distribution” – after the seventeenth-century Swiss mathematician <a href="https://mathshistory.st-andrews.ac.uk/Biographies/Bernoulli_Jacob/">Jacob Bernoulli</a>). We use the notation <span class="math inline">\(X \sim \text{Bern}(p)\)</span> for short.</p>
+</div>
+<div class="example">
+<p>Let <span class="math inline">\(X\)</span> being the sum of two dice rolls. As this is a classical probability problem, the probability <span class="math inline">\(p(x)\)</span> of rolling a total of <span class="math inline">\(x\)</span> is <span class="math inline">\(n(x) / 36\)</span>, where <span class="math inline">\(n(x)\)</span> is the number of ways of rolling a total of <span class="math inline">\(x\)</span>. So, for example, there is only one way <span class="math inline">\((1,1)\)</span> of rolling a total of 2, so <span class="math inline">\(p(2) = \frac1{36}\)</span>, but there are 5 ways of rolling a 6: <span class="math inline">\((1,5), (2,4), (3, 3), (4, 2), (5, 1)\)</span>; so <span class="math inline">\(p(5) = \frac5{36}\)</span>.</p>
+<p>The PMF <span class="math inline">\(p\)</span> of <span class="math inline">\(X\)</span> is given by</p>
+<table class="table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(x\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(2\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(3\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(4\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(5\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(6\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(7\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(p(x)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{36}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{2}{36}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{3}{36}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{4}{36}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{5}{36}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{6}{36}\)</span></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(x\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\cdots\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(8\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(9\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(10\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(11\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(12\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(p(x)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\cdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{5}{36}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{4}{36}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{3}{36}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{2}{36}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{36}\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-hash="L09-discrete-rv_cache/html/dice-pmf_b6821e3b69c671a4ab043fe7412f7093">
+<div class="cell-output-display">
+<p><img src="L09-discrete-rv_files/figure-html/dice-pmf-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<p>Note that since <span class="math inline">\(p(x) = \mathbb P(X = x)\)</span> is a probability, it must be greater than or equal to 0, by Axiom 1. Further, if we add up <span class="math inline">\(p(x)\)</span> we get [ <em>{x} p(x) = </em>{x (X)} P(X = x) = P(X (X)) = P() = 1, ] by Axiom 2. Hence we have the following:</p>
+<div class="theorem">
+<p>Let <span class="math inline">\(X\)</span> be a discrete random variable, and let <span class="math inline">\(p_X\)</span> be its PMF. Then</p>
+<ul>
+<li><span class="math inline">\(p_X(x) \geq 0\)</span> for all <span class="math inline">\(x \in \operatorname{Range}(X)\)</span>;</li>
+<li><span class="math inline">\({\displaystyle \sum_{x \in \operatorname{Range}(X)} p_X(x) = 1}\)</span>.</li>
+</ul>
+</div>
+</section>
+<section id="cdf" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="cdf"><span class="header-section-number">9.3</span> Cumulative distribution function</h2>
+<p>Sometimes it is useful to know the probability a random variable <span class="math inline">\(X\)</span> is less or equal to than some value <span class="math inline">\(x\)</span>. This is captured by the <strong>cumulative distribution function</strong> (or <strong>CDF</strong>) <span class="math inline">\(F_X\)</span>, where [ F_X(x) = P(X x) = _{y x} p_X(y) ]</p>
+<div class="example">
+Let <span class="math inline">\(X \sim \text{Bern}(p)\)</span> be a Bernoulli random variable with success probability <span class="math inline">\(p\)</span>. It’s impossible for the outcome to be less than 0; it is at least 0 but strictly less than 1 only if it equals 0, which happens with probability <span class="math inline">\(p(0) = 1-p\)</span>; and it is certain to at most 1. So its CDF <span class="math inline">\(F\)</span> is [ F(x) =
+<span class="math display">\[\begin{cases} 0 &amp; \text{for $x &lt; 0$} \\
+                      1-p &amp; \text{for $0 \leq x &lt; 1$} \\
+                      1   &amp; \text{for $x \geq 1$} . \end{cases}\]</span>
+<p>]</p>
+</div>
+<div class="example">
+<p>If <span class="math inline">\(X\)</span> is the sum of two dice rolls, then the CDF <span class="math inline">\(F\)</span> is given by adding up the PMF. So, for example:</p>
+<ul>
+<li>If <span class="math inline">\(x &lt; 2\)</span>, then <span class="math inline">\(F(x) = 0\)</span>, because it’s not possible to have <span class="math inline">\(X \leq x &lt; 2\)</span>.</li>
+<li>If <span class="math inline">\(2 \leq x &lt; 3\)</span>, then <span class="math inline">\(F(x) = p(2) = \frac{1}{36}\)</span>, because <span class="math inline">\(X = 2\)</span> is the only outcome with <span class="math inline">\(X \leq x &lt; 3\)</span>.</li>
+<li>If <span class="math inline">\(3 \leq x &lt; 4\)</span>, then <span class="math inline">\(F(x) = p(2) + p(3) = \frac{1}{36} + \frac{2}{35} = \frac{3}{36}\)</span>, as <span class="math inline">\(X = 2\)</span> or <span class="math inline">\(3\)</span> are the only outcomes with <span class="math inline">\(X \leq x\)</span>.</li>
+<li>…</li>
+<li>If <span class="math inline">\(x \geq 12\)</span>, then <span class="math inline">\(F(x) = 1\)</span>, because we always have <span class="math inline">\(X \leq 12 \leq x\)</span>.</li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(x \in {}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\((-\infty, 2)\)</span></th>
+<th style="text-align: center;"><span class="math inline">\([2,3)\)</span></th>
+<th style="text-align: center;"><span class="math inline">\([3,4)\)</span></th>
+<th style="text-align: center;"><span class="math inline">\([4,5)\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\cdots\)</span></th>
+<th style="text-align: center;"><span class="math inline">\([11,12)\)</span></th>
+<th style="text-align: center;"><span class="math inline">\([12, \infty)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(F(x)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{36}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{3}{36}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{5}{36}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\cdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{35}{36}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-hash="L09-discrete-rv_cache/html/dice-cdf_c7883e3adb1bafe5c46a9a8d2e947203">
+<div class="cell-output-display">
+<p><img src="L09-discrete-rv_files/figure-html/dice-cdf-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Note that the CDF is a “step function” that starts at 0, then jumps up suddenly at each of the values <span class="math inline">\(2, 3, \dots, 12\)</span>, finally ending up at 1.</p>
+</div>
+<p>For any random variable <span class="math inline">\(X\)</span> with CDF <span class="math inline">\(F\)</span>,</p>
+<ul>
+<li>if <span class="math inline">\(x\)</span> is smaller than everything in the <span class="math inline">\(\operatorname{Range}(X)\)</span>, then <span class="math inline">\(F(x) = 0\)</span>, because <span class="math inline">\(X\)</span> cannot be that small;</li>
+<li>if <span class="math inline">\(x\)</span> is greater than everything in the <span class="math inline">\(\operatorname{Range}(X)\)</span>, then <span class="math inline">\(F(x) = 1\)</span>, because <span class="math inline">\(X\)</span> cannot be any bigger than that;</li>
+<li><span class="math inline">\(F(x)\)</span> is increasing in <span class="math inline">\(x\)</span>, because the probability you are less than <span class="math inline">\(x\)</span> gets bigger as <span class="math inline">\(x\)</span> gets bigger.</li>
+</ul>
+</section>
+<section id="summary-L09" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="summary-L09">Summary</h2>
+<div class="mysummary">
+<ul>
+<li>A random variable is a numerical summary of a random experiment.</li>
+<li>The probability mass function (PMF) is <span class="math inline">\(p_X(x) = \mathbb P(X = x)\)</span>.</li>
+<li>The cumulative distribution function (CDF) is <span class="math inline">\(F_X(x) = \mathbb P(X \leq x)\)</span>.</li>
+<li>A Bernoulli random variable is 0 with probability <span class="math inline">\(1-p\)</span> and 1 with probability <span class="math inline">\(p\)</span>.</li>
+</ul>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../sections/L08-two-theorems.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Two theorems on conditional probability</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../sections/L10-expectation.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Expectation and variance</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

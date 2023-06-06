@@ -1,0 +1,86 @@
+{
+  "index.qmd": {
+    "index.html": "3a978a45"
+  },
+  "intro.qmd": {
+    "intro.html": "152fe001"
+  },
+  "summary.qmd": {
+    "summary.html": "f9b71f2b"
+  },
+  "about.qmd": {
+    "about.html": "a8dd8237"
+  },
+  "sections/L01-stats.qmd": {
+    "L01-stats.html": "a071ccc4"
+  },
+  "sections/L02-dataviz.qmd": {
+    "L02-dataviz.html": "a82c84b5"
+  },
+  "sections/L03-events.qmd": {
+    "L03-events.html": "da1d61f2"
+  },
+  "sections/L04-probability.qmd": {
+    "L04-probability.html": "c554ceea"
+  },
+  "sections/L05-classical-i.qmd": {
+    "L05-classical-i.html": "48387661"
+  },
+  "sections/L06-classical-ii.qmd": {
+    "L06-classical-ii.html": "0a787561"
+  },
+  "sections/L07-conditional.qmd": {
+    "L07-conditional.html": "afdd0b76"
+  },
+  "sections/L08-two-theorems.qmd": {
+    "L08-two-theorems.html": "32444246"
+  },
+  "sections/L09-discrete-rv.qmd": {
+    "L09-discrete-rv.html": "11bd6443"
+  },
+  "sections/L10-expectation.qmd": {
+    "L10-expectation.html": "5a501e04"
+  },
+  "sections/L11-binomial-geometric.qmd": {
+    "L11-binomial-geometric.html": "d7dbb1c9"
+  },
+  "sections/L12-poisson.qmd": {
+    "L12-poisson.html": "f690499f"
+  },
+  "sections/L13-multi-rv.qmd": {
+    "L13-multi-rv.html": "26ded3eb"
+  },
+  "sections/L14-covariance.qmd": {
+    "L14-covariance.html": "1f843710"
+  },
+  "sections/L15-continuous.qmd": {
+    "L15-continuous.html": "cdce5559"
+  },
+  "sections/L17-normal.qmd": {
+    "L17-normal.html": "6fab78a0"
+  },
+  "sections/L16-exponential-multi.qmd": {
+    "L16-exponential-multi.html": "b092d86f"
+  },
+  "sections/L18-limit.qmd": {
+    "L18-limit.html": "c977f4c5"
+  },
+  "sections/L19-bayes-idea.qmd": {
+    "L19-bayes-idea.html": "e44c34b3"
+  },
+  "sections/L20-bayes-models.qmd": {
+    "L20-bayes-models.html": "ce9e5791"
+  },
+  "sections/L21-summary.qmd": {
+    "L21-summary.html": "3150c4b1"
+  },
+  "sections/L22-exam.qmd": {
+    "L22-exam.html": "a70afd94"
+  },
+  "R/R.qmd": {
+    "R.html": "f72db83e"
+  },
+  "writing.qmd": {
+    "writing.html": "f6b5fa1f"
+  }
+}

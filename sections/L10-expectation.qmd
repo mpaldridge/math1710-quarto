@@ -1,0 +1,278 @@
+# Expectation and variance  {#L10-expectation}
+
+
+We continue our study of discrete random variables. Recall that the PMF $p_X$ of a discrete random variable $X$ is $p_X(x) = \mathbb P(X = x)$.
+
+## Expectation  {#expectation}
+
+<!--
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/l9Pizg01Zbg"></iframe>
+:::
+::::
+-->
+
+
+Often, we will be interested in the "average" value of a random variable -- for example, the "average" total from two dice rolls -- which represents what the "central" value of the random variable is. This average is called the "expectation".
+
+::: {.definition}
+Let $\Omega$ be a finite or countably infinite sample space, $\mathbb P$ be a probability measure on $\Omega$, and $X$ be a discrete random variable on $\Omega$. Then the **expectation** (or **expected value**) of $X$ is
+\[ \mathbb EX = \sum_{\omega \in \Omega} X(\omega) \, \mathbb P(\{\omega\}) . \]
+
+If $p_X$ is the PMF of $X$, then a more convenient formula is
+\[ \mathbb EX = \sum_{x \in \Range(X)} x\,p_X(x) . \]
+:::
+
+We get the second formula from the first by grouping together all outcomes $\omega$ that lead to the same value $x = X(\omega)$ of $X$. It's only this second formula we actually use when calculating expectations.
+
+Note that "expectation" is simply the name that mathematicians give to the value $\mathbb EX = \sum_x x\, p(x)$. We don't necessarily "expect" to get the value $\mathbb EX$ as the outcome in the normal English-language sense of the word "expect". (Indeed, you might like to check that the expectation of a single dice roll is 3.5, but you certainly don't "expect" to get the number 3.5 in a single roll of the dice!) We will see later in the module that the the expectation can be interpreted as a sort of "long-run mean outcome".
+
+::: {.example}
+*Let $X \sim \text{Bern}(p)$ be a Bernoulli trial with success probability $p$. What is the expectation $\mathbb EX$?*
+
+We know that the PMF is $p(0) = 1- p$ and $p(1) = p$. So, using the second formula in the definition, we have
+\[ \mathbb EX = \sum_{x} x\,p(x) = 0\times (1-p) + 1\times p = p. \]
+:::
+
+::: {.example}
+*What is the expected value of the sum of two dice rolls?*
+
+When $X$ is the total of two dice rolls, we found the PMF of $X$ last time. The expectation is
+\begin{align*}
+  \mathbb EX &= \sum_{x \in \Range(X)} x\,p(x)  \\
+    &= 2 \times \tfrac{1}{36} + 3 \times \tfrac{2}{36} + \cdots + 12 \times \tfrac{1}{36} \\
+    &= \tfrac{252}{36} \\
+    &= 7 .
+\end{align*}
+:::
+
+
+## Functions of random variables  {#functions}
+
+In previous examples, we looked at $X$ being the total of the dice rolls. But we could equally well chosen to have looked at a different random variable that is a function of that total $X$, like "double the total and add 1" $Y = 2X + 1$, or "the total minus 4, all squared" $Z = (X-4)^2$. (I'm not sure *why* you'd care about these, but you could study them if you wanted to...)
+
+<!--
+::: {.example}
+Let $Y = 2X + 1$. Then for each potential outcome $x$ of $X$, there is a matching outcome $y = 2x +1$ of $Y$. So we can find the PMF for $Y$ by keeping the same probabilities as for $X$, but changing the values $x$ to the values $y = 2x +1$.
+
+| $y$ | $5$ | $7$ | $9$ | $\cdots$ | $23$ | $25$ |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| $p_Y(y)$ | $\frac{1}{36}$ | $\frac{2}{36}$ | $\frac{3}{36}$ | $\cdots$ | $\frac{2}{36}$ | $\frac{1}{36}$ |
+:::
+
+::: {.example}
+What about $Z = (X - 4)^2$? This is a bit trickier, because more than one outcome $x$ can lead to the same outcome $z = (x - 4)^2$: for example, $(2 - 4)^2 = (6 - 4)^2 = 4$. So, more precisely, we have
+  \[ \mathbb P(Z = z) = \mathbb P\big(X \in \{x : (x - 4)^2 = z\}\big) , \]
+or, in terms of PMFs,
+  \[   p_Z(z) = \sum_{x : (x - 4)^2 = z} p_X(x) . \]
+  
+| $z$ | $0$ | $1$ | $4$ | $\cdots$ | $49$ | $64$ |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| $p_Z(z)$ | $\frac{3}{36}$ | $\frac{2}{36} + \frac{4}{36} = \frac{6}{36}$ | $\frac{1}{36} + \frac{5}{36} = \frac{6}{36}$ | $\cdots$ | $\frac{2}{36}$ | $\frac{1}{36}$ |
+:::
+-->
+
+It is possible, although sometimes a bit tricky, to work out the whole PMF of these new random variables that are functions of $X$ -- and indeed you may learn how to do this if you take more probability or statistics modules next year. Here, we will stick to the easier problem of just calculating the expectation of the new random variables.
+
+<!--
+So if we wanted to find the expectation of a function of a random variable, we could first find the PMF, like in the above examples, and then use that PMF to find the expectation. But there is a quicker way.
+-->
+
+
+::: {.theorem #unconscious name="Law of the unconscious statistician"}
+Let $X$ be a random variable, and let $Y = g(X)$ be another random variable that is a function $g$  of $X$. Then
+\[  \mathbb EY = \mathbb E\,g(X) = \sum_{x} g(x) \, p_X(x) . \]
+:::
+
+(The rather cruel name of this theorem is, I think, because this is the formula you might carelessly write down for $\mathbb Eg(X)$ if you weren't thinking carefully -- but it turns out it's correct!)
+
+::: {.proof}
+*(Non-examinable)* <!--As in the previous example, the idea is to group together $x$s that give the same $y$.-->
+The PMF of $y$ can be given in terms of the PMF of $x$ -- we just need to add up all the $x$s that lead to the same $y$. That is,
+\[ p_Y(y) = \sum_{x\, :\, g(x) = y} p_X(x) . \]
+(Remember that the colon $:$ here means "such that", so this is a sum over all the $x$ such that $g(x) = y$.)
+
+Using this, and from the definition of expectation, we have
+\begin{align*}
+  \mathbb EY &= \sum_y y \, p_Y(y) \\
+    &= \sum_y y \sum_{x : g(x) = y} p_X(x) \\
+    &= \sum_y \sum_{x : g(x) = y} y\,p_X(x) \\
+    &= \sum_y \sum_{x : g(x) = y} g(x) \, p_X(x) ,
+\end{align*}
+since $y = g(x)$ inside the second sum. But these two sums together are summing over all $x$, just partitioned by which value of $y$ they lead to, so they can be replaced by just a single sum over $x$. That gives the theorem.
+:::
+
+There are some functions for which this expression becomes particularly simple.
+
+::: {.theorem #linearity1 name="Linearity of expectation, 1"}
+Let $X$ be a random variable. Then
+
+1. $\mathbb E(aX) = a\mathbb EX$;
+2. $\mathbb E(X + b) = \mathbb EX + b$.
+:::
+
+::: {.proof}
+We use the law of the unconscious statistician.
+
+For part 1, we can take the $a$ outside the sum, to get
+\[ \mathbb E(aX) = \sum_x ax\, p_X(x) = a\sum_x x\, p_X(x) = a\mathbb EX . \]
+
+For part 2, we have
+\begin{align*}
+  \mathbb E(X+b) &= \sum_x (x + b)\, p_X(x) \\
+    &= \sum_x \big( x\, p_X(x) + b\,p_X(x) \big) \\
+    &= \sum_x x\, p_X(x) + \sum_x b\,p_X(x) \\
+    &= \mathbb E(X) + b \sum_x p_X(x) \\
+    &= \mathbb E(X) + b .
+\end{align*}
+The last line was because PMFs always add up to 1, so $\sum_x p_X(x) = 1$.
+:::
+
+So for our "double the dice total and add 1" random variable $Y = 2X + 1$, we have
+\[ \mathbb EY = \mathbb E(2X+1) = 2\mathbb EX + 1 = 2\times 7 + 1 = 15. \]
+
+
+## Variance  {#variance}
+
+<!--
+:::: {.videowrap}
+::: {.videowrapper}
+<iframe src="https://www.youtube.com/embed/_I4tCExElec"></iframe>
+:::
+::::
+-->
+
+
+
+<!-- \newcommand{\Var}{\operatorname{Var}} -->
+
+In the same way as the expectation of a random variable tells us about central values of it, the "variance" of a random variable tells us about the spread of typical values.
+
+::: {.definition}
+Let $X$ be a random variable with expectation $\mathbb EX = \mu$. Then the **variance** of $X$ is
+\[ \Var(X) = \mathbb E(X - \mu)^2 . \]
+:::
+
+(To be clear, the notation here means the expectation of $(X-\mu)^2$; and *not* $\mathbb E(X - \mu)$ then squared, which would be $0^2 = 0$.)
+
+Note that $(X - \mu)^2 \geq 0$ is a square, so always non-negative, and hence the variance $\Var(X) \geq 0$ is always non-negative also. Sometimes we call the square-root of the variance the **standard deviation**.
+
+It may not surprise you, if you remember [Lecture 1](#L01-stats) that to go along with this "definitional formula" for the variance, we also have a "computational formula", which can sometimes be more convenient.
+
+::: {.theorem}
+Let $X$ be a random variable with expectation $\mathbb EX = \mu$. Then the variance $\Var(X) = \mathbb E(X - \mu)^2$ can also be calculated as
+\[ \Var(X) = \mathbb EX^2 - \mu^2 . \]
+:::
+
+(Again, $\mathbb EX^2$ means the expectation of $X^2$.)
+
+::: {.proof}
+As previously we expand out the brackets, and use linearity of expectation (in the same way we "brought the sum inside" with the sample variance previously). We get
+\begin{align*}
+  \Var(X) &= \mathbb E(X - \mu)^2 \\
+    &= \mathbb E(X^2 - 2\mu X + \mu^2) \\
+    &= \mathbb EX^2 - \mathbb E(2\mu X) + \mathbb E \mu^2 \\
+    &= \mathbb EX^2 - 2\mu \,\mathbb EX + \mu^2 .
+\end{align*}
+But we said that $\mathbb EX$ would be called $\mu$, so we can substitute in $\mathbb EX = \mu$, to get
+\[ \Var(X) = \mathbb E X^2 - 2\mu^2 + \mu^2 = \mathbb E X^2 - \mu^2 , \]
+as required.
+:::
+
+(A brief optional note for pedants: Writing $\mathbb E(X^2 - 2\mu X) = \mathbb EX^2 - \mathbb 2\mu X$ is not, strictly speaking, justified by the result that above we called "linearity of expectation, 1". However, you can check that it easily follows from the law of the unconscious statistician, and we will also later see a result we call "linearity of expectation, 2", of which it is a special case.)
+
+::: {.example}
+Let $X \sim \text{Bern}(p)$ be a Bernoulli trial, and recall that $\mathbb EX = p$.
+
+Using the definitional formula, we have
+\begin{align*}
+\Var(X) &= \mathbb E(X-p)^2 \\
+        &= (0 - p)^2 \,p_X(0) + (1-p)^2\, p_X(1) \\
+        &= p^2\times(1-p) + (1-p)^2 \times p \\
+        &= p(1-p)\big(p + (1-p)\big) \\
+        &= p(1-p) .
+\end{align*}
+
+Alternatively, using the computational formula, we have
+\begin{align*}
+\Var(X) &= \mathbb EX^2 - p^2 \\
+        &= \big(0^2\,p_X(0) + 1^2 p_X(1)\big) - p^2 \\
+        &= 0\times(1-p) + 1\times p - p^2 \\
+        &= p - p^2 \\
+        &= p(1-p) .
+\end{align*}
+:::
+
+::: {.example}
+For the total of two dice, using the computational formula, we have
+\begin{align*}
+\Var(X) &= \mathbb EX^2 - \mu^2 \\
+        &= \left(2^2 \times \frac{1}{36} + 3^2 \times \frac{2}{36} + \cdots + 12^2 \times \frac{1}{36}\right) - 7^2 \\
+        &= \frac{1974}{36} - 49 \\
+        &= \frac{70}{12} \approx 5.8 .
+\end{align*}
+:::
+
+Finally, a result on what happens to the variance of simple functions of random variables.
+
+::: {.theorem}
+Let $X$ be a random variable. Then
+
+1. $\Var(aX) = a^2\Var (X)$;
+2. $\Var(X + b) = \Var(X)$.
+:::
+
+You will prove this on [the problem sheet](#P3).
+
+<!--
+## Discrete uniform distribution  {#discrete-uniform}
+
+As a sort of equivalent to the classical probability we saw in [Section 3](#S03-classical), we can consider a random variable that also takes finitely many values with equal probability. 
+
+Let $X$ take the values $\{1,2,\dots,n\}$ each with equal probability $1/n$. This is called the **discrete uniform distribution** on $\{1,2,\dots,n\}$.
+
+Then the PMF of $X$ is
+\[ p(x) = \frac 1n \qquad \text{for $x \in \{1,2,\dots, n\}$.} \]
+The CDF of $X$ is
+\[ F(x) = \begin{cases} 0 & \text{for $x < 1$,} \\
+              \displaystyle\frac in & \text{if $i \leq x < i+1$ for some $i \in \{1,2,\dots,n-1\}$,} \\
+              1 & \text{for $x \geq n$.} \end{cases} \]
+              
+The expectation of $X$ is
+\begin{align*}
+\mathbb EX &= 1\times\frac1n + 2\times\frac1n + \cdots n \times \frac1n \\
+  &= \frac 1n (1 + 2 + \cdots + n) \\
+  &= \frac 1n \cdot \frac{n(n+1)}{2} \\
+  &= \frac{n+1}{2} .
+\end{align*}
+
+To variance of $X$, we first calculate $\mathbb EX^2$ as
+\begin{align*}
+\mathbb EX^2 &= 1^2\times\frac1n + 2^2\times\frac1n + \cdots n^2 \times \frac1n \\
+  &= \frac 1n (1^2 + 2^2 + \cdots + n^2) \\
+  &= \frac 1n \cdot \frac{n(n+1)(2n + 1)}{6} \\
+  &= \frac{(n+1)(2n+1)}{6} .
+\end{align*}
+Hence,
+\begin{align*}
+  \Var(X) &= \mathbb EX^2 - \mu^2 \\
+    &= \frac{(n+1)(2n+1)}{6} - \left( \frac{n+1}{2}\right)^2 \\
+    &= \frac{(n+1)(2n+1)}{6} - \frac{(n+1)^2}{4} \\
+    &= \frac{2(n+1)(2n+1) - 3(n+1)^2}{12} \\
+    &= \frac{4n^2 + 6n + 2 - 3n^2 - 6n - 3}{12} \\
+    &= \frac{n^2 - 1}{12} .
+\end{align*}
+
+(In the example calculations, we used the facts
+\[  \sum_{i=1}^n i = \frac{n(n+1)}{2} \qquad \sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6} .   \]
+You are not expected to know or memorise these for an exam.)
+-->
+
+## Summary  {#summary-L10 .unnumbered}
+
+::: {.mysummary}
+* The expectation of a random variable $X$ is $\mathbb EX = \sum_x x\, p_X(x)$.
+* The variance of a random variable $X$ with expectation $\mu$ is $\Var(X) = \mathbb E(X - \mu)^2$.
+* $\mathbb E(aX+b) = a\mathbb EX + b$ and $\Var(aX+b) = a^2\Var(X)$.
+:::

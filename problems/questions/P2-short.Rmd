@@ -1,0 +1,120 @@
+::::: {.myq}
+**A1.** Suppose you toss a coin 4 times. 
+
+:::: {.subq}
+**(a)** What would you suggest for a sample space $\Omega$ **(i)** if you only care about the total number of heads; **(ii)** if you care about the result of each coin toss?
+::::
+
+:::: {.subq}
+**(b)** For each of the cases in part (a), what is $|\Omega|$?
+::::
+
+::: {.myanswers data-latex=""}
+*Solution.*
+
+**(i)** We can take $\Omega = \{0,1,2,3,4\}$, with $|\Omega| = 5$.
+
+**(ii)** Here, $\Omega = \{ \text{HHHH}, \text{HHHT}, \text{HHTH},\dots, \text{TTTT} \}$ should be the set of all sequences of four "H"s or "T"s. So here, $|\Omega| = 2^4 = 16$.
+:::
+:::::
+
+
+::::: {.myq}
+**A2.** Let $A$, $B$ and $C$  be events in a sample space $\Omega$. Write the following events using only $A$, $B$, $C$ and the complement, intersection, and union operations.
+
+:::: {.subq}
+**(a)** $C$ happens but $A$ doesn't.
+
+::: {.myanswers data-latex=""}
+*Solution.* This is "$C$ and not $A$": $C\cap A^{\mathsf{c}}$.
+:::
+::::
+
+:::: {.subq}
+**(b)** At least one of $A$, $B$ and $C$ happens.
+
+::: {.myanswers data-latex=""}
+*Solution.* This is simply the union $A \cup B\cup C$.
+:::
+::::
+
+:::: {.subq}
+**(c)** Exactly one of $B$ or $C$ happens.
+
+::: {.myanswers data-latex=""}
+*Solution.* One way to write this is to split it up as "'$B$ but not $C$' or '$C$ but not $B$'", which is $(B \cap C^{\mathsf{c}}) \cup (B^{\mathsf{c}} \cap C)$.
+
+An alternative is to split it up as "'$B$ or $C$' but not 'both $B$ and $C$'", which is $(B \cup C) \cap (B\cap C)^{\mathsf{c}}$.
+
+You can check these are equal by (for example) using De Morgan's law and the distributive law to expand out the second version.
+:::
+::::
+
+:::: {.subq}
+**(d)** Exactly two of $A$, $B$ and $C$ happens.
+
+::: {.myanswers data-latex=""}
+*Solution.* I would split this up into "$A$ and $B$ but not $C$", "$A$ and $C$ but not $B$", and "$B$ and $C$ but not $A$" and take the union. This gives
+\[  (A \cap B \cap C^{\mathsf{c}}) \cup (A \cap B^{\mathsf{c}} \cap C) \cup (A^{\mathsf{c}} \cap B \cap C) . \]
+There are other equivalent formulations.
+:::
+::::
+:::::
+
+
+
+
+::::: {.myq}
+**A3.** What is the value of the following expressions?
+
+:::: {.subq}
+**(a)** $6!$
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+\[ 6! = 6 \times 5 \times 4 \times 3 \times 2 \times 1 = 720. \]
+:::
+::::
+
+
+:::: {.subq}
+**(b)** $8^4$
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+\[ 8^4 = 8 \times 8 \times 8 \times 8 = 4096 \]
+:::
+::::
+
+:::: {.subq}
+**(c)** $\ff{8}{4}$
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+\[ \ff{8}{4} = 8 \times 7 \times 6 \times 5 = 1680 \]
+:::
+::::
+
+:::: {.subq}
+**(d)** ${\displaystyle \binom{10}{4}}$
+
+::: {.myanswers data-latex=""}
+*Solution.* 
+\[ \binom{10}{4} = \frac{10 \times 9 \times 8 \times 7}{4\times 3\times 2\times 1} = 210 \]
+:::
+::::
+:::::
+
+:::: {.myq}
+**A4.** An urn contains 4 red balls and 6 blue balls. Two balls are drawn from the urn. What is the probability that both balls are red, if the balls are drawn **(a)** with replacement; **(b)** without replacement?
+
+::: {.myanswers data-latex=""}
+*Solution.*
+
+**(a)** There are $|\Omega| = 10^2 = 100$ ways to draw two balls with replacement. There are $|A| = 4^2=16$ ways to draw two blue balls. So
+$\mathbb P(A) = \frac{16}{100} = 0.16$.
+
+**(b)** There are $|\Omega| = \ff{10}{2} = 10 \times 9 = 90$ ways to draw two balls without replacement. There are $|A| = \ff{4}{2} = 4 \times 3 = 12$ to draw two blue balls. So
+$\mathbb P(A) = \frac{12}{90} = \frac{2}{15} = 0.133$.
+:::
+::::

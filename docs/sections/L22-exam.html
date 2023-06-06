@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>MATH1710 Probability and Statistics 1 - 22&nbsp; Exam</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../R/R.html" rel="next">
+<link href="../sections/L21-summary.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Exam</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">MATH1710 Probability and Statistics 1</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../about.html" class="sidebar-item-text sidebar-link">About MATH1710</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Exploratory data analysis</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L01-stats.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Summary statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L02-dataviz.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data visualisations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Probability</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L03-events.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sample spaces and events</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L04-probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L05-classical-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Classical probability I</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L06-classical-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Classical probability II</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L07-conditional.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Independence and conditional probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L08-two-theorems.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Two theorems on conditional probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L09-discrete-rv.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Discrete random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L10-expectation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Expectation and variance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L11-binomial-geometric.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Binomial and geometric distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L12-poisson.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Poisson distribution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L13-multi-rv.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Multiple random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L14-covariance.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Expectation and covariance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L15-continuous.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Continuous random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L17-normal.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Normal distribution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L16-exponential-multi.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Exponential distribution and multiple continuous random variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L18-limit.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Limit theorems</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Bayesian statistics</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L19-bayes-idea.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">The Bayesian idea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L20-bayes-models.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">More Bayesian models</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Other stuff</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L21-summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">All questions answered</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/L22-exam.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Exam</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R/R.html" class="sidebar-item-text sidebar-link">R Worksheets</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../writing.html" class="sidebar-item-text sidebar-link">Tips on writing mathematics</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">MATH1710</h2>
+   
+  <ul>
+  <li><a href="#about-the-exam" id="toc-about-the-exam" class="nav-link active" data-scroll-target="#about-the-exam"><span class="toc-section-number">22.1</span>  About the exam</a></li>
+  <li><a href="#past-papers" id="toc-past-papers" class="nav-link" data-scroll-target="#past-papers"><span class="toc-section-number">22.2</span>  Past papers</a></li>
+  <li><a href="#exam-faqs" id="toc-exam-faqs" class="nav-link" data-scroll-target="#exam-faqs"><span class="toc-section-number">22.3</span>  Exam FAQs</a>
+  <ul class="collapse">
+  <li><a href="#calculators" id="toc-calculators" class="nav-link" data-scroll-target="#calculators"><span class="toc-section-number">22.3.1</span>  Calculators</a></li>
+  <li><a href="#revision" id="toc-revision" class="nav-link" data-scroll-target="#revision"><span class="toc-section-number">22.3.2</span>  Revision</a></li>
+  <li><a href="#r-questions-on-the-exam" id="toc-r-questions-on-the-exam" class="nav-link" data-scroll-target="#r-questions-on-the-exam"><span class="toc-section-number">22.3.3</span>  R questions on the exam</a></li>
+  <li><a href="#statistical-tables" id="toc-statistical-tables" class="nav-link" data-scroll-target="#statistical-tables"><span class="toc-section-number">22.3.4</span>  Statistical tables</a></li>
+  <li><a href="#how-much-should-i-write" id="toc-how-much-should-i-write" class="nav-link" data-scroll-target="#how-much-should-i-write"><span class="toc-section-number">22.3.5</span>  How much should I write?</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="L22-exam" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Exam</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="about-the-exam" class="level2" data-number="22.1">
+<h2 data-number="22.1" class="anchored" data-anchor-id="about-the-exam"><span class="header-section-number">22.1</span> About the exam</h2>
+<p>First, the details of the exam:</p>
+<ul>
+<li>Check your exam timetable for the date and time of the exam. For most people (without unusual clashes or special arrangements), the exam will happen on <strong>Monday 16 January at 1400</strong>.</li>
+<li>The exam will happen in person on campus. For most people this will be in the Sports Hall.</li>
+<li>The exam will last for 2 hours (except for some students with special arrangements).</li>
+<li>You are allowed to use a basic non-programmable calculator for the exam.</li>
+<li>The exam will be “closed-book” style: you are not permitted to bring notes into the exam hall.</li>
+<li>The exam will contain multiple-choice questions, short questions, and long questions. See below for more details about the structure of the exam.</li>
+<li>A page of <a href="https://mpaldridge.github.io/math1710/stat-tab.pdf">statistical tables for the normal distribution</a> will be attached to the exam paper. There will not be a formula book.</li>
+<li>The exam makes up 70% of your mark for this module. The pass mark for this module is 40%. You must pass the exam to pass the module. The pass mark for the exam is also 40%, or 32 marks out of 80.</li>
+</ul>
+<p>The exam will be in three sections:</p>
+<ul>
+<li><strong>Section A</strong> contains 10 multiple-choice questions, worth 2 marks each, for a total of 20 marks. These each require a single letter answer. No rough work will be read or marked. You will enter these letter answers on a multiple-choice “bubble sheet”; there is an example of this sheet on Minerva. (Recommended time: 3 minutes per question; 30 minutes total.)</li>
+<li><strong>Section B</strong> contains 10 single-part “short answer” questions, worth 2 marks each, for a total of 20 marks. These require a clear answer and brief working or explanation. Typically, a correct answer with clear working will get 2 marks; partial progress or a correct answer with totally inadequate working will get 1 mark. You will answer these in an answer booklet. (Recommended time: 3 minutes per question; 30 minutes total.)</li>
+<li><strong>Section C</strong> contains 2 multi-part “long answer” questions in multiple parts, worth 20 marks each, for a total of 40 marks. Parts of these questions require full detailed answers, as in assessed work from problem sheets, and will have marks set aside for quality of explanations. You will answer these in the same answer booklet as Section B. (Recommended time: 30 minutes per question; 1 hour total.)</li>
+</ul>
+</section>
+<section id="past-papers" class="level2" data-number="22.2">
+<h2 data-number="22.2" class="anchored" data-anchor-id="past-papers"><span class="header-section-number">22.2</span> Past papers</h2>
+<p>School of Mathematics policy is that for Level 1 modules, the three most recent past papers (that used the same exam format as your exam) are made available. For MATH1710, these are</p>
+<ul>
+<li>The 2021–22 paper (from January 2022), available only on Minerva (in the “Exam” folder for this module).</li>
+<li>Not the 2020–21 paper, as this was held in pandemic times, and had a different format.</li>
+<li>The 2019–20 (January 2020) and 2018–19 (January 2019) papers, which are available on <a href="https://students.leeds.ac.uk/exampapers?action=search&amp;keyword=MATH1710">the University past papers website</a>.</li>
+<li>(At the time of writing, it appears that the 2017–18 (January 2018) paper is also on <a href="https://students.leeds.ac.uk/exampapers?action=search&amp;keyword=MATH1710">the University past papers website</a>, so it seems you have a extra bonus past paper!)</li>
+</ul>
+<p>(Your username on <a href="https://students.leeds.ac.uk/exampapers?action=search&amp;keyword=MATH1710">the University past papers website</a> is just the <code>xy22abc</code> part of your username, without the <code>@leeds.ac.uk</code>.)</p>
+<p>University policy is that we are not permitted to give out complete worked solutions to past exam papers. Instead, I have provided a “checksheet” for the three past papers 2021-22, 2019–20 and 2018–19. This should give enough information for you to check your own answers, if you use the papers for your revision, but is rather bare-bones and doesn’t give a lot of detail.</p>
+<p>I strongly recommend using all these past papers as part of your revision, and resisting the temptation to peek at the checksheet before trying the questions yourself, perhaps multiple times. You may wish to test yourself by trying one of the papers sight-unseen under exam-like conditions.</p>
+<p>Some notes on the past papers:</p>
+<ul>
+<li>2021-22 paper:
+<ul>
+<li>This is the only past paper written by me. Therefore, it’s the only past paper based on the module (almost) exactly as taught this year, and using the styles of questions I tend to write. For this reason, I consider this paper a valuable resource for your revision, and one you should not waste by too-quickly looking at the checksheet.</li>
+<li>That said, I think I erred by making this exam too hard. I have written your exam to be easier – I hope an average student should get about 8 more marks (10% more) on your exam than on this past paper. You should bare this in mind when assessing your performance on this past paper.</li>
+</ul></li>
+<li>The two older past papers (2019–20 and 2018–19):
+<ul>
+<li>These papers write <span class="math inline">\(\Pr(A)\)</span> for probabilities, where we write <span class="math inline">\(\mathbb P(A)\)</span>, and write <span class="math inline">\(\mathrm{E}[X]\)</span> for expectations, where we write <span class="math inline">\(\mathbb EX\)</span>.</li>
+<li>These papers sometimes write <span class="math inline">\(\subseteq\)</span> for “is a subset of”, where we write <span class="math inline">\(\subset\)</span>.</li>
+<li>In R questions, often <code>=</code> is used for assignment, as in <code>variable = 2 + 3</code>, whereas we prefer to use <code>&lt;-</code>, as in <code>variable &lt;- 2 + 3</code>.</li>
+<li>Although these papers in Section A instructed students to “write down a single letter”, you will fill in your multiple-choice answers on the “bubble sheet” provided.</li>
+</ul></li>
+<li>2018–19 paper:
+<ul>
+<li>Questions A6 and B9: This writes <span class="math inline">\(\Omega_X\)</span> for the range (or “range space”) of a random variable <span class="math inline">\(X\)</span>, where we wrote <span class="math inline">\(\operatorname{Range}(X)\)</span>.</li>
+<li>Question C2(b): Some of the notation here is a bit different to ours; for example, writing <span class="math inline">\(l(x|p)\)</span> for the likelihood.</li>
+</ul></li>
+<li>2019–20 paper:
+<ul>
+<li>Question B9: You are not expected to be able to answer this question.</li>
+<li>Question C2(b): Some of the notation here is a bit different to ours; for example, writing <span class="math inline">\(l(x|p)\)</span> for the likelihood.</li>
+</ul></li>
+</ul>
+<!---
+* 2020--21 paper:
+  * Because this was a "take-home" paper, there was no multiple-choice section, which it was thought would be too easy for nefarious students to cheat on. Instead, there were twice as many short questions.
+  * Because this was an "open-book" paper, there were fewer "fact" questions than usual, such as stating definitions or giving standard proofs from the notes.
+  * Question A11(ii): You are not expected to be able to answer this question.
+  * Question A12: An event $A$ is said to be "preferable" for an event $B$ is $\mathbb P(B \mid A) > \mathbb P(A)$. You are not expected to know this definition (although, once told the definition, you should be able to work with it).
+  * Question A18: You are not expected to be able to answer this question.
+--->
+</section>
+<section id="exam-faqs" class="level2" data-number="22.3">
+<h2 data-number="22.3" class="anchored" data-anchor-id="exam-faqs"><span class="header-section-number">22.3</span> Exam FAQs</h2>
+<section id="calculators" class="level3" data-number="22.3.1">
+<h3 data-number="22.3.1" class="anchored" data-anchor-id="calculators"><span class="header-section-number">22.3.1</span> Calculators</h3>
+<div class="thpart">
+<p><em>Can I use a calculator in the exam?</em></p>
+</div>
+<div class="thpart">
+<p><em>What sort of calculator can I use in the exam?</em></p>
+</div>
+<p>You may use a calculator for MATH1710 exam. The School of Mathematics rule is this:</p>
+<blockquote class="blockquote">
+<p>You may use a <em>simple, non-programmable</em> calculator.</p>
+</blockquote>
+<p>You may feel that this rule is unhelpfully vague. I am not totally without sympathy for this view, but this is nonetheless the School rule. The Maths Student Support Office did recently offer the following extra guidance:</p>
+<blockquote class="blockquote">
+<p>The only rule is that, where calculators are allowed in an exam, any basic (i.e.&nbsp;non-programmable) calculator is allowed. Calculators that can solve calculus problems or do matrix calculations are allowed, as long as they are non-programmable. Calculators are only allowed in certain exams, and the module leader will be able to tell you whether a calculator is allowed on their exam.</p>
+<p>If you are not sure whether your calculator is non-programmable then check the manufacturer’s website. Any calculator that is marketed as “programmable” or “graphic” is unlikely to be allowed in an exam. Examples of calculators that are allowed include the Casio FX-85GTX and the Casio FX991-EX.</p>
+<p>Please note: the school does not provide a definitive list of approved and non-approved calculators. We do not verify / pre-approve calculators (some schools may provide verification stickers but these are not needed for MATH exams). It will be the exam invigilators who will check calculators during the examination.”</p>
+</blockquote>
+<p>I notice that the Casio FX-85GTX is currently available for <a href="https://www.whsmith.co.uk/products/casio-fx85gtx-black-scientific-calculator/4549526607844.html">£14 from WHSmith</a> or <a href="https://www.amazon.co.uk/dp/B07L68RQCX">£15 from Amazon</a>.</p>
+</section>
+<section id="revision" class="level3" data-number="22.3.2">
+<h3 data-number="22.3.2" class="anchored" data-anchor-id="revision"><span class="header-section-number">22.3.2</span> Revision</h3>
+<div class="thpart">
+<p><em>What tips do you have for revising for a University maths exam?</em></p>
+</div>
+<p>I always feel a bit self-conscious answering this question – I last did a maths exam 15 years ago, while many of you last did a maths exam six or seven months ago. Surely it’s <em>you</em> who should be giving <em>me</em> revision advice!</p>
+<p>That said, I like <a href="https://people.maths.bris.ac.uk/~maotj/notes/revise.png">these exam revision tips from my former colleague Dr Oliver Johnson</a>, who teaches the equivalent module to MATH1710 at the University of Bristol. I particularly endorse Dr Johnson’s points 1 and 2:</p>
+<blockquote class="blockquote">
+<ol type="1">
+<li><strong>Triage</strong> your notes into: stuff you know already, stuff you almost understand, stuff you’ll never understand. Focus your work on the middle third (this may change over time).</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="2" type="1">
+<li><strong>Revision is an active process:</strong> summarise your notes, solve problems, test yourself. If you just read, you’ll be staring into space 10 minutes later.</li>
+</ol>
+</blockquote>
+<p>Read the rest of Dr Johnson’s revision tips <a href="https://people.maths.bris.ac.uk/~maotj/notes/revise.png">here</a>.</p>
+</section>
+<section id="r-questions-on-the-exam" class="level3" data-number="22.3.3">
+<h3 data-number="22.3.3" class="anchored" data-anchor-id="r-questions-on-the-exam"><span class="header-section-number">22.3.3</span> R questions on the exam</h3>
+<div class="thpart">
+<p><em>Can there be R questions on the exam?</em></p>
+</div>
+<p>Yes!</p>
+<p>To state the obvious, you will be sitting in an exam hall with a paper booklet and a pen, so I can’t ask you to read a 400-row CSV file into RStudio and tell me the standard deviation of the fourth column. But there are two types of questions you could be asked.</p>
+<p>The first type is “What would the output from R be if you entered the code…”. An example of this from the 2021-22 paper is this multiple-choice Section A question:</p>
+<div class="thpart">
+<p><strong>A1.</strong> What would the output from the following R code be?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">sd</span>(data), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>A</strong> 3.03, <strong>B</strong> 5.5, <strong>C</strong> 6.36, <strong>D</strong> 9.17, <strong>E</strong> 40.5</p>
+</div>
+<p>To answer this, you will need to know that <code>1:10</code> means the dataset <span class="math inline">\((1, 2, \dots, 10)\)</span>, and that the second line calculates the standard deviation of that dataset to 2 decimal places. You could then calculate that standard deviation to get the answer 3.03, which is <strong>A</strong>. Alternatively, you could notice that the answer must be at most 4.5 (the maximum distance from any data point <span class="math inline">\(x_i\)</span> to the mean <span class="math inline">\(\bar x = 5.5\)</span>), and so <strong>A</strong> 3.03 is the only plausible answer.</p>
+<p>The second type is: “Write down some R code that would calculate…”. Here’s an example of a Section B question from a past paper in this style:</p>
+<div class="thpart">
+<p><strong>B4.</strong> In RStudio, a vector <code>x</code> contains the values in the range of a discrete random variable <span class="math inline">\(X\)</span> and a vector <code>p</code> contains the corresponding probabilities. Write down an R command to evaluate <span class="math inline">\(\mathbb EX(X-1)\)</span> from <code>x</code> and <code>p</code>.</p>
+</div>
+<p>By the law of the unconscious statistician, this is calculated by [ EX(X-1) = _x x(x-1),p(x) . ] This can be calculated with the R code</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x <span class="sc">*</span> (x <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>(See also the discussion of <a href="#faq-R-RV">discrete random variables in R from the last lecture</a>.)</p>
+<p>I can reveal that your exam will have two questions (or part-questions) on R, totalling 5 of the 80 marks.</p>
+</section>
+<section id="statistical-tables" class="level3" data-number="22.3.4">
+<h3 data-number="22.3.4" class="anchored" data-anchor-id="statistical-tables"><span class="header-section-number">22.3.4</span> Statistical tables</h3>
+</section>
+<section id="how-much-should-i-write" class="level3" data-number="22.3.5">
+<h3 data-number="22.3.5" class="anchored" data-anchor-id="how-much-should-i-write"><span class="header-section-number">22.3.5</span> How much should I write?</h3>
+<!--
+## Revision
+
+It seems a bit strange for me to be giving you revision advice -- I last did a maths exam more than a decade ago, while you last did a maths exam a few months ago!
+-->
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../sections/L21-summary.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">All questions answered</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../R/R.html" class="pagination-link">
+        <span class="nav-page-text">R Worksheets</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
