@@ -3,7 +3,7 @@
     "path": "~/Documents/GitHub/math1710-quarto/_quarto.yml",
     "project_path": "_quarto.yml",
     "type": "yaml",
-    "hash": "1881957396",
+    "hash": "14522135",
     "contents": "",
     "dirty": false,
     "created": 1685804003776.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "10,0",
+        "cursorPosition": "9,16",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1686065427,
+    "lastKnownWriteTime": 1686066141,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1686065427017,
+    "last_content_update": 1686066141388,
     "read_only": false,
     "read_only_alternatives": []
 }

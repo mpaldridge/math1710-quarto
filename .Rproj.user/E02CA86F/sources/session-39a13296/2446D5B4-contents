@@ -7,7 +7,7 @@ book:
   author: "Matthew Aldridge, University of Leeds"
   date: today
   date-format: "[Semester 1, 2022-23]"
-  downloads: [pdf, epub]
+  downloads: pdf
   sidebar:
     title: "MATH1710"
   chapters:

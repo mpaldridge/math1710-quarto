@@ -1,0 +1,6 @@
+[2,"\n"]
+[1,"\u001B[1mpandoc \u001B[22m\n  to: html\n  output-file: index.html\n  standalone: true\n  toc: true\n  number-sections: false\n  title-prefix: MATH1710 Probability and Statistics 1\n  section-divs: true\n  html-math-method: mathjax\n  wrap: none\n  default-image-extension: png\n  \n\u001B[1mmetadata\u001B[22m\n  crossref:\n    chapters: true\n  document-css: false\n  link-citations: true\n  lang: en\n  theme: cosmo\n  title: MATH1710 Probability and Statistics 1\n  author: 'Matthew Aldridge, University of Leeds'\n  date: '2023-06-06T00:00:00+01:00'\n  date-format: '[Semester 1, 2022-23]'\n  \n"]
+[1,"Output created: docs/index.html\n\n\u001B[1m\u001B[34mPreparing to preview\u001B[39m\u001B[22m\n"]
+[1,"\n"]
+[1,"\u001B[32mWatching files for changes\u001B[39m\n\u001B[32mBrowse at \u001B[39m\u001B[4m\u001B[32mhttp://localhost:6738/\u001B[39m\u001B[24m\n"]
+[1,"\u001B[32mGET: /index.html\u001B[39m\n"]
