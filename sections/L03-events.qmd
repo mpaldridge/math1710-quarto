@@ -99,14 +99,14 @@ Consider a sample space $\Omega$, and let $A$ and $B$ be events in that sample s
 :::: {style="display: flex;"}
 ::: {}
 * **<span style="color: blue;">NOT:</span>** The **complement** of $A$, written $A^\comp$ (and said "$A$ complement" or "not $A$"), is the set of sample points not in $A$; that is
-\[ A^\comp = \{\omega \in \Omega : \omega \not\in A \} . \]
+$$ A^\comp = \{\omega \in \Omega : \omega \not\in A \} . $$
 This represents the event that $A$ does not occur.
 * **<span style="color: green;">AND</span>:** The **intersection** of $A$ and $B$, written $A \cap B$ (and said "$A$ intersect $B$" or "$A$ and $B$") is the set of sample points in both $A$ and $B$; that is,
 \
-\[ A \cap B = \{\omega \in \Omega : \omega \in A \text{ and } \omega \in B \} . \]
+$$ A \cap B = \{\omega \in \Omega : \omega \in A \text{ and } \omega \in B \} . $$
 This represents the event that both $A$ and $B$ occur.
 * **<span style="color: red;">OR:</span>** The **union** of $A$ and $B$, written $A \cup B$ (and said "$A$ union $B$" or "$A$ or $B$") is the set of sample points in $A$ or in $B$; that is,
-\[ A \cup B = \{\omega \in \Omega : \omega \in A \text{ or } \omega \in B \} . \]
+$$ A \cup B = \{\omega \in \Omega : \omega \in A \text{ or } \omega \in B \} . $$
 This represents the event that $A$ occurs or $B$ occurs. (In mathematics, "or" includes "both", so a sample outcome in both $A$ and $B$ is in $A\cup B$ too.)
 :::
 
@@ -184,7 +184,7 @@ You might think that if two events are disjoint, then it would be reasonable to 
 There are a few rules about ways you can combine the complement, intersection and union operations. These are ways of building new events from old. <!--This are mostly "common sense", and you probably don't need to remember them. But if you do need to prove them, you can do so either by sketching the relevant diagram, or using a "truth table" -- we give some details on those below after we've stated the rules.-->
 
 * The **double complement law** tells us that not-not-$A$ is the same as $A$:
-\[ (A^\comp)^\comp = A .\]
+$$ (A^\comp)^\comp = A .$$
 This says that if it's not "not-raining", then it's raining!
 * The **distributive laws** tells us we can "multiply out of the brackets" with sets:
 \begin{align*}
@@ -364,7 +364,7 @@ $A\cup (B\cap C) = (A\cup B)\cap (A\cup C)$.
 <!--
 
 Let's also prove the first of De Morgan's laws, 
-  \[ (A \cap B)^\comp = A^\comp \cup B^\comp , \]
+  $$ (A \cap B)^\comp = A^\comp \cup B^\comp , $$
 this time using a truth table. (This bit might be more clear from the video above, from 14:30.) We start with a table like this, with the four possibilities of whether $A$ and/or $B$ are true:
 
 | $A$ | $B$ | $A\cap B$ | $(A \cap B)^\comp$ | $A^\comp$ | $B^\comp$ | $A^\comp \cup B^\comp$ |

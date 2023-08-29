@@ -33,7 +33,7 @@ With a continuous random variable, the probability of *exactly* getting any part
 
 ::: {.definition}
 A random variable $X$ is called a **continuous random variable** if the probability of landing in any interval between $a$ and $b$, for $a \leq b$, can be written as
-\[ \mathbb P(a \leq X \leq b) = \int_a^b f_X(x) \, \mathrm{d}x , \]
+$$ \mathbb P(a \leq X \leq b) = \int_a^b f_X(x) \, \mathrm{d}x , $$
 for some non-negative function $f_X$. The function $f_X$ is called the **probability density function** (or **PDF**).
 :::
 
@@ -43,7 +43,7 @@ As with PMFs, when it's obvious what random variable we're dealing with, we omit
 
 ::: {.example #unifex}
 Let $X$ be a continuous random variable with PDF
-\[  f(x) = 1 \qquad \text{for $0 \leq x \leq 1$} \]
+$$  f(x) = 1 \qquad \text{for $0 \leq x \leq 1$} $$
 and $f(x) = 0$ otherwise. This represents a random number between 0 and 1, where the intensity of the probability is equal across the whole interval. This is known as a **continuous uniform distribution**.
 
 ```{r contunif-pdf, cache = TRUE, echo = FALSE}
@@ -73,8 +73,8 @@ We can calculate this using the definition above. We have
 
 ::: {.example #pdf2}
 Let $Y$ be a continuous random variable with PDF
-\[ f(y) = \begin{cases} y & \text{for $0 \leq y \leq 1$} \\
-2-y & \text{for $1 < y \leq 2$} \end{cases} \]
+$$ f(y) = \begin{cases} y & \text{for $0 \leq y \leq 1$} \\
+2-y & \text{for $1 < y \leq 2$} \end{cases} $$
 and $f(y) = 0$ otherwise. This represents a continuous value between 0 and 2 where the probability intensity is highest in the middle around 1 and is lower at the edges near 0 and 2.
 
 ```{r second-pdf, cache = TRUE, echo = FALSE}
@@ -93,7 +93,7 @@ curve(x - x, from = 2,  to = 3.5, lwd = 2, col = "red", add = TRUE)
 *What is the probability $X$ is between $\frac12$ and $\frac32$?*
 
 As before, we have
-\[ \mathbb P\big( \tfrac12 \leq Y \leq \tfrac32 \big) = \int_{\frac12}^{\frac32} f(y) \, \mathrm dy .   \]
+$$ \mathbb P\big( \tfrac12 \leq Y \leq \tfrac32 \big) = \int_{\frac12}^{\frac32} f(y) \, \mathrm dy .   $$
 But this time we have to be careful, because $f(y)$ has different expressions below 1 and above 1. We will split the integral up into two parts based on this, to get
 \begin{align*}
 \mathbb P\big( \tfrac12 \leq Y \leq \tfrac32 \big) 
@@ -123,30 +123,30 @@ The good news is that almost all of the properties we know and love about discre
 |-----|-----|
 | A discrete random variable $X$ is defined by a **probability mass function** (PMF) $p(x)$, which represents the probability of getting exactly $x$. | A continuous random variable $X$ is defined by a **probability density function** (PDF) $f(x)$, which represents the intensity of probability around $x$. |
 | The PMF is positive, in that $p(x) \geq 0$ for all $x$. | The PDF is positive, in that $f(x) \geq 0$ for all $x$. |
-| The PMF sums to 1, in that \[ \sum_{x} p(x) = 1. \] | The PDF integrates to 1 in that \[ \int_{-\infty}^{\infty} f(x) \, \mathrm{d}x = 1.\]
-| The **cumulative distribution function** (CDF) is $F(x) = \mathbb P(X \leq x)$, and is given by a sum \[ F(x) = \sum_{y \leq x} p(y) .\] | The **cumulative distribution function** (CDF) is $F(x) = \mathbb P(X \leq x)$, and is given by an integral \[ F(x) = \int_{-\infty}^x f(y) \, \mathrm{d}y .\]  |
-| The **expectation** is the sum \[ \mathbb EX = \sum_{x} x\,p(x) . \] | The **expectation** is the integral \[ \mathbb EX = \int_{-\infty}^{\infty} x\,f(x)\,\mathrm dx . \] |
-| The expectation of a function $g(X)$ of $X$ is the sum \[ \mathbb Eg(X) = \sum_{x} g(x)\,p(x) . \] | The expectation of a function $g(X)$ of $X$ is the integral  \[ \mathbb Eg(X) = \int_{-\infty}^{\infty} g(x)\,f(x)\,\mathrm dx . \] |
-| Linearity of expectation says that \[ \mathbb E(aX+b) = a\mathbb EX + b .\] |  Linearity of expectation says that \[ \mathbb E(aX+b) = a\mathbb EX + b .\] |
+| The PMF sums to 1, in that $$ \sum_{x} p(x) = 1. $$ | The PDF integrates to 1 in that $$ \int_{-\infty}^{\infty} f(x) \, \mathrm{d}x = 1.$$
+| The **cumulative distribution function** (CDF) is $F(x) = \mathbb P(X \leq x)$, and is given by a sum $$ F(x) = \sum_{y \leq x} p(y) .$$ | The **cumulative distribution function** (CDF) is $F(x) = \mathbb P(X \leq x)$, and is given by an integral $$ F(x) = \int_{-\infty}^x f(y) \, \mathrm{d}y .$$  |
+| The **expectation** is the sum $$ \mathbb EX = \sum_{x} x\,p(x) . $$ | The **expectation** is the integral $$ \mathbb EX = \int_{-\infty}^{\infty} x\,f(x)\,\mathrm dx . $$ |
+| The expectation of a function $g(X)$ of $X$ is the sum $$ \mathbb Eg(X) = \sum_{x} g(x)\,p(x) . $$ | The expectation of a function $g(X)$ of $X$ is the integral  $$ \mathbb Eg(X) = \int_{-\infty}^{\infty} g(x)\,f(x)\,\mathrm dx . $$ |
+| Linearity of expectation says that $$ \mathbb E(aX+b) = a\mathbb EX + b .$$ |  Linearity of expectation says that $$ \mathbb E(aX+b) = a\mathbb EX + b .$$ |
 | The **variance** is $\Var(X) = \mathbb E(X - \mu)^2$, which also has the computational formula $\Var(X) = \mathbb EX^2 - \mu^2$. | The **variance** is $\Var(X) = \mathbb E(X - \mu)^2$, which also has the computational formula $\Var(X) = \mathbb EX^2 - \mu^2$. |
 
 Note, however, one property that doesn't follow through: Because, for a PMF, $p(x) = \mathbb P(X = x)$ represented a probability, we had $p(x) \leq 1$ for all $x$. However, because, for a PDF, $f(x)$ only represents intensity of probability, there's no contradiction to having $f(x) > 1$ (although keeping the integral to 1 means that we can't have $f(x) > 1$ too much). So $f(x) = 10$ for $0 <x < 0.1$ and $f(x) = 0$ otherwise is a perfectly legitimate PDF, for example.
 
 ::: {.example}
 Let's return to the case where $X$ be a continuous uniform distribution, with
-\[  f(x) = 1 \qquad \text{for $0 \leq x \leq 1$}  \]
+$$  f(x) = 1 \qquad \text{for $0 \leq x \leq 1$}  $$
 and $f(x) = 0$ otherwise. Let's go through the properties from the table above.
 
 First, it's clear that $f(x) \geq 0$ for all $x$.
 
 Second, the PDF does indeed integrate to 1, because
-\[ \int_{-\infty}^\infty f(x) \, \mathrm dx = \int_0^1 1 \, \mathrm dx = [x]_0^1 = 1 .    \]
+$$ \int_{-\infty}^\infty f(x) \, \mathrm dx = \int_0^1 1 \, \mathrm dx = [x]_0^1 = 1 .    $$
 Because this PDF is zero below 0 and above 1, we only had to integrate between 0 and 1, with the rest of the integral over the real line being 0.
 
 Third, the CDF $F$. It's clear that $F(x) = \mathbb P(X \leq x) = 0$ for $x < 0$, and $F(x) = \mathbb P(X \leq x) = 1$ for $x > 1$. In between, we have
-\[ F(x) = \int_{-\infty}^x f(y) \,\mathrm dy = \int_0^x 1\, \mathrm dy = [y]_0^x = x .   \]
+$$ F(x) = \int_{-\infty}^x f(y) \,\mathrm dy = \int_0^x 1\, \mathrm dy = [y]_0^x = x .   $$
 So, altogether, the CDF is
-\[  F(x) = \begin{cases} 0 & \text{for } x < 0 \\ x & \text{for }0 \leq x \leq 1 \\ 1 & \text{for }x > 1 . \end{cases} \]
+$$  F(x) = \begin{cases} 0 & \text{for } x < 0 \\ x & \text{for }0 \leq x \leq 1 \\ 1 & \text{for }x > 1 . \end{cases} $$
 
 ```{r contunif-cdf, cache = TRUE, echo = FALSE}
 curve(x + 1 - 1, from = 0, to = 1,
@@ -158,18 +158,18 @@ curve(x - x + 1, from = 1,  to = 2.5, lwd = 2, col = "blue", add = TRUE)
 ```
 
 Fourth, the expectation is
-\[ \mathbb EX = \int_{\infty}^\infty x\,f(x)\,\mathrm dx = \int_0^1 x \, \mathrm dx = \left[\tfrac12 x^2 \right]_0^1 = \tfrac12 - 0 = \tfrac12 .   \]
+$$ \mathbb EX = \int_{\infty}^\infty x\,f(x)\,\mathrm dx = \int_0^1 x \, \mathrm dx = \left[\tfrac12 x^2 \right]_0^1 = \tfrac12 - 0 = \tfrac12 .   $$
 
 Finally, to calculate the variance using the computational formula $\Var(X) = \mathbb EX^2 - \mu^2$, we first need $\mathbb EX^2$. This is
-\[ \mathbb EX^2 = \int_{\infty}^\infty x^2\,f(x)\,\mathrm dx = \int_0^1 x^2 \, \mathrm dx = \left[\tfrac13 x^3 \right]_0^1 = \tfrac13 - 0 = \tfrac13 .   \]
+$$ \mathbb EX^2 = \int_{\infty}^\infty x^2\,f(x)\,\mathrm dx = \int_0^1 x^2 \, \mathrm dx = \left[\tfrac13 x^3 \right]_0^1 = \tfrac13 - 0 = \tfrac13 .   $$
 So, the variance is
-\[ \Var(X) = \mathbb EX^2 - \mu^2 = \tfrac13 - \left(\tfrac12\right)^2 = \tfrac13 - \tfrac14 = \tfrac{1}{12} . \]
+$$ \Var(X) = \mathbb EX^2 - \mu^2 = \tfrac13 - \left(\tfrac12\right)^2 = \tfrac13 - \tfrac14 = \tfrac{1}{12} . $$
 :::
 
 ::: {.example}
 Let's also return to the "triangular" PDF from Example \@ref(exm:pdf2),
-\[ f(y) = \begin{cases} y & \text{for $0 \leq y \leq 1$} \\
-2-y & \text{for $1 < y \leq 2$} \end{cases} \]
+$$ f(y) = \begin{cases} y & \text{for $0 \leq y \leq 1$} \\
+2-y & \text{for $1 < y \leq 2$} \end{cases} $$
 and $f(y) = 0$ otherwise. We'll just do the CDF and the expectation. (You can do the others yourself, if you like.)
 
 For the CDF, it's clear that $F(y) = 0$ for $y < 0$ and $F(y) = 1$ for $y > 2$. Again, we split the $0 \leq y \leq 1$ case and the $1 < y \leq 2$ case. In the first case, for $0 \leq y \leq 1$, we have
@@ -188,10 +188,10 @@ In the second case, for $1 < y \leq 2$, we have
     &= 2y - \tfrac12 y^2 - 1  .
 \end{align*}
 Hence, the CDF is
-\[ F(y) = \begin{cases} 0 & \text{for $y < 0$} \\
+$$ F(y) = \begin{cases} 0 & \text{for $y < 0$} \\
             \tfrac12 y^2 & \text{for $0 \leq y \leq 1$} \\
             2y - \tfrac12 y^2 - 1  & \text{for $1 < y \leq 2$} \\
-            1 & \text{for $y > 2$}. \end{cases} \]
+            1 & \text{for $y > 2$}. \end{cases} $$
 
 ```{r second-cdf, cache = TRUE, echo = FALSE}
 curve(x^2/2+1-1, from = 0, to = 1,
@@ -218,7 +218,7 @@ For the expectation, we have
 
 ::: {.mysummary}
 * A continuous random variable is defined by its probability density function $f$, where
-\[ \mathbb P(a \leq X \leq b) = \int_a^b f(x) \, \mathrm dx . \]
+$$ \mathbb P(a \leq X \leq b) = \int_a^b f(x) \, \mathrm dx . $$
 * Most properties of discrete random variables hold, with the PMF replaced by the PDF, and sums by integrals.
 * For example, the expectation is $\mathbb EX = \displaystyle\int_{-\infty}^\infty x\, f(x) \, \mathrm dx$.
 :::

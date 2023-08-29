@@ -6,9 +6,9 @@ Let's consider again the case of rolling two dice. We know that the sample space
 But if we are rolling the two dice as part of a board game, we might only care about the *total* score on the two dice, and the actual the two individual dice scores might be irrelevant. Let us wrote write $X$ for the total score. This $X$ is a sort of "numerical summary" of the experiment. Probabilists call such a numerical summary a **random variable**.
 
 One we've defined this random variable $X$, it can be easier to work with $X$ than with sample spaces and events. For example, if we want to know the probability that our two dice rolls add up to 5, it's more convenient to write
-\[ \mathbb P(X = 5) \]
+$$ \mathbb P(X = 5) $$
 rather than
-\[ \mathbb P(A) \quad \text{where} \quad A = \big\{ (1,4), (2,3), (3,2), (4,1) \big\} . \]
+$$ \mathbb P(A) \quad \text{where} \quad A = \big\{ (1,4), (2,3), (3,2), (4,1) \big\} . $$
 The probability that $X = 5$ is $\mathbb P(X = 5) = \frac{4}{36} = \frac{1}{9}$. We might also be interested in other things about the total score $X$, like what the average total score over many pairs if dice rolls is.
 
 The good news is that, once we have properly set up our random variable $X$, we can often then choose to ignore things like the sample space, the probability measure, and individual events.
@@ -18,10 +18,10 @@ Random variables are typically given capital letters from late in the alphabet, 
 This idea of a random variable as a numerical summary of an experiment is how we *think* about random variables when solving problems. On the other hand, as mathematicians, we also want to define carefully what a random variable is as a mathematical object. We'll discuss that now (but if you find the next couple of paragraphs difficult to follow, you won't miss much if you skip them).
 
 In this formal mathematical view, our experiment of rolling two dice is represented by a sample space
-  \[  \Omega = \big\{ \boldsymbol\omega = (\omega_1, \omega_2) : \omega_1, \omega_2 \in \{1,2,3,4,5,6\} \big\}  \]
+  $$  \Omega = \big\{ \boldsymbol\omega = (\omega_1, \omega_2) : \omega_1, \omega_2 \in \{1,2,3,4,5,6\} \big\}  $$
 of pairs $\boldsymbol\omega = (\omega_1, \omega_2)$ of numbers from 1 to 6, where $\omega_1$ represents the first dice roll and $\omega_2$ the second dice roll.
 The random variable $X$ is the score on the first dice plus the score on the second dice -- that is,
-\[ X(\boldsymbol\omega) = \omega_1 + \omega_2 . \]
+$$ X(\boldsymbol\omega) = \omega_1 + \omega_2 . $$
 In other words, $X$ is a *function* which takes in a sample outcome $\boldsymbol\omega \in \Omega$ and outputs a real number $X = X(\boldsymbol\omega) = \omega_1 + \omega_2$.
 
 <!--
@@ -36,7 +36,7 @@ The formal definition of a random variable is as a function that turns the outco
 Let $\Omega$ be a sample space. Then a **random variable** is a function $X$ from $\Omega$ to the real numbers $\mathbb R$; that is, to each sample outcome $\omega$ it assigns a real number $X(\omega)$.
 
 Expressions like $\mathbb P(X = x)$ or $\mathbb P(X \in A)$ should be understood as representing more formal probabilities
-\[ \mathbb P \big( \{\omega : X(\omega) = x \}\big) \quad \text{or} \quad \mathbb P \big( \{\omega : X(\omega) \in A \}\big)  . \]
+$$ \mathbb P \big( \{\omega : X(\omega) = x \}\big) \quad \text{or} \quad \mathbb P \big( \{\omega : X(\omega) \in A \}\big)  . $$
 :::
 
 <!--
@@ -77,12 +77,12 @@ We now consider only discrete random variables $X$, where the range $\Range(X)$ 
 
 ::: {.definition}
 For a discrete random variable $X$, its **probability mass function** (or **PMF**) is the function $p_X$ where 
-\[ p_X(x) = \mathbb P(X = x)  \qquad \text{for $x \in \Range(X)$.} \]
+$$ p_X(x) = \mathbb P(X = x)  \qquad \text{for $x \in \Range(X)$.} $$
 (When the random variable $X$ is obvious from context, we'll just write $p(x)$ without the subscript.)
 :::
 
 Once we have the PMF, then Axiom 3 tells us that for any set $A$, we have
-\[ \mathbb P(X \in A) = \sum_{x \in A} \mathbb P(X = x) = \sum_{x \in A} p(x) . \]
+$$ \mathbb P(X \in A) = \sum_{x \in A} \mathbb P(X = x) = \sum_{x \in A} p(x) . $$
 (Recall that the symbol $\in$ means "is an element of", or just "is in" for short.) So the probability that $X$ is in some set $A$ can be found by simply adding up $p(x)$ for all the values $x$ in $A$. Thus the PMF $p(x)$ is the only thing we need to know.
 
 <!--
@@ -91,7 +91,7 @@ The key idea about random variables is that, once we are thinking in terms of a 
 
 ::: {.example}
 Consider tossing a biased coin, that is Heads with probability $p$ and Tails with probability $1-p$. Let $X = 1$ if the coin lands Heads, and $X = 0$ if the coin lands Tails. The PMF $p_X$ of this random variable is given by
-\[ p_X(0) = 1 - p \qquad p_X(1) = p . \]
+$$ p_X(0) = 1 - p \qquad p_X(1) = p . $$
 
 We could alternatively think of the same random variable $X$ as representing the result of an experiment, where $X = 1$ represents a success, with probability $p_X(1) = p$, and $X = 0$ represents a failure, with probability $p_X(0) = 1 - p$.
 
@@ -122,7 +122,7 @@ plot(x, prob, type = "h", xlab = "dice total, x", ylab = "probability mass funct
 
 
 Note that since $p(x) = \mathbb P(X = x)$ is a probability, it must be greater than or equal to 0, by Axiom 1. Further, if we add up $p(x)$ we get
-\[ \sum_{x} p(x) =  \sum_{x \in \Range(X)} \mathbb P(X = x) = \mathbb P\big(X \in \Range(X)\big)  =  \mathbb P(\Omega) = 1,  \]
+$$ \sum_{x} p(x) =  \sum_{x \in \Range(X)} \mathbb P(X = x) = \mathbb P\big(X \in \Range(X)\big)  =  \mathbb P(\Omega) = 1,  $$
 by Axiom 2.
 Hence we have the following:
 
@@ -136,13 +136,13 @@ Let $X$ be a discrete random variable, and let $p_X$ be its PMF. Then
 ## Cumulative distribution function {#cdf}
 
 Sometimes it is useful to know the probability a random variable $X$ is less or equal to than some value $x$. This is captured by the **cumulative distribution function** (or **CDF**) $F_X$, where
-\[ F_X(x) = \mathbb P(X \leq x) = \sum_{y \leq x} p_X(y) \qquad \text{for $x \in \mathbb R$.}  \]
+$$ F_X(x) = \mathbb P(X \leq x) = \sum_{y \leq x} p_X(y) \qquad \text{for $x \in \mathbb R$.}  $$
 
 ::: {.example}
 Let $X \sim \text{Bern}(p)$ be a Bernoulli random variable with success probability $p$. It's impossible for the outcome to be less than 0; it is at least 0 but strictly less than 1 only if it equals 0, which happens with probability $p(0) = 1-p$; and it is certain to at most 1. So its CDF $F$ is
-\[ F(x) = \begin{cases} 0 & \text{for $x < 0$} \\
+$$ F(x) = \begin{cases} 0 & \text{for $x < 0$} \\
                       1-p & \text{for $0 \leq x < 1$} \\
-                      1   & \text{for $x \geq 1$} . \end{cases} \]
+                      1   & \text{for $x \geq 1$} . \end{cases} $$
 :::
 
 ::: {.example}

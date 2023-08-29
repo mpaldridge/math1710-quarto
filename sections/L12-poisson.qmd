@@ -16,12 +16,12 @@ Another important distribution is the Poisson distribution. The Poisson distribu
 
 ::: {.definition}
 Let $X$ be a discrete random variable with range $\{0,1,2,\dots\}$ and PMF
-\[ p_X(x) = \mathrm e^{-\lambda}  \frac{\lambda^x}{x!} . \]
+$$ p_X(x) = \mathrm e^{-\lambda}  \frac{\lambda^x}{x!} . $$
 Then we say that $X$ follows the **Poisson distribution** with **rate** $\lambda$, and write $X \sim \text{Po}(\lambda)$.
 :::
 
 Here, $\lambda$ is a lower-case Greek letter "lambda". I should also note that we interpret $0! = 1$, so
-\[ p(0) = \mathrm e^{-\lambda}  \frac{\lambda^0}{0!} = \mathrm e^{-\lambda}  \frac{1}{1} = \mathrm e^{-\lambda} . \]
+$$ p(0) = \mathrm e^{-\lambda}  \frac{\lambda^0}{0!} = \mathrm e^{-\lambda}  \frac{1}{1} = \mathrm e^{-\lambda} . $$
 
 ```{r po-pic, cache = TRUE, echo = FALSE}
 x <- 0:10
@@ -38,10 +38,10 @@ The Poisson distribution is named after the French mathematician [Siméon-Denis 
 *An insurance company receives large insurance claims of over £100,000 at a rate of $\lambda = 1.2$ per day, modelled as a Poisson distribution and independent between days. What's the probability that in a week (5 days) they get at least one large claim every day?*
 
 Let $X \sim \text{Po}(\lambda)$ be the number of large claims received in a day. Then the probability there is at least one claim in a day -- which is an "at least one" question, suggesting we look at the complement -- is
-\[ \mathbb P(X \geq 1) = 1 - \mathbb P(X = 0) = 1 - \mathrm e^{-1.2} \frac{1.2^0}{0!} = 1 - \mathrm e^{-1.2} =0.699 .    \]
+$$ \mathbb P(X \geq 1) = 1 - \mathbb P(X = 0) = 1 - \mathrm e^{-1.2} \frac{1.2^0}{0!} = 1 - \mathrm e^{-1.2} =0.699 .    $$
 
 Since it's assumed that days are independent, the probability there is at least one large claim all 5 days is
-\[  \mathbb P(X \geq 1)^5 = 0.699^5 = 0.167, \]
+$$  \mathbb P(X \geq 1)^5 = 0.699^5 = 0.167, $$
 or about 17%.
 :::
 -->
@@ -52,10 +52,10 @@ or about 17%.
 The number of emails per hour is $X \sim \mathrm{Po}(3)$.
 
 For (a), we have
-\[ \mathbb P(X = 3) = p(3) = \mathrm{e}^{-3} \frac{3^2}{2!} = \frac94 \mathrm{e}^{-3} = 0.224 . \]
+$$ \mathbb P(X = 3) = p(3) = \mathrm{e}^{-3} \frac{3^2}{2!} = \frac94 \mathrm{e}^{-3} = 0.224 . $$
 
 For part (b), and remembering that $0! = 1$, we have
-\[ \mathbb P(X = 3) = p(0) = \mathrm{e}^{-3} \frac{3^0}{0!} = \mathrm{e}^{-3} = 0.050 . \]
+$$ \mathbb P(X = 3) = p(0) = \mathrm{e}^{-3} \frac{3^0}{0!} = \mathrm{e}^{-3} = 0.050 . $$
 :::
 
 The parameter $\lambda$ is called the "rate" because that indeed the number of emails (or insurance claims, or phone calls, or deaths by horse-kicking) that we expect to see.
@@ -72,11 +72,11 @@ Let $X \sim \text{Po}(\lambda)$. Then
 We'll do the first two here, then you can do the variance in [Problem Sheet 4](#P4-long). 
 
 It will be useful to remember the Taylor series for the exponential function,
-\[ \mathrm e^\lambda = \sum_{x=0}^\infty \frac{\lambda^k}{x!} . \]
+$$ \mathrm e^\lambda = \sum_{x=0}^\infty \frac{\lambda^k}{x!} . $$
 
 For part 1, to see that the PMF does indeed sum to one, note that the Taylor series gives us
-\[ \sum_{x=0}^\infty p(x) = \sum_{x=0}^\infty \mathrm e^{-\lambda} \frac{\lambda^x}{x!}
-= \mathrm e^{-\lambda} \sum_{x=0}^\infty  \frac{\lambda^x}{x!} = \mathrm e^{-\lambda}\,\mathrm e^{\lambda} = 1. \]
+$$ \sum_{x=0}^\infty p(x) = \sum_{x=0}^\infty \mathrm e^{-\lambda} \frac{\lambda^x}{x!}
+= \mathrm e^{-\lambda} \sum_{x=0}^\infty  \frac{\lambda^x}{x!} = \mathrm e^{-\lambda}\,\mathrm e^{\lambda} = 1. $$
 
 For part 2, for the expectation, we have
 \begin{align*}
@@ -86,8 +86,8 @@ For part 2, for the expectation, we have
   &= \lambda \mathrm e^{-\lambda} \sum_{x=1}^\infty \frac{\lambda^{x-1}}{(x-1)!}
 \end{align*}
 In the second line, we took $\mathrm e^{-\lambda}$ outside the sum, and allowed ourselves to start the sum from 1, since the $x = 0$ term was 0 anyway; in the third line, we cancelled the $x$ from the $x!$ to get $(x-1)!$; and in the fourth line we took one of the $\lambda$s in $\lambda^x$ outside the sum, to give ourselves terms in $x - 1$ inside the sum. We can now "re-index" the sum by putting $y = x - 1$, to get
-\[ \mathbb EX = \lambda \mathrm e^{-\lambda} \sum_{y=0}^\infty \frac{\lambda^{y}}{y!}
-= \lambda \mathrm e^{-\lambda} \mathrm e^{\lambda} = \lambda , \]
+$$ \mathbb EX = \lambda \mathrm e^{-\lambda} \sum_{y=0}^\infty \frac{\lambda^{y}}{y!}
+= \lambda \mathrm e^{-\lambda} \mathrm e^{\lambda} = \lambda , $$
 where we used the Taylor series again.
 :::
 
@@ -113,7 +113,7 @@ But what should $n$ and $p$ be? To make the average $\mathbb EX = np = 4.8$, I m
 
 :::  {.theorem #po-bint}
 Fix $\lambda \geq 0$, and let $X_n \sim \text{Bin}(n, \lambda/n)$ for all integers $n \geq \lambda$. Then $X_n \to \text{Po}(\lambda)$ in distribution as $n \to \infty$, by which we mean that if $Y \sim \text{Po}(\lambda)$, then
-\[ p_{X_n}(x) \to p_Y(x) \qquad \text{for all $x \in \{0, 1, \dots \}$}. \]
+$$ p_{X_n}(x) \to p_Y(x) \qquad \text{for all $x \in \{0, 1, \dots \}$}. $$
 :::
 
 A looser way to state the principle of this theorem would be this: *When $n$ is very large and $p$ very small, in such a way that $np$ is a small-ish number, then $\text{Bin}(n,p)$ is well approximated by $\text{Po}(\lambda)$ where $\lambda = np$.*
@@ -126,7 +126,7 @@ This is why a Poisson distribution is a good model for the number of occurrences
 If we let $X$ be the  number of students that turn up to a drop-in session, then the exact distribution of $X$ is $X \sim \text{Bin}(100, 0.035)$.
 
 For part (a), we then have
-\[ \mathbb P(X = 5) = \binom{100}{5} 0.035^5 (1 - 0.035)^{100-5} = 0.134 .  \]
+$$ \mathbb P(X = 5) = \binom{100}{5} 0.035^5 (1 - 0.035)^{100-5} = 0.134 .  $$
 
 For part (b), we have an "at least" event, so we use the complement rule to get
 \begin{align*}
@@ -141,7 +141,7 @@ For part (b), we have an "at least" event, so we use the complement rule to get
 Alternatively, it might be more convenient to approximate $X$ by a Poisson distribution $Y \sim \text{Po}(100 \times 0.035) = \text{Po}(3.5)$.
 
 For part (a), this gives
-\[ \mathbb P(Y = 5) = \mathrm e^{-3.5} \frac{3.5^5}{5!} = 0.132 ,  \]
+$$ \mathbb P(Y = 5) = \mathrm e^{-3.5} \frac{3.5^5}{5!} = 0.132 ,  $$
 which is very close to the exact answer above of $0.134$.
 
 For part (b), the approximation gives
@@ -173,8 +173,8 @@ For completeness, we include a proof of Theorem \@ref(thm:po-bint) here, althoug
 ::: {.proof}
 *(Non-examinable)*
 We need to show that, as $n \to \infty$, 
-\[ p_X(x) = \binom nx \left(\frac{\lambda}{n}\right)^x \left(1 - \frac{\lambda}{n}\right)^{n-x}
-\to \mathrm{e}^{-\lambda} \frac{\lambda^x}{x!} = p_Y(x) . \]
+$$ p_X(x) = \binom nx \left(\frac{\lambda}{n}\right)^x \left(1 - \frac{\lambda}{n}\right)^{n-x}
+\to \mathrm{e}^{-\lambda} \frac{\lambda^x}{x!} = p_Y(x) . $$
 Let's try. The left-hand side is, by some simple rearrangements,
 \begin{align*}
 \binom nx &\left(\frac{\lambda}{n}\right)^x \left(1 - \frac{\lambda}{n}\right)^{n-x} \\
@@ -185,11 +185,11 @@ Let's try. The left-hand side is, by some simple rearrangements,
 \end{align*}
 
 Now let's take each of the terms in turn. First $\lambda^x / x!$ looks very promising, and can stay. Second, each of the terms $1, 1 - 1/n, \dots, 1 - (x-1)/n$ tend to 1 as $n \to \infty$. Third, 
-\[ \left(1 - \frac{\lambda}{n}\right)^{n} \to \mathrm{e}^{-\lambda} ; \]
+$$ \left(1 - \frac{\lambda}{n}\right)^{n} \to \mathrm{e}^{-\lambda} ; $$
 this is from the standard "compound interest" result that
-\[ \left(1 + \frac{a}{n}\right)^{n} \to \mathrm{e}^{a} \qquad \text{as $n \to \infty$}. \]
+$$ \left(1 + \frac{a}{n}\right)^{n} \to \mathrm{e}^{a} \qquad \text{as $n \to \infty$}. $$
 Finally
-\[\left(1 - \frac{\lambda}{n}\right)^{-x} \to 1 , \]
+$$\left(1 - \frac{\lambda}{n}\right)^{-x} \to 1 , $$
 as $1 - \lambda/n \to 1$, and $x$ is fixed. Putting all that together gives the result.
 :::
 
@@ -214,10 +214,10 @@ A random set of arrivals is said to follow a **Poisson process** with rate $\lam
 *Suppose the number of large claims, as discussed above, is modelled as a Poisson process with rate $\lambda = 0.2$ claims per hour. What is the probability the call centre receives at least one large claim every day this week?*
 
 The number of large claims in one 10-hour day is $X \sim \mathrm{Po}(10\lambda) = \mathrm{Po}(2)$. So the probability of getting at least one claim in a day is
-\[ \mathbb P(X \geq 1) = 1 - \mathbb P(X = 0) = 1 - \mathrm{e}^{-2} = 0.865 . \]
+$$ \mathbb P(X \geq 1) = 1 - \mathbb P(X = 0) = 1 - \mathrm{e}^{-2} = 0.865 . $$
 
 Because the number of claims in each of the five days this week are independent, the probability of getting at least one claim in all five days is
-\[ \mathbb P(X \geq 1)^5 = 0.865^5 = 0.483 . \]
+$$ \mathbb P(X \geq 1)^5 = 0.865^5 = 0.483 . $$
 :::
 
 This is just a brief taster of the Poisson process. The Poisson process is studied in much more detail in the second-year module [MATH2750 Introduction to Markov Processes](https://mpaldridge.github.io/math2750/).

@@ -17,7 +17,7 @@ An important continuous distribution is the exponential distribution. The expone
 
 ::: {.definition}
 A continuous random variable $X$ is said to have the **exponential distribution with rate $\lambda > 0$** if it has the PDF
-\[ f(x) = \lambda \mathrm{e}^{-\lambda x} \qquad \text{for $x \geq 0$}, \]
+$$ f(x) = \lambda \mathrm{e}^{-\lambda x} \qquad \text{for $x \geq 0$}, $$
 and 0 otherwise. We write $X \sim \text{Exp}(\lambda)$.
 :::
 
@@ -31,7 +31,7 @@ legend("topright", c("Exp(1/2)", "Exp(1/5)"), col = c("blue", "red"), lwd = 2)
 *The length of time in years that a lightbulb works before needing to be replaced is modelled as an exponential distribution with rate $\lambda = 2$. What is the probability the lightbulb needs replacing within a year?*
 
 If $X \sim \text{Exp}(2)$ is the lifetime of the lightbulb, we seek $\mathbb P(X \leq 1)$. This is
-\[ \int_{-\infty}^1 f(x)\, \mathrm{d}x = \int_0^1 2 \mathrm e^{-2x} \, \mathrm dx = \big[ -\mathrm e^{-2x} \big]_0^1 = -\mathrm e^{-2} -(-1) = 1 - \mathrm e^{-2} = 0.864.  \]
+$$ \int_{-\infty}^1 f(x)\, \mathrm{d}x = \int_0^1 2 \mathrm e^{-2x} \, \mathrm dx = \big[ -\mathrm e^{-2x} \big]_0^1 = -\mathrm e^{-2} -(-1) = 1 - \mathrm e^{-2} = 0.864.  $$
 :::
 
 ::: {.theorem #exp-prop}
@@ -47,18 +47,18 @@ Suppose $X \sim \text{Exp}(\lambda)$. Then:
 Returning to the lightbulb example, where $X \sim \text{Exp}(2)$, we see that the average lifetime of a lightbulb is $\mathbb EX = \frac12$ a year with variance $\Var(X) = \frac14$.
 
 If we wanted to calculate $\mathbb P(1 \leq X \leq 3)$, we could do this by integrating the PDF between 1 and 3. Alternatively, we could use the CDF:
-\[ \mathbb P(1 \leq X \leq 3) = F(3) - F(1) = (1 - \mathrm{e}^{-2\times 3}) - (1 - \mathrm{e}^{-2\times 1}) = \mathrm{e}^{-2} - \mathrm{e}^{-6} = 0.132 . \]
+$$ \mathbb P(1 \leq X \leq 3) = F(3) - F(1) = (1 - \mathrm{e}^{-2\times 3}) - (1 - \mathrm{e}^{-2\times 1}) = \mathrm{e}^{-2} - \mathrm{e}^{-6} = 0.132 . $$
 :::
 
 ::: {.proof}
 *of Theorem \@ref(thm:exp-prop).*
 For part 1,
-\[ \int_0^\infty \lambda \mathrm{e}^{-\lambda x}\,\mathrm{d}x
-     = \big[-\mathrm{e}^{-\lambda x} \big]_0^\infty = -0 -(-1) = 1 . \]
+$$ \int_0^\infty \lambda \mathrm{e}^{-\lambda x}\,\mathrm{d}x
+     = \big[-\mathrm{e}^{-\lambda x} \big]_0^\infty = -0 -(-1) = 1 . $$
 
 Similarly for part 2,
-\[ F(x) = \int_0^x \lambda \mathrm{e}^{-\lambda y}\,\mathrm{d}y
-     = \big[-\mathrm{e}^{-\lambda y} \big]_0^x = -\mathrm{e}^{-\lambda x} -(-1) = 1 - \mathrm{e}^{-\lambda x}. \]
+$$ F(x) = \int_0^x \lambda \mathrm{e}^{-\lambda y}\,\mathrm{d}y
+     = \big[-\mathrm{e}^{-\lambda y} \big]_0^x = -\mathrm{e}^{-\lambda x} -(-1) = 1 - \mathrm{e}^{-\lambda x}. $$
      
 For part 3, we use integration by parts with $u = x$ and $v' = \lambda \mathrm{e}^{-\lambda x}$, so $u' = 1$ and $v = -\mathrm{e}^{-\lambda x}$. We get
 \begin{align*}
@@ -79,7 +79,7 @@ For part 4, we use integration by parts with $u = x^2$ and $v' = \lambda \mathrm
 \end{align*}
 where we used a cunning trick on the integral on the right -- spotting that we could turn it into the expectation, which is $1/\lambda$, by part 3 -- to save us the effort of calculating it again.
 Hence
-\[ \Var(X) = \mathbb EX^2 - \left(\frac{1}{\lambda}\right)^2 =  \frac{2}{\lambda^2} - \frac{1}{\lambda^2} = \frac{1}{\lambda^2} .  \]
+$$ \Var(X) = \mathbb EX^2 - \left(\frac{1}{\lambda}\right)^2 =  \frac{2}{\lambda^2} - \frac{1}{\lambda^2} = \frac{1}{\lambda^2} .  $$
 :::
 
 
@@ -89,31 +89,31 @@ Hence
 The theory we set up for two or more discrete random variables also works for two or more continuous random variables.
 
 Now, the intensity of probability for $(X,Y)$ being around $(x,y)$ is given by the **joint probability density function** $f_{X,Y}$. In particular for $a \leq b$ and $c \leq d$, we have
-\[ \mathbb P(a \leq X \leq b \text{ and } c \leq Y \leq d ) = \int_{x = a}^b \int_{y = c}^d f_{X,Y}(x,y)\, \mathrm dx \,\mathrm dy .\]
+$$ \mathbb P(a \leq X \leq b \text{ and } c \leq Y \leq d ) = \int_{x = a}^b \int_{y = c}^d f_{X,Y}(x,y)\, \mathrm dx \,\mathrm dy .$$
 
 |   Discrete random variables   |   Continuous random variables   |
 |-----|-----|
-| We can get the **marginal PMF** $p_X$ of $X$ by summing over $y$, so \[ p_X(x) = \sum_y p_{X,Y}(x,y) . \] | We can get the **marginal PDF** $f_X$ of $X$ by integrating over $y$, so \[ f_X(x) = \int_{-\infty}^\infty f_{X,Y}(x,y) \, \mathrm dy. \] |
-| Two discrete random variables $X$ and $Y$ are **independent** if their PMFs satisfy \[p_{X,Y}(x,y) = p_X(x)\,p_Y(y) \qquad \text{for all $x, y$}.\] | Two continuous random variables $X$ and $Y$ are **independent** if they have PDFs which satisfy \[f_{X,Y}(x,y) = f_X(x)\,f_Y(y) \qquad \text{for all $x, y$}.\] |
-| The **conditional PMF** of $Y$ given $X$ is defined by \[ p_{Y \mid X}(y \mid x) = \frac{p_{X,Y}(x,y)}{p_X(x)} . \] | The **conditional PDF** of $Y$ given $X$ is defined by \[ f_{Y \mid X}(y \mid x) = \frac{f_{X,Y}(x,y)}{f_X(x)} . \] |
-| **Bayes' theorem** states that \[ p_{X \mid Y}(x \mid y) = \frac{p_X(x)\,p_{Y\mid X}(y\mid x)}{p_Y(y)} . \] | **Bayes' theorem** states that \[ f_{X \mid Y}(x \mid y) = \frac{f_X(x)\,f_{Y\mid X}(y\mid x)}{f_Y(y)} . \] |
-| The expectation of a function of $X$ and $Y$ is given by the sum \[ \mathbb Eg(X,Y) = \sum_{x,y} g(x,y)\, p_{X,Y}(x,y) . \] | The expectation of a function of $X$ and $Y$ is given by the integral \[ \mathbb Eg(X,Y) = \int_{-\infty}^\infty \int_{-\infty}^\infty g(x,y)\, f_{X,Y}(x,y) \, \mathrm dx \, \mathrm dy . \] |
-| The **covariance** of $X$ and $Y$ is given by \[ \Cov(X,Y) = \mathbb E(X - \mu_X)(Y - \mu_Y) , \] and has a computational formula \[ \Cov(X,Y) = \mathbb EXY - \mu_X \mu_Y . \] | The **covariance** of $X$ and $Y$ is given by \[ \Cov(X,Y) = \mathbb E(X - \mu_X)(Y - \mu_Y) , \] and has a computational formula \[ \Cov(X,Y) = \mathbb EXY - \mu_X \mu_Y . \]
+| We can get the **marginal PMF** $p_X$ of $X$ by summing over $y$, so $$ p_X(x) = \sum_y p_{X,Y}(x,y) . $$ | We can get the **marginal PDF** $f_X$ of $X$ by integrating over $y$, so $$ f_X(x) = \int_{-\infty}^\infty f_{X,Y}(x,y) \, \mathrm dy. $$ |
+| Two discrete random variables $X$ and $Y$ are **independent** if their PMFs satisfy $$p_{X,Y}(x,y) = p_X(x)\,p_Y(y) \qquad \text{for all $x, y$}.$$ | Two continuous random variables $X$ and $Y$ are **independent** if they have PDFs which satisfy $$f_{X,Y}(x,y) = f_X(x)\,f_Y(y) \qquad \text{for all $x, y$}.$$ |
+| The **conditional PMF** of $Y$ given $X$ is defined by $$ p_{Y \mid X}(y \mid x) = \frac{p_{X,Y}(x,y)}{p_X(x)} . $$ | The **conditional PDF** of $Y$ given $X$ is defined by $$ f_{Y \mid X}(y \mid x) = \frac{f_{X,Y}(x,y)}{f_X(x)} . $$ |
+| **Bayes' theorem** states that $$ p_{X \mid Y}(x \mid y) = \frac{p_X(x)\,p_{Y\mid X}(y\mid x)}{p_Y(y)} . $$ | **Bayes' theorem** states that $$ f_{X \mid Y}(x \mid y) = \frac{f_X(x)\,f_{Y\mid X}(y\mid x)}{f_Y(y)} . $$ |
+| The expectation of a function of $X$ and $Y$ is given by the sum $$ \mathbb Eg(X,Y) = \sum_{x,y} g(x,y)\, p_{X,Y}(x,y) . $$ | The expectation of a function of $X$ and $Y$ is given by the integral $$ \mathbb Eg(X,Y) = \int_{-\infty}^\infty \int_{-\infty}^\infty g(x,y)\, f_{X,Y}(x,y) \, \mathrm dx \, \mathrm dy . $$ |
+| The **covariance** of $X$ and $Y$ is given by $$ \Cov(X,Y) = \mathbb E(X - \mu_X)(Y - \mu_Y) , $$ and has a computational formula $$ \Cov(X,Y) = \mathbb EXY - \mu_X \mu_Y . $$ | The **covariance** of $X$ and $Y$ is given by $$ \Cov(X,Y) = \mathbb E(X - \mu_X)(Y - \mu_Y) , $$ and has a computational formula $$ \Cov(X,Y) = \mathbb EXY - \mu_X \mu_Y . $$
 
 ::: {.example}
 Consider the pair of continuous random variable $(X,Y)$ with joint PDF
-\[ f_{X,Y}(x,y) = \tfrac12(1 + x + y) \qquad \text{for $0 \leq x,y\leq 1$} \]
+$$ f_{X,Y}(x,y) = \tfrac12(1 + x + y) \qquad \text{for $0 \leq x,y\leq 1$} $$
 and $f_{X,Y}(x,y) = 0$ otherwise.
 
 We get the marginal distribution for $X$ by integrating over $y$, so
-\[ f_X(x) = \int_0^1 \tfrac12(1 + x + y) \, \mathrm dy = \tfrac12 \left[(1 + x)y + \tfrac12y^2\right]_0^1 = \tfrac34 + \tfrac12x . \]
+$$ f_X(x) = \int_0^1 \tfrac12(1 + x + y) \, \mathrm dy = \tfrac12 \left[(1 + x)y + \tfrac12y^2\right]_0^1 = \tfrac34 + \tfrac12x . $$
 
 We can find the the conditional PDF for $Y$ given $X = \tfrac14$. It is
-\[ f_{Y\mid X}\big(y \mid \tfrac14\big) = \frac{f_{X,Y}\big(\tfrac14,y\big)}{f_X\big(\tfrac14\big)}
-    = \frac{\tfrac12\big(1 + \tfrac14 + y\big)}{\tfrac34 + \tfrac12\times\tfrac14 } = \tfrac{5}{7} + \tfrac47 y . \]
+$$ f_{Y\mid X}\big(y \mid \tfrac14\big) = \frac{f_{X,Y}\big(\tfrac14,y\big)}{f_X\big(\tfrac14\big)}
+    = \frac{\tfrac12\big(1 + \tfrac14 + y\big)}{\tfrac34 + \tfrac12\times\tfrac14 } = \tfrac{5}{7} + \tfrac47 y . $$
     
 We can calculate the covariance. First, the expectations are
-\[ \mathbb EX = \int_{-\infty}^\infty x\, f_X(x) \,\mathrm dx = \int_0^1 x\big(\tfrac34 + \tfrac12x\big)\, \mathrm dx = \left[\tfrac38 x^2 + \tfrac16 x^3 \right] = \tfrac{13}{24} \]
+$$ \mathbb EX = \int_{-\infty}^\infty x\, f_X(x) \,\mathrm dx = \int_0^1 x\big(\tfrac34 + \tfrac12x\big)\, \mathrm dx = \left[\tfrac38 x^2 + \tfrac16 x^3 \right] = \tfrac{13}{24} $$
 and $\mathbb EY = \frac{13}{24}$ also, by symmetry. Second, we have
 \begin{align*}
 \mathbb EXY
@@ -125,7 +125,7 @@ and $\mathbb EY = \frac{13}{24}$ also, by symmetry. Second, we have
 &= \tfrac{7}{24} .
 \end{align*}
 So therefore,
-\[ \Cov(X,Y) = \mathbb EXY - \mu_X \mu_Y = \tfrac{7}{24} - \tfrac{13}{24} \times \tfrac{13}{24} = -\tfrac{1}{576} . \]
+$$ \Cov(X,Y) = \mathbb EXY - \mu_X \mu_Y = \tfrac{7}{24} - \tfrac{13}{24} \times \tfrac{13}{24} = -\tfrac{1}{576} . $$
 ::::
 
 ## Summary  {#summary-L17 .unnumbered}

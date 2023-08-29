@@ -66,11 +66,11 @@ plot(x, pmf_x, type = "h", lwd = 4, ylim = c(0, max(pmf_x)))
 ## Cumulative distribution function
 
 We know that a CDF $F(x) = \mathbb P(X = x)$ can be calculated by summing up the PDF; that is,
-\[ F(x) = \sum_{y \leq x} p(x) . \]
+$$ F(x) = \sum_{y \leq x} p(x) . $$
 To calculate this in R, it is helpful to use the cumulative sum function **`cumsum()`**. The cumulative sum of a vector
-\[ (a, \quad b, \quad c, \quad d, \quad e) \]
+$$ (a, \quad b, \quad c, \quad d, \quad e) $$
 is the vector of partial sums
-\[ (a, \quad a+b, \quad a+b+c, \quad a+b+c+d, \quad a+b+c+d+e) . \]
+$$ (a, \quad a+b, \quad a+b+c, \quad a+b+c+d, \quad a+b+c+d+e) . $$
 
 So taking the cumulative sum of the PMF,
 
@@ -113,7 +113,7 @@ with other extra graphical commands, as required. The "blobs" are to let the rea
 ## Expectation
 
 Recall that the definition of the expectation of a discrete random variable is
-\[ \mathbb EX = \sum_x x\, p(x) . \]
+$$ \mathbb EX = \sum_x x\, p(x) . $$
 
 So to calculate this, we can simply use R's `sum()` function. We just want
 

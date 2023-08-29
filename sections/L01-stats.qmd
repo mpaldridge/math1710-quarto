@@ -45,7 +45,7 @@ Most importantly for now, *you are not expected to understand the R code in this
 -->
 
 Suppose we have collected some data on a certain variable. We will assume here that we have $n$ datapoints, each of which is a single real number. We can write this data as a vector
-\[ \mathbf x = (x_1, x_2, \dots, x_n) . \]
+$$ \mathbf x = (x_1, x_2, \dots, x_n) . $$
 
 A **statistic** is a calculation from the data $\mathbf x$, which is (usually) also a real number. In this section we will look at two types of "summary statistics", which are statistics that we feel will give us useful information about the data.
 
@@ -62,16 +62,16 @@ Consider some real-valued data $\mathbf x = (x_1, x_2, \dots, x_n)$.
 * The **mode** is the most common value of $x_i$. (If there are multiple joint-most common values, they are all modes.)
 * Suppose the data is ordered as $x_1 \leq x_2 \leq \cdots \leq x_n$. Then the **median** is the central value in the ordered list. If $n$ is odd, this is $x_{(n+1)/2}$; if $n$ is even, we normally take halfway between the two central points, $\frac12(x_{n/2}+x_{n/2 + 1})$.
 * The **mean** $\bar x$ is
-\[ \bar x = \frac{1}{n}(x_1 + x_2 + \cdots + x_n) = \frac1n \sum_{i=1}^n x_i . \]
+$$ \bar x = \frac{1}{n}(x_1 + x_2 + \cdots + x_n) = \frac1n \sum_{i=1}^n x_i . $$
 :::
 
 (In that last expression, we've made use of [Sigma notation](https://www.mathcentre.ac.uk/resources/workbooks/mathcentre/sigma.pdf) to write down the sum.)
 
 ::: {.example}
 Some packets of Skittles (a small fruit-flavoured sweet) were opened, and the number of Skittles in each packet counted. There were 13 packets, and the number of sweets (sorted from smallest to largest) were:
-\[ 59, \ 59, \ 59, \ 59, \ 60, \ 60, \ 60, \ 61, \ 62, \ 62, \ 62, \ 63, \ 63 .\]
+$$ 59, \ 59, \ 59, \ 59, \ 60, \ 60, \ 60, \ 61, \ 62, \ 62, \ 62, \ 63, \ 63 .$$
 The mode is 59, because there were 4 packets containing 59 sweets; more than any other number. Since there are $n = 13$ packets, the middle packet is number $i = 7$, so the median is $x_7 = 60$. The mean is
-\[ \bar x = \frac{1}{13} (59 + 59 + \cdots + 63) = \frac{789}{13} = 60.7 .\]
+$$ \bar x = \frac{1}{13} (59 + 59 + \cdots + 63) = \frac{789}{13} = 60.7 .$$
 :::
 
 The median is one example of a "quantile" of the data. Suppose our data is increasing order again. For $0 \leq \alpha \leq 1$, the **$\alpha$-quantile** $q(\alpha)$ of the data is the datapoint $\alpha$ of the way along the list. Generally, $q(\alpha)$ is equal to $x_{1+\alpha(n-1)}$ when $1+\alpha(n-1)$ is an integer. (If $1+\alpha(n-1)$ isn't an integer, there are various conventions of how to choose that we won't go into here. R has *nine* different settings for choosing quantiles! -- we will always just use R's default choice.)
@@ -105,7 +105,7 @@ The **number of distinct observations** is precisely that: the number of differe
 The **interquartile range** is the difference between the upper and lower quartiles $\text{IQR} = q(\frac34) - q(\frac14)$.
 
 The **sample variance** is
-\[  s^2_x = \frac{1}{n-1} \left((x_1 - \bar x)^2 + \cdots + (x_n - \bar x)^2 \right) = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar x)^2 , \]
+$$  s^2_x = \frac{1}{n-1} \left((x_1 - \bar x)^2 + \cdots + (x_n - \bar x)^2 \right) = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar x)^2 , $$
 where $\bar x$ is the sample mean from before. The **standard deviation** $s_x = \sqrt{s^2_x}$ is the square-root of the sample variance.
 :::
 
@@ -121,7 +121,7 @@ The formula we've given for sample variance is sometimes called the "definitiona
 Here, the first line is the definitional formula; the second line is from expanding out the bracket; the third line is taking the sum term-by-term; the fourth line takes any constants (things not involving $i$) outside the sums; the fifth line uses $\sum_{i=1}^n x_i = n\bar x$, from the definition of the mean, and $\sum_{i=1}^n 1 = 1 + 1 + \cdots 1 = n$; and the sixth line simplifies the final two terms.
 
 This has left us with
-\[ s^2_x = \frac{1}{n-1} \left(\sum_{i=1}^n x_i^2 -  n\bar x^2 \right) . \]
+$$ s^2_x = \frac{1}{n-1} \left(\sum_{i=1}^n x_i^2 -  n\bar x^2 \right) . $$
 This is sometimes called the "computational formula"; this is because it usually takes fewer presses of calculator buttons to compute the sample variance with this formula rather than the definitional formula. (But make sure you keep enough decimal points in $\bar x^2$.)
 
 Going back to our weather data in R, we can find the sample variance of the October weather or the interquartile range of the July weather.

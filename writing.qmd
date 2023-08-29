@@ -49,7 +49,7 @@ Here are two solutions for [Problem Sheet 3 Question B1](#P3-long). This first s
 \end{tikzpicture}
 ```
 
-\[ \therefore \ \qquad \mathbb P(A) = \mathbb P(A \cap B) + \mathbb P(A \cap B^\comp)  \]
+$$ \therefore \ \qquad \mathbb P(A) = \mathbb P(A \cap B) + \mathbb P(A \cap B^\comp)  $$
 
 \begin{align*}
 \Rightarrow \qquad \mathbb P(A \cap B^\comp)
@@ -63,10 +63,10 @@ Here are two solutions for [Problem Sheet 3 Question B1](#P3-long). This first s
 ::: {.thpart}
 *Solution 2.* 
 We need to show that $A$ and $B^\comp$ are independent, which means showing that
-\[ \mathbb P(A \cap B^\comp) = \mathbb P(A) \, \mathbb P(B^\comp) . \tag{$*$} \]
+$$ \mathbb P(A \cap B^\comp) = \mathbb P(A) \, \mathbb P(B^\comp) . \tag{$*$} $$
 
 By splitting the event $A$ up into "the bit in $B$" and the "the bit not in $B$", as shown in the Venn diagram below, we have a disjoint union
-\[ A = (A \cap B) \cup (A \cap B^\comp) . \]
+$$ A = (A \cap B) \cup (A \cap B^\comp) . $$
 
 ```{r writing-pic-1, engine = 'tikz', echo=FALSE, fig.align="center", out.width="320pt", cache = TRUE}
 \begin{tikzpicture}[line width=0.25pt, scale=0.8]
@@ -87,7 +87,7 @@ By splitting the event $A$ up into "the bit in $B$" and the "the bit not in $B$"
 ```
 
 Applying Axiom 3 to this disjoint union, we have
-\[ \mathbb P(A) = \mathbb P(A \cap B) + \mathbb P(A \cap B^\comp) . \]
+$$ \mathbb P(A) = \mathbb P(A \cap B) + \mathbb P(A \cap B^\comp) . $$
 
 Hence, the left-hand side of $(*)$ is
 \begin{align*}
@@ -134,12 +134,12 @@ Let $Y$ be the event that the soldier answers "Yes". We are told that $\mathbb P
 We know that $\mathbb P(Y \mid C_1) = 1$, because a soldier must answer "Yes" to Card 1, and $\mathbb P(Y \mid C_2) = 0$, because a soldier must answer "No" to Card 2. For Card 3, a soldier answers "Yes" if they have taken drugs and "No" if they have not, so $\mathbb P(Y \mid C_3) = \mathbb P(D)$, where $\mathbb P(D)$, which we want to find, is the proportion of soldiers who have taken illegal drugs in the past 12 months. 
 
 Since $C_1, C_2, C_3$ make up a partition -- a soldier must pick exactly one card -- the law of total probability tells us that
-\[ \mathbb P(Y) = \mathbb P(C_1)\,\mathbb P(Y \mid C_1) + \mathbb P(C_2)\,\mathbb P(Y \mid C_2) + 
-\mathbb P(C_3)\,\mathbb P(Y \mid C_3) .\]
+$$ \mathbb P(Y) = \mathbb P(C_1)\,\mathbb P(Y \mid C_1) + \mathbb P(C_2)\,\mathbb P(Y \mid C_2) + 
+\mathbb P(C_3)\,\mathbb P(Y \mid C_3) .$$
 With the information we have gathered above, we have
-\[ 0.4 = \tfrac13 \times 1 + \tfrac13 \times 0 + \tfrac13 \, \mathbb P(D) = \tfrac13 + \tfrac13 \,\mathbb P(D)  . \]
+$$ 0.4 = \tfrac13 \times 1 + \tfrac13 \times 0 + \tfrac13 \, \mathbb P(D) = \tfrac13 + \tfrac13 \,\mathbb P(D)  . $$
 Solving this gives 
-\[ \mathbb P(D) = \frac{0.4 - \frac13}{\frac13} = \frac15 = 20\% . \]
+$$ \mathbb P(D) = \frac{0.4 - \frac13}{\frac13} = \frac15 = 20\% . $$
 :::
 
 

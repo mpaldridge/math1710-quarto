@@ -23,15 +23,15 @@ We continue looking at the classical probability $\mathbb P(A) = |A|/|\Omega|$, 
 Here, the sample space $\Omega$ is the set of all orderings of the $n$ exam papers by mark, and $A$ is the event that the papers are in order from lowest to highest scoring. It's clear that $|A| = 1$: since the exams scored different marks, there's only one way of putting the exams in the correct lowest-to-highest order. But what's $|\Omega|$?
 
 There are $n$ choices for the first exam paper to be marked. Then, for the second exam paper, there are $n - 1$ choices left, because the lecturer is not going to mark the same paper twice. There are $n-2$ choices for the third exam paper. And so on, until she has marked $n-1$ papers, and there is only 1 choice left for the final paper. So we have
-\[ |\Omega| = \ff nn = n(n-1)(n-2)\cdots3\cdot2\cdot1 = n! \]
+$$ |\Omega| = \ff nn = n(n-1)(n-2)\cdots3\cdot2\cdot1 = n! $$
 ways to order the exam papers.
 
 Hence, the probability the papers are marked in order is
-\[ \mathbb P(A) = \frac{|A|}{|\Omega|} = \frac{1}{n(n-1)\cdots2\cdot1} = \frac{1}{n!} . \]
+$$ \mathbb P(A) = \frac{|A|}{|\Omega|} = \frac{1}{n(n-1)\cdots2\cdot1} = \frac{1}{n!} . $$
 :::
 
 This number
-\[ n! = \ff nn = n(n-1)(n-2)\cdots3\cdot2\cdot1 \]
+$$ n! = \ff nn = n(n-1)(n-2)\cdots3\cdot2\cdot1 $$
 is called **$n$ factorial** and denoted $n!$. It is the number of ways that $n$ different objects can be ordered.
 
 The factorial $n!$ gets very large very quickly. **Stirling's formula** gives the approximation
@@ -39,9 +39,9 @@ $n! \approx \sqrt{2\pi n} \, \mathrm{e}^{-n} \, n^n$.
 
 ::: {.example}
 Suppose you shuffle a pack of cards. The resulting ordering of the deck has $52!$ possibilities. This is an unimaginably huge number -- the exact value to 3 significant figures is
-\[ 52! = 8.07 \times 10^{67} , \]
+$$ 52! = 8.07 \times 10^{67} , $$
 while Stirling's formula gives the approximation
-\[ 52! \approx \sqrt{2\pi \times 52} \times \mathrm{e}^{-52} \times 52^{52} = 8.05 \times 10^{67} . \]
+$$ 52! \approx \sqrt{2\pi \times 52} \times \mathrm{e}^{-52} \times 52^{52} = 8.05 \times 10^{67} . $$
 This is an 8 followed by 67 zeroes.
 
 If every person on the planet (very roughly $10^{10}$) had shuffled a deck of cards one million ($10^6$) times a second for the entire lifetime of the universe (roughly $10^{17}$ seconds), they could only expect to have got through about $10^{33}$ shuffles.
@@ -54,7 +54,7 @@ If we take the ratio of a bigger factorial $n!$ over a smaller factorial $j!$, w
   &= n(n-1) \cdots (j+1) ,
 \end{align*}
 because the last part of the product in the numerator cancels with the whole of the denominator. Replacing $j$ with $n-k$, this gives
-\[ \frac{n!}{(n-k)!} = n(n-1) \cdots (n - k + 1) = \ff{n}{k} . \]
+$$ \frac{n!}{(n-k)!} = n(n-1) \cdots (n - k + 1) = \ff{n}{k} . $$
 This gives a way of writing the falling factorial as the ratio of two (normal) factorials, which can sometimes be useful.
 
 <!--
@@ -85,21 +85,21 @@ where the numbers from $n-k$ down to 1 cancel out.
 Here, $\Omega$ is the set of all possible sets of 6 winning numbers, and $A$ is the set of numbers on your ticket. Clearly $|A| = 1$, but what is $|\Omega|$?
 
 Well, the first ball out of the machine has 59 possibilities, the second ball has 58 possibilities, and so on, making
-\[ 59 \times 58 \times 57 \times 56 \times 55 \times 54 = \ff{59}{6} . \]
+$$ 59 \times 58 \times 57 \times 56 \times 55 \times 54 = \ff{59}{6} . $$
 
 But this isn't the correct answer, because the same set of balls could be drawn from the machine in any order! The sets of balls $\{1,2,3,4,5,6\}$ and $\{1,2,3,4,6,5\}$ and $\{6,5,4,3,2,1\}$ are all the same set of numbers. How many ways can we see the same list of numbers? This is precisely the number of orderings of 6 balls, which we know is $6!$. So the number of possible sets of 6 balls to come out of the machine is actually
-\[ \binom{59}{6} = \frac{\ff{59}{6}}{6!} = \frac{59 \times 58 \times 57 \times 56 \times 55 \times 54}{6\times5\times4\times3\times2\times1} \approx 45 \text{ million} . \]
+$$ \binom{59}{6} = \frac{\ff{59}{6}}{6!} = \frac{59 \times 58 \times 57 \times 56 \times 55 \times 54}{6\times5\times4\times3\times2\times1} \approx 45 \text{ million} . $$
 
 Thus the probability that your ticket wins the jackpot is
-\[ \mathbb P(A) = \frac{|A|}{|\Omega|} = \frac{1}{\binom{59}{6}} \approx \frac{1}{45 \text{ million}} \approx 0.000\,000\,02 . \]
+$$ \mathbb P(A) = \frac{|A|}{|\Omega|} = \frac{1}{\binom{59}{6}} \approx \frac{1}{45 \text{ million}} \approx 0.000\,000\,02 . $$
 :::
 
 Here, we have introduced the notation
-\[ \binom{n}{k} = \frac{\ff{n}{k}}{k!} = \frac{n(n-1) \cdots (n-k+1)}{k(k-1)\cdots2\cdot1}  \]
+$$ \binom{n}{k} = \frac{\ff{n}{k}}{k!} = \frac{n(n-1) \cdots (n-k+1)}{k(k-1)\cdots2\cdot1}  $$
 for the number of ways to choose $k$ objects out of $n$ without replacement *and where the order they were chosen in doesn't matter*. This is called the **binomial coefficient**, although when we say it out loud we normally just say "$n$ choose $k$". (Another notation for the binomial coefficient is ${}^n C_k$.)
 
 It can sometimes be useful to remember that $\ff nk = n!/(n-k)!$ allows us to write the binomial coefficient in terms of the factorial function as
-\[ \binom nk = \frac{\ff nk}{(n-k)!} = \frac{n!}{k!(n-k)!} . \]
+$$ \binom nk = \frac{\ff nk}{(n-k)!} = \frac{n!}{k!(n-k)!} . $$
 
 
 ::: {.example #akqj}
@@ -108,14 +108,14 @@ It can sometimes be useful to remember that $\ff nk = n!/(n-k)!$ allows us to wr
 Here, $\Omega$ is the set of all 13-card hands from the deck, and $A$ is the subset of those that contain the AKQJ of Spades.
 
 Using the binomial coefficient notation, it's clear that
-\[ |\Omega| = \binom{52}{13} = \frac{52\times51\times\cdots\times41\times40}{13\times12\times\cdots\times2\times1} . \]
+$$ |\Omega| = \binom{52}{13} = \frac{52\times51\times\cdots\times41\times40}{13\times12\times\cdots\times2\times1} . $$
 
 What about $|A|$? If we fix the fact that the hand contains the 4 cards AKQJ of Spades, then it also contains $13-4=9$ cards out of the other $52-4 = 48$ remaining cards in the deck. This makes
-\[ |A| = \binom{48}{9} = \frac{48\times47\times\cdots\times41\times40}{9\times8\times\cdots\times2\times1}\]
+$$ |A| = \binom{48}{9} = \frac{48\times47\times\cdots\times41\times40}{9\times8\times\cdots\times2\times1}$$
 hands.
 
 Thus the probability that the hand contains AKQJ of Spades is
-\[ \mathbb P(A) = \frac{|A|}{|\Omega|} = \frac{\binom{48}{9}}{\binom{52}{13}} . \]
+$$ \mathbb P(A) = \frac{|A|}{|\Omega|} = \frac{\binom{48}{9}}{\binom{52}{13}} . $$
 
 Conveniently, we can simplify the expression quite a lot, because plenty of cancellation will occur. We have
 \begin{align*}
@@ -132,14 +132,14 @@ or about 1 in every 380 hands.
 There's one other useful fact about the binomial coefficient we should mention.
 
 ::: {.theorem}
-\[ \binom nk = \binom{n}{n-k}. \]
+$$ \binom nk = \binom{n}{n-k}. $$
 :::
 
 We'll give two different proofs of this fact.
 
 ::: {.proof}
 We can use the formula for the binomial coefficient in terms of the factorial function. This formula gives
-\[ \binom nk = \frac{n!}{k!(n-k)!} \qquad \binom{n}{n-k} = \frac{n!}{(n-k)!k!} . \]
+$$ \binom nk = \frac{n!}{k!(n-k)!} \qquad \binom{n}{n-k} = \frac{n!}{(n-k)!k!} . $$
 It's clear from the factorial expression that these two quantities are equal.
 :::
 
@@ -151,7 +151,7 @@ One way is to say there are $\binom nk$ ways to choose the $k$ balls to paint re
 Another way is to say there are $\binom{n}{n-k}$ to choose the $n-k$ balls to paint blue, then we are forced to paint the other $k$ red.
 
 We have "double counted" the same quantity two different ways, so the answer must be the same, so
-\[ \binom nk = \binom{n}{n-k}. \]
+$$ \binom nk = \binom{n}{n-k}. $$
 :::
 
 Which proof do you prefer? (I strongly prefer the second proof, because I think it doesn't just *verify* that the theorem is true, but further explains *why* the result is true.)
@@ -177,10 +177,10 @@ The sample space $\Omega$ is the set of possible birthdays for the $k$ students.
 Let $A$ be the even that at least two students share a birthday. Since this is an "at least" event, it seems like it might be a good idea to look instead at the complementary event $A^\comp$. If $A$ is the event that there's at least one shared birthday, then $A^\comp$ is the event that there are *no* shared birthdays; that is, $A^\comp$ is the event that all $k$ students have *different* birthdays.
 
 So what is $|A^\comp|$, the number of ways the $k$ students can have different birthdays? Well, the first student can have any of the 365 days for their birthday. For them to have different birthdays, the second student only has 364 days available. Then the third student must avoid the birthday of students 1 and 2, so has 363 available days, and so on. We see that 
-\[ |A^\comp| = 365 \times 364 \times \cdots \times (365 - k + 1) = 365^{\underline{k}} . \]
+$$ |A^\comp| = 365 \times 364 \times \cdots \times (365 - k + 1) = 365^{\underline{k}} . $$
 
 Hence, the probability at least two students share a birthday is
-\[ \mathbb P(A) = 1 - \mathbb P(A^\comp) = 1 - \frac{365^{\underline{k}}}{365^k} = 1 - \frac{365}{365} \cdot \frac{364}{365} \cdots \frac{365-k+1}{365} . \]
+$$ \mathbb P(A) = 1 - \mathbb P(A^\comp) = 1 - \frac{365^{\underline{k}}}{365^k} = 1 - \frac{365}{365} \cdot \frac{364}{365} \cdots \frac{365-k+1}{365} . $$
 
 Setting $k = 23$, we can calculate the required answer in R:
 ```{r}

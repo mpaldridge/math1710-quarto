@@ -18,10 +18,10 @@ Often, we will be interested in the "average" value of a random variable -- for 
 
 ::: {.definition}
 Let $\Omega$ be a finite or countably infinite sample space, $\mathbb P$ be a probability measure on $\Omega$, and $X$ be a discrete random variable on $\Omega$. Then the **expectation** (or **expected value**) of $X$ is
-\[ \mathbb EX = \sum_{\omega \in \Omega} X(\omega) \, \mathbb P(\{\omega\}) . \]
+$$ \mathbb EX = \sum_{\omega \in \Omega} X(\omega) \, \mathbb P(\{\omega\}) . $$
 
 If $p_X$ is the PMF of $X$, then a more convenient formula is
-\[ \mathbb EX = \sum_{x \in \Range(X)} x\,p_X(x) . \]
+$$ \mathbb EX = \sum_{x \in \Range(X)} x\,p_X(x) . $$
 :::
 
 We get the second formula from the first by grouping together all outcomes $\omega$ that lead to the same value $x = X(\omega)$ of $X$. It's only this second formula we actually use when calculating expectations.
@@ -32,7 +32,7 @@ Note that "expectation" is simply the name that mathematicians give to the value
 *Let $X \sim \text{Bern}(p)$ be a Bernoulli trial with success probability $p$. What is the expectation $\mathbb EX$?*
 
 We know that the PMF is $p(0) = 1- p$ and $p(1) = p$. So, using the second formula in the definition, we have
-\[ \mathbb EX = \sum_{x} x\,p(x) = 0\times (1-p) + 1\times p = p. \]
+$$ \mathbb EX = \sum_{x} x\,p(x) = 0\times (1-p) + 1\times p = p. $$
 :::
 
 ::: {.example}
@@ -63,9 +63,9 @@ Let $Y = 2X + 1$. Then for each potential outcome $x$ of $X$, there is a matchin
 
 ::: {.example}
 What about $Z = (X - 4)^2$? This is a bit trickier, because more than one outcome $x$ can lead to the same outcome $z = (x - 4)^2$: for example, $(2 - 4)^2 = (6 - 4)^2 = 4$. So, more precisely, we have
-  \[ \mathbb P(Z = z) = \mathbb P\big(X \in \{x : (x - 4)^2 = z\}\big) , \]
+  $$ \mathbb P(Z = z) = \mathbb P\big(X \in \{x : (x - 4)^2 = z\}\big) , $$
 or, in terms of PMFs,
-  \[   p_Z(z) = \sum_{x : (x - 4)^2 = z} p_X(x) . \]
+  $$   p_Z(z) = \sum_{x : (x - 4)^2 = z} p_X(x) . $$
   
 | $z$ | $0$ | $1$ | $4$ | $\cdots$ | $49$ | $64$ |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
@@ -82,7 +82,7 @@ So if we wanted to find the expectation of a function of a random variable, we c
 
 ::: {.theorem #unconscious name="Law of the unconscious statistician"}
 Let $X$ be a random variable, and let $Y = g(X)$ be another random variable that is a function $g$  of $X$. Then
-\[  \mathbb EY = \mathbb E\,g(X) = \sum_{x} g(x) \, p_X(x) . \]
+$$  \mathbb EY = \mathbb E\,g(X) = \sum_{x} g(x) \, p_X(x) . $$
 :::
 
 (The rather cruel name of this theorem is, I think, because this is the formula you might carelessly write down for $\mathbb Eg(X)$ if you weren't thinking carefully -- but it turns out it's correct!)
@@ -90,7 +90,7 @@ Let $X$ be a random variable, and let $Y = g(X)$ be another random variable that
 ::: {.proof}
 *(Non-examinable)* <!--As in the previous example, the idea is to group together $x$s that give the same $y$.-->
 The PMF of $y$ can be given in terms of the PMF of $x$ -- we just need to add up all the $x$s that lead to the same $y$. That is,
-\[ p_Y(y) = \sum_{x\, :\, g(x) = y} p_X(x) . \]
+$$ p_Y(y) = \sum_{x\, :\, g(x) = y} p_X(x) . $$
 (Remember that the colon $:$ here means "such that", so this is a sum over all the $x$ such that $g(x) = y$.)
 
 Using this, and from the definition of expectation, we have
@@ -116,7 +116,7 @@ Let $X$ be a random variable. Then
 We use the law of the unconscious statistician.
 
 For part 1, we can take the $a$ outside the sum, to get
-\[ \mathbb E(aX) = \sum_x ax\, p_X(x) = a\sum_x x\, p_X(x) = a\mathbb EX . \]
+$$ \mathbb E(aX) = \sum_x ax\, p_X(x) = a\sum_x x\, p_X(x) = a\mathbb EX . $$
 
 For part 2, we have
 \begin{align*}
@@ -130,7 +130,7 @@ The last line was because PMFs always add up to 1, so $\sum_x p_X(x) = 1$.
 :::
 
 So for our "double the dice total and add 1" random variable $Y = 2X + 1$, we have
-\[ \mathbb EY = \mathbb E(2X+1) = 2\mathbb EX + 1 = 2\times 7 + 1 = 15. \]
+$$ \mathbb EY = \mathbb E(2X+1) = 2\mathbb EX + 1 = 2\times 7 + 1 = 15. $$
 
 
 ## Variance  {#variance}
@@ -151,7 +151,7 @@ In the same way as the expectation of a random variable tells us about central v
 
 ::: {.definition}
 Let $X$ be a random variable with expectation $\mathbb EX = \mu$. Then the **variance** of $X$ is
-\[ \Var(X) = \mathbb E(X - \mu)^2 . \]
+$$ \Var(X) = \mathbb E(X - \mu)^2 . $$
 :::
 
 (To be clear, the notation here means the expectation of $(X-\mu)^2$; and *not* $\mathbb E(X - \mu)$ then squared, which would be $0^2 = 0$.)
@@ -162,7 +162,7 @@ It may not surprise you, if you remember [Lecture 1](#L01-stats) that to go alon
 
 ::: {.theorem}
 Let $X$ be a random variable with expectation $\mathbb EX = \mu$. Then the variance $\Var(X) = \mathbb E(X - \mu)^2$ can also be calculated as
-\[ \Var(X) = \mathbb EX^2 - \mu^2 . \]
+$$ \Var(X) = \mathbb EX^2 - \mu^2 . $$
 :::
 
 (Again, $\mathbb EX^2$ means the expectation of $X^2$.)
@@ -176,7 +176,7 @@ As previously we expand out the brackets, and use linearity of expectation (in t
     &= \mathbb EX^2 - 2\mu \,\mathbb EX + \mu^2 .
 \end{align*}
 But we said that $\mathbb EX$ would be called $\mu$, so we can substitute in $\mathbb EX = \mu$, to get
-\[ \Var(X) = \mathbb E X^2 - 2\mu^2 + \mu^2 = \mathbb E X^2 - \mu^2 , \]
+$$ \Var(X) = \mathbb E X^2 - 2\mu^2 + \mu^2 = \mathbb E X^2 - \mu^2 , $$
 as required.
 :::
 
@@ -233,11 +233,11 @@ As a sort of equivalent to the classical probability we saw in [Section 3](#S03-
 Let $X$ take the values $\{1,2,\dots,n\}$ each with equal probability $1/n$. This is called the **discrete uniform distribution** on $\{1,2,\dots,n\}$.
 
 Then the PMF of $X$ is
-\[ p(x) = \frac 1n \qquad \text{for $x \in \{1,2,\dots, n\}$.} \]
+$$ p(x) = \frac 1n \qquad \text{for $x \in \{1,2,\dots, n\}$.} $$
 The CDF of $X$ is
-\[ F(x) = \begin{cases} 0 & \text{for $x < 1$,} \\
+$$ F(x) = \begin{cases} 0 & \text{for $x < 1$,} \\
               \displaystyle\frac in & \text{if $i \leq x < i+1$ for some $i \in \{1,2,\dots,n-1\}$,} \\
-              1 & \text{for $x \geq n$.} \end{cases} \]
+              1 & \text{for $x \geq n$.} \end{cases} $$
               
 The expectation of $X$ is
 \begin{align*}
@@ -265,7 +265,7 @@ Hence,
 \end{align*}
 
 (In the example calculations, we used the facts
-\[  \sum_{i=1}^n i = \frac{n(n+1)}{2} \qquad \sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6} .   \]
+$$  \sum_{i=1}^n i = \frac{n(n+1)}{2} \qquad \sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6} .   $$
 You are not expected to know or memorise these for an exam.)
 -->
 

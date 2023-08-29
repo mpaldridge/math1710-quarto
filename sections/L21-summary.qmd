@@ -53,7 +53,7 @@ sum(pmf_x)
 ```
 
 Suppose I wanted to calculate the expectation of this random variable. When doing this "by hand", we know that this is
-\[ \mathbb EX = \sum_x x \,p(x) . \]
+$$ \mathbb EX = \sum_x x \,p(x) . $$
 So in R, this is
 
 ```{r}
@@ -62,7 +62,7 @@ mu
 ```
 
 Suppose I wanted to find the variance. Using the definitional formula, we know this is
-\[ \Var(X) = \mathbb E(X - \mu)^2 = \sum_x (x-\mu)^2\,p(x) . \]
+$$ \Var(X) = \mathbb E(X - \mu)^2 = \sum_x (x-\mu)^2\,p(x) . $$
 In R, I've already saved the expectation as the R object `mu`. So now I can use
 
 ```{r}
@@ -70,7 +70,7 @@ sum((x - mu)^2 * pmf_x)
 ```
 
 Alternatively, we have the computational formula $\Var(X) = \mathbb EX^2 - \mu^2$, where
-\[ \mathbb EX^2 = \sum_x x^2 \, p(x) .\]
+$$ \mathbb EX^2 = \sum_x x^2 \, p(x) .$$
 In R, this is
 
 ```{r}
@@ -103,7 +103,7 @@ We need to be able to do this when working with a normal distribution $X \sim \m
 
 The first thing we need to do to use statistical tables is to standardise. That is, we can convert $X \sim \mathrm{N}(\mu, \sigma^2)$ to $Z = (X - \mu)/\sigma \sim \mathrm{N}(0,1)$ by subtracting the mean and dividing by the standard deviation. So, for example if $X \sim \mathrm{N}(10, 4^2)$ and we want to calculate
 $\mathbb P(8 \leq X \leq 13)$, then standardising gives
-\[ \mathbb P(8 \leq X \leq 13) = \mathbb P \left( \frac{8 - 10}{4} \leq \frac{X - 10}{4} \leq \frac{13 - 10}{4} \right) = \mathbb P(-0.5 \leq Z \leq 0.75) . \]
+$$ \mathbb P(8 \leq X \leq 13) = \mathbb P \left( \frac{8 - 10}{4} \leq \frac{X - 10}{4} \leq \frac{13 - 10}{4} \right) = \mathbb P(-0.5 \leq Z \leq 0.75) . $$
 
 Statistical tables give values of $\Phi(z) = \mathbb P(Z \leq z)$ for $z \geq 0$. We can use these values in a few different ways. In what follows, we always assume $z \geq 0$. (Remember, too, that for continuous distributions it's irrelevant whether an inequality is $<$ or $\leq$.) 
 
@@ -117,13 +117,13 @@ Statistical tables give values of $\Phi(z) = \mathbb P(Z \leq z)$ for $z \geq 0$
 In the second of these, we used rule 2 again in the second equality.
 
 So to go back to our example, we've already standardised to get 
-\[ \mathbb P(8 \leq X \leq 13) = \mathbb P(-0.5 \leq Z \leq 0.75) = \mathbb P(Z \leq 0.75) - \mathbb P(Z \leq -0.5) . \]
+$$ \mathbb P(8 \leq X \leq 13) = \mathbb P(-0.5 \leq Z \leq 0.75) = \mathbb P(Z \leq 0.75) - \mathbb P(Z \leq -0.5) . $$
 The first term can be looked up directly in the table (rule 1):
-\[ \mathbb P(Z \leq 0.75) = \Phi(0.75) = 0.7734 . \]
+$$ \mathbb P(Z \leq 0.75) = \Phi(0.75) = 0.7734 . $$
 For the second term, we can use rules 2 and 3 to get
-\[ \mathbb P(Z \leq -0.5) = \mathbb P(Z \geq 0.5) = 1 - \mathbb P(Z < 0.5) = 1 - \Phi(0.5) = 1 - 0.6915 = 0.3085 , \]
+$$ \mathbb P(Z \leq -0.5) = \mathbb P(Z \geq 0.5) = 1 - \mathbb P(Z < 0.5) = 1 - \Phi(0.5) = 1 - 0.6915 = 0.3085 , $$
 where we found $\Phi(0.5) = 0.6815$ in the table. To put this all together, we get
-\[ \mathbb P(8 \leq X \leq 13) = \mathbb P(Z \leq 0.75) - \mathbb P(Z \leq -0.5) = 0.7734 - 0.3085 = 0.4649 . \]
+$$ \mathbb P(8 \leq X \leq 13) = \mathbb P(Z \leq 0.75) - \mathbb P(Z \leq -0.5) = 0.7734 - 0.3085 = 0.4649 . $$
 
 ## End-of semester survey
 

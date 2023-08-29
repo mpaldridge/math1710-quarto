@@ -19,7 +19,7 @@ Let $\Omega$ be a sample space. A **probability measure** on $\Omega$ is a funct
 1. $\mathbb P(A) \geq 0$ for all events $A \subset \Omega$;
 1. $\mathbb P(\Omega) = 1$;
 1. if $A_1, A_2, \dots$ is a finite or infinite sequence of disjoint events, then
-\[ \mathbb P(A_1 \cup A_2 \cup \cdots) = \mathbb P(A_1) + \mathbb P(A_2) + \cdots . \]
+$$ \mathbb P(A_1 \cup A_2 \cup \cdots) = \mathbb P(A_1) + \mathbb P(A_2) + \cdots . $$
 
 The sample space $\Omega$ together with the probability measure $\mathbb P$ are called a **probability space**.
 :::
@@ -46,7 +46,7 @@ Let's check that the axioms hold:
 1. Since $0 \leq p \leq 1$, all the probabilities are greater than or equal to 0.
 1. It is indeed the case that $\mathbb P(\Omega) = \mathbb P(\{\text{H},\text{T}\}) = 1$.
 1. The only nontrivial disjoint union to check is $\{\text{H}\} \cup \{\text{T}\} = \{\text{H},\text{T}\}$, where we see that
-\[ \mathbb P(\{\text{H}\}) + \mathbb P(\{\text{T}\}) = p + (1 - p) = 1 = \mathbb P(\{\text{H},\text{T}\}) , \]
+$$ \mathbb P(\{\text{H}\}) + \mathbb P(\{\text{T}\}) = p + (1 - p) = 1 = \mathbb P(\{\text{H},\text{T}\}) , $$
 as required.
 :::
 
@@ -54,11 +54,11 @@ as required.
 Suppose we wish to model rolling a dice.
 
 Our sample space is $\{1,2,3,4,5,6\}$. The probability measure is given by
-\[ \mathbb P(A) = \frac{|A|}{6} , \]
+$$ \mathbb P(A) = \frac{|A|}{6} , $$
 where $|A|$ is the number of sample outcomes in $A$.
 
 So, for example, the probability of rolling an even number is 
-\[ \mathbb P(\{2,4,6\}) = \frac36 = \frac12 . \]
+$$ \mathbb P(\{2,4,6\}) = \frac36 = \frac12 . $$
 :::
 
 The dice rolling is a particular case of the "classical probability" of equally likely outcomes. We'll look at this more in the next lecture, and prove that the classical probability measure does indeed satisfy the axioms
@@ -105,7 +105,7 @@ Here, since $B$ is a subset of $A$, meaning that $B$ is entirely inside $A$.
 ```
 
 It would be useful to write $A$ as a *disjoint* union of $\color{orange}B$ and <span style="color: purple;">"the bit of $A$ that isn't in $B$"</span>. That is, we have the disjoint union
-\[ A = \color{orange}B \cup (\color{purple}{A \cap B^\comp}) .\]
+$$ A = \color{orange}B \cup (\color{purple}{A \cap B^\comp}) .$$
 
 ```{r subs, engine = 'tikz', echo=FALSE, fig.align="center", out.width="320pt", cache = TRUE}
 \begin{tikzpicture}[line width=0.25pt, scale=0.8]
@@ -122,10 +122,10 @@ It would be useful to write $A$ as a *disjoint* union of $\color{orange}B$ and <
 ```
 
 Applying Axiom 3 to this disjoint union gives
-\[ \mathbb P(A) =  \mathbb P(B) + \mathbb P(A \cap B^\comp) . \]
+$$ \mathbb P(A) =  \mathbb P(B) + \mathbb P(A \cap B^\comp) . $$
 
 We're happy to see the term on the left-hand side and the first term on the right-hand side. But what about the awkward $\mathbb P(A \cap B^\comp)$? Well, by Axiom 1, we know that the probability of any event is greater than or equal to 0, so in particular. $\mathbb P(A \cap B^\comp) \geq 0$. Hence
-\[ \mathbb P(A)  \geq \mathbb P(B) + 0 = \mathbb P(B) , \]
+$$ \mathbb P(A)  \geq \mathbb P(B) + 0 = \mathbb P(B) , $$
 and we are done with the third statement.
 
 For the fourth statement, we have $\mathbb P(A) \geq 0$ directly from Axiom 1, so only need to show that $\mathbb P(A) \leq 1$. We can do this using the third statement of this theorem. For any event $A$ we have $A \subset \Omega$, so the third statement tells us that $\mathbb P(A) \leq \mathbb P(\Omega)$. But Axiom 2 tells us that $\mathbb P(\Omega) = 1$, so $\mathbb P(A) \leq 1$ and we are done.
@@ -148,7 +148,7 @@ We already have an addition rule for *disjoint* unions.
 
 ::: {.theorem}
 Let $A, B \subset \Omega$ be two disjoint events. Then
-\[ \mathbb P(A \cup B) = \mathbb P(A) + \mathbb P(B) . \]
+$$ \mathbb P(A \cup B) = \mathbb P(A) + \mathbb P(B) . $$
 :::
 
 ::: {.proof}
@@ -159,7 +159,7 @@ But what about if $A$ and $B$ are not disjoint? Then we have the following.
 
 ::: {.theorem}
 Let $A, B \subset \Omega$ be two events. Then
-\[ \mathbb P(A \cup B) = \mathbb P(A) + \mathbb P(B) - \mathbb P(A \cap B) . \]
+$$ \mathbb P(A \cup B) = \mathbb P(A) + \mathbb P(B) - \mathbb P(A \cap B) . $$
 :::
 
 You may have seen this result before. You've perhaps justified it by saying something like this: "We can add the two probabilities together, except now we've double-counted the overlap, so we have to take the probability of that away." Maybe you drew a Venn diagram. That's OK as a way to remember the result -- but this is a proper university mathematics course, so we have to carefully *prove* it starting from just the axioms and nothing else.
@@ -256,7 +256,7 @@ As always, the key is to find a way of writing $A \cup B$ as a *disjoint* union.
 
 ::::: {.proof}
 First note, following the discussion above, that we have
-\[ A \cup B = A \cup (B \cap A^\comp) , \]
+$$ A \cup B = A \cup (B \cap A^\comp) , $$
 where the union on the right is of the disjoint events $A$ and $B \cap A^\comp$. Therefore we can use Axiom 3 to get
 \begin{equation}
 \mathbb P(A \cup B) = \mathbb P(A) + \mathbb P(B \cap A^\comp) .    (\#eq:union1)
@@ -264,7 +264,7 @@ where the union on the right is of the disjoint events $A$ and $B \cap A^\comp$.
 
 
 The left-hand side looks good, and the first term on the right-hand side looks good. To deal with the second term on the right-hand side, we need to write it down as part of a disjoint union again. Can we find another one? Yes! We can use $B \cap A^\comp$ together with $B \cap A$ to build the whole of $B$. So have a disjoint union
-\[ (B \cap A^\comp) \cup (B \cap A) = B .\]
+$$ (B \cap A^\comp) \cup (B \cap A) = B .$$
 
 ```{tikz add2, echo=FALSE, fig.align="center", out.width="320pt", cache = TRUE}
 \begin{tikzpicture}[line width=0.25pt, scale=0.8]
@@ -285,7 +285,7 @@ The left-hand side looks good, and the first term on the right-hand side looks g
 ```
 
 Since this union is disjoint, we can use Axiom 3 again, to get
-\[ \mathbb P(B \cap A^\comp) + \mathbb P(B \cap A) = \mathbb P(B) . \]
+$$ \mathbb P(B \cap A^\comp) + \mathbb P(B \cap A) = \mathbb P(B) . $$
 Rearranging this gives
 \begin{equation}
 \mathbb P(B \cap A^\comp) = \mathbb P(B) - \mathbb P(B \cap A).  (\#eq:union2)
@@ -293,7 +293,7 @@ Rearranging this gives
 
 
 Finally, substituting \@ref(eq:union2) into \@ref(eq:union1) gives
-\[ \mathbb P(A \cup B) = \mathbb P(A) + \mathbb P(B) - \mathbb P(A \cap B) , \]
+$$ \mathbb P(A \cup B) = \mathbb P(A) + \mathbb P(B) - \mathbb P(A \cap B) , $$
 as required.
 :::::
 -->
@@ -304,17 +304,17 @@ as required.
 It is possible to just to work this out directly. But let's use our addition law for unions.
 
 We have $\mathbb P(\text{spade}) = \frac{13}{52}$ and $\mathbb P(\text{ace}) = \frac{4}{52}$. So we have
-\[ \mathbb P(\text{spade or ace}) = \tfrac{13}{52} + \tfrac{4}{52} - \mathbb P(\text{spade and ace}) . \]
+$$ \mathbb P(\text{spade or ace}) = \tfrac{13}{52} + \tfrac{4}{52} - \mathbb P(\text{spade and ace}) . $$
 But $\mathbb P(\text{spade and ace})$ is the probability of picking the ace of spades, which is $\frac{1}{52}$. Therefore
-\[ \mathbb P(\text{spade or ace}) = \tfrac{13}{52} + \tfrac{4}{52}  - \tfrac{1}{52} = \tfrac{16}{52} = \tfrac{4}{13} . \]
+$$ \mathbb P(\text{spade or ace}) = \tfrac{13}{52} + \tfrac{4}{52}  - \tfrac{1}{52} = \tfrac{16}{52} = \tfrac{4}{13} . $$
 :::
 
 <!--
 Similar addition rules can be proven in the same way for unions of more events. For three events, we have
-\[
+$$
   \mathbb P(A \cup B \cup C) = \mathbb P(A) + \mathbb P(B) + \mathbb P(C) 
   - \mathbb P(A \cap B) - \mathbb P(A \cap C) - \mathbb P(B \cap C) + \mathbb P(A \cap B \cap C) .
-\]
+$$
 Note that we add the probabilities of individual events, then subtract the probabilities of pairs, then add the probability of the triple.
 
 The **inclusion--exclusion principle** is the general rule:

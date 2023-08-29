@@ -20,9 +20,9 @@ In this lecture we will look at some "limit" results; that is, results about a l
 So let $X_1, X_2, \dots, X_n$ be a sequence of IID random variables. Let us write $\mu = \mathbb EX_1$ for the common expectation and $\sigma^2 = \Var(X_1)$ for the common variance.
 
 At the beginning of the course, we saw the mean of some values $x_1, x_2, \dots, x_n$ was
-\[ \bar x = \frac{1}{n} (x_1 + x_2 + \cdots + x_n) = \frac{1}{n} \sum_{i=1}^n x_i ; \]
+$$ \bar x = \frac{1}{n} (x_1 + x_2 + \cdots + x_n) = \frac{1}{n} \sum_{i=1}^n x_i ; $$
 that is, what we get if we add them up and divide by $n$. In the same way, we could calculate the "mean" of some random variables $X_1, X_2, \dots, X_n$ by adding them up and dividing by $n$; that is:
-\[ \overline X_n = \frac{1}{n} (X_1 + X_2 + \cdots + X_n) = \frac{1}{n} \sum_{i=1}^n X_i . \]
+$$ \overline X_n = \frac{1}{n} (X_1 + X_2 + \cdots + X_n) = \frac{1}{n} \sum_{i=1}^n X_i . $$
 (The subscript $n$ on "$\overline X_n$" is just to remind us this is a mean of $n$ random variables.)
 
 Here, each of the $X_i$s is a random variable, so their mean $\overline X_n$ is another random variable too. This mean random variable $\overline X_n$ will be out main object in this lecture. We can ask questions about the random variable $\overline X_n$ just the same as we would ask about any other random variable. For example: What is its expectation and variance?
@@ -53,7 +53,7 @@ In conclusion we have this:
 ::: {.theorem}
 Let $X_1, X_2, \dots, X_n$ be a sequence of IID random variables, and write $\mu = \mathbb EX_1$ for the common expectation and $\sigma^2 = \Var(X_1)$ for the common variance. Further, write
 $\overline X_n =\frac{1}{n} \sum_{i=1}^n X_i$ for the mean of these random variables. Then
-\[ \mathbb E \overline X_n = \mu \qquad \Var(\overline X_n) = \frac{\sigma^2}{n} . \]
+$$ \mathbb E \overline X_n = \mu \qquad \Var(\overline X_n) = \frac{\sigma^2}{n} . $$
 :::
 
 
@@ -61,15 +61,15 @@ Now think about what happens to this mean $\overline X_n$ when $n$ gets very lar
 
 ::: {.theorem #thLLN name="Law of large numbers"}
 Let $X_1, X_2, \dots$ be a sequence of IID random variables. Write $\mu = \mathbb EX_1$ for the common expectation and $\overline X_n =\frac{1}{n} \sum_{i=1}^n X_i$ for the mean of the first $n$ random variables. Then 
-\[ \overline X_n \to \mu \quad \text{in probability as $n \to \infty$}; \]
+$$ \overline X_n \to \mu \quad \text{in probability as $n \to \infty$}; $$
 by which we mean that, for any $\epsilon > 0$, 
-\[ \mathbb P\big(|\overline X_n - \mu| > \epsilon\big) \to 0 \quad \text{as $n\to\infty$.} \]
+$$ \mathbb P\big(|\overline X_n - \mu| > \epsilon\big) \to 0 \quad \text{as $n\to\infty$.} $$
 :::
 
 The precise mathematical definition of the convergence is not important here. What is important is the general principle that the mean $\overline X_n$ is overwhelmingly likely to get closer and closer to the expectation $\mathbb EX = \mu$. In other words, the expectation $\mathbb EX = \mu$ represents the "long-run average" of independent experiments -- this justifies referring to the expectation as a kind of average.
 
 One special case is if we have repeated experiments that succeed with probability $p$; that is, $X_n \sim \text{Bern}(p)$. Then the law of large numbers says that the long-run proportion of successes is
-\[ \frac{1}{n} \sum_{i = 1}^n X_n = \overline X_n \to \mathbb EX_1 = p . \]
+$$ \frac{1}{n} \sum_{i = 1}^n X_n = \overline X_n \to \mathbb EX_1 = p . $$
 So the long-run proportion of times an event happens converges to its probability. This goes back to what we said about "frequentist probability" [right at the beginning of Lecture 3](#what-is-prob): that one way to understand the probability of an event is as the long-run frequency of its occurrence. 
 
 
@@ -86,7 +86,7 @@ So the long-run proportion of times an event happens converges to its probabilit
 
 
 We have seen that if the $X_i$ are IID random variables with expectation $\mu$ and variance $\sigma^2$, then
-\[ \mathbb E\overline X_n = \mu \qquad \Var \big(\overline X_n\big) = \frac{\sigma^2}{n} \]
+$$ \mathbb E\overline X_n = \mu \qquad \Var \big(\overline X_n\big) = \frac{\sigma^2}{n} $$
 and the law of large numbers tells us that $\overline X_n \to \mu$ as $n \to \infty$. Alternatively, we could say that $\overline X_n - \mu \to 0$.
 
 We might also want to know what the variation of $\overline X_n - \mu$ is around 0. Obviously, the law of large numbers tells us this variation shrinks away to 0, but we might be interested in the "shape" of that variation as it shrinks away. To study this variation, we need to "re-inflate" it, to stop it disappearing. It turns out that the correct way to do this is by multiplying by $\sqrt{n}$ and looking at $\sqrt{n}(\overline X_n - \mu)$.
@@ -100,15 +100,15 @@ So whatever distribution $\sqrt{n}(\overline X_n - \mu)$ has, that distribution 
 
 ::: {.theorem #thCLT name="Central limit theorem"}
 Let $X_1, X_2, \dots$ be a sequence of IID random variables. Write $\mu = \mathbb EX_1$ for the common expectation, $\sigma^2 = \Var(X_1)$ for the common variance, and $\overline X_n =\frac{1}{n} \sum_{i=1}^n X_i$ for the mean of the first $n$ random variables. Then 
-\[ \sqrt{n}\big(\overline X_n - \mu\big) \to \mathrm N(0, \sigma^2) \quad \text{in distribution as $n \to \infty$}; \]
+$$ \sqrt{n}\big(\overline X_n - \mu\big) \to \mathrm N(0, \sigma^2) \quad \text{in distribution as $n \to \infty$}; $$
 by which we mean that, if $Y \sim \mathrm N(0, \sigma^2)$, then, for all $a < b$,
-\[ \mathbb P\left(a \leq \sqrt{n}\big(\overline X_n - \mu\big) \leq b \right) \to \mathbb P(a \leq Y \leq b) \quad \text{as $n\to\infty$.} \]
+$$ \mathbb P\left(a \leq \sqrt{n}\big(\overline X_n - \mu\big) \leq b \right) \to \mathbb P(a \leq Y \leq b) \quad \text{as $n\to\infty$.} $$
 :::
 
 (A full proof of the central limit theorem is too complicated to include here.)
 
 Another alternative way to write this is to divide both sides by $\sigma$ and write it as
-\[ \frac{\overline X_n - \mu}{\sqrt{\sigma^2/n}} \to \mathrm N(0, 1) \quad \text{in distribution as $n \to \infty$}. \]
+$$ \frac{\overline X_n - \mu}{\sqrt{\sigma^2/n}} \to \mathrm N(0, 1) \quad \text{in distribution as $n \to \infty$}. $$
 
 The result we have stated, for IID random variables, is the most important case of the central limit theorem. But central limit theorems can be proved for other cases too -- the rough principle is that if you have lots of random variables most of which are independent (or only weakly dependent) and none of which are individually too big, then the mean or sum will be approximately normally distributed.
 
@@ -136,7 +136,7 @@ We already know, of course, that a sum of independent normal distributions is *e
 *Suppose I toss 1000 coins. What's the probability I get between 495 and 505 Heads?*
 
 The true distribution of Heads is $X \sim \mathrm{Bin}(1000, \frac12)$, and the question wants
-\[ \mathbb P(495 \leq X \leq 505) = \sum_{x = 495}^{505} p_X(x) . \]
+$$ \mathbb P(495 \leq X \leq 505) = \sum_{x = 495}^{505} p_X(x) . $$
 We can calculate the exact answer using R:
 
 ```{r}
@@ -152,7 +152,7 @@ points(400:600, dbinom(400:600, 1000, 0.5), type = "h", col = "blue")
 
 
 We could then calculate
-\[ \mathbb P(495 \leq X \leq 505) \approx \mathbb P(495 \leq Y \leq 505) . \]
+$$ \mathbb P(495 \leq X \leq 505) \approx \mathbb P(495 \leq Y \leq 505) . $$
 We could standardise and use the statistical tables, or just use R:
 
 ```{r}
@@ -162,7 +162,7 @@ pnorm(505, 500, sqrt(250)) - pnorm(495, 500, sqrt(250))
 This is not too far off the correct answer $0.272$ we calculated exactly, but it does miss by about 9%.
 
 Note, though, that we approximated the discrete random variable $X$ by a continuous random variable $Y$. So the next possibility for $X$ above 505 was 506 and below 495 was 494, whereas $Y$ could smoothly vary between the two. So we usually get a more accurate approximation if we use a **continuity correction** and round outwards halfway to the next discrete point. So we should get a better approximation from 
-\[ \mathbb P(495 \leq X \leq 505) \approx \mathbb P(494.5 \leq Y \leq 505.5) . \]
+$$ \mathbb P(495 \leq X \leq 505) \approx \mathbb P(494.5 \leq Y \leq 505.5) . $$
 
 Calculating this in R (or with statistical tables) we get
 ```{r}

@@ -20,14 +20,14 @@ One family of distributions we have already seen is the Bernoulli trial $\text{B
 *Suppose we toss 10 independent biased coins, each of which lands Heads with probability 0.7 and Tails with probability 0.3. What is the probability we get exactly 8 Heads altogether?*
 
 The probability that any specific 8 coins land Heads and the other 2 land Tails is $0.7^8\times 0.3^2$. However, there are $\binom{10}{8}$ choices for which 8 coins are the ones that land Heads. Hence, the probability is
-\[ \mathbb P(\text{8 Heads}) = \binom{10}{8} \times 0.7^8 \times 0.3^2 = 0.23.\]
+$$ \mathbb P(\text{8 Heads}) = \binom{10}{8} \times 0.7^8 \times 0.3^2 = 0.23.$$
 :::
 
 This is a special case of the binomial distribution.
 
 ::: {.definition}
 Let $X$ be a discrete random variable with range $\{0,1,2,\dots,n\}$ and PMF
-\[ p(x) = \binom{n}{x} p^x (1-p)^{n-x} . \]
+$$ p(x) = \binom{n}{x} p^x (1-p)^{n-x} . $$
 Then we say that $X$ follows the **binomial distribution** with parameters $n$ and $k$, and write $X \sim \text{Bin}(n,p)$.
 :::
 
@@ -46,7 +46,7 @@ legend("topleft", c("Bin(10, 0.4)", "Bin(10, 0.8)"), col = c("blue", "red"), lwd
 *Let $X \sim \mathrm{Bin}(8, 0.2)$. What is (a) $\mathbb P(X = 3)$? (b) $\mathbb P(X \geq 2)$?*
 
 For (a), we have from the definition
-\[ \mathbb P(X = 3) = \binom83 0.2^3 (1 - 0.2)^{8-3} = 56\times 0.2^3\times0.8^5 = 0.147 .\]
+$$ \mathbb P(X = 3) = \binom83 0.2^3 (1 - 0.2)^{8-3} = 56\times 0.2^3\times0.8^5 = 0.147 .$$
 
 For (b), this is an "at least" question, so it's more convenient to look at the complementary event, $\mathbb P(X < 2)$. So
 \begin{align*}
@@ -68,7 +68,7 @@ Let $X \sim \text{Bin}(n, p)$. Then
 :::
 
 One can prove this by working out the sums -- for example, the expectation is the value of the sum
-\[ \mathbb EX = \sum_{x=0}^n x \binom{n}{x} p^x (1-p)^{n-x} , \]
+$$ \mathbb EX = \sum_{x=0}^n x \binom{n}{x} p^x (1-p)^{n-x} , $$
 which is a bit tricky to calculate, but not fundamentally difficult mathematics.
 However, in next section we will see an easier way, so we'll reserve the proof until then instead.
 
@@ -94,14 +94,14 @@ For my 10 biased coins that are each Heads with probability $0.7$, the expectati
 *I decide to roll a fair dice until I first roll a six, and then stop. What's the probability I get the first six on my 5th roll of the dice?*
 
 For the first six to be on the 5th attempt, the first 4 rolls have to be non-sixes, and then the fifth roll has to be a six. This has probability
-\[ \left(\tfrac56\right)^4 \times  \tfrac16 = \tfrac{625}{7776} = 0.08.\]
+$$ \left(\tfrac56\right)^4 \times  \tfrac16 = \tfrac{625}{7776} = 0.08.$$
 :::
 
 This is a special case of the geometric distribution.
 
 ::: {.definition}
 Let $X$ be a discrete random variable with range $\{1,2,\dots\}$ and PMF
-\[ p(x) = (1-p)^{x-1}p . \]
+$$ p(x) = (1-p)^{x-1}p . $$
 Then we say that $X$ follows the **geometric distribution** with parameter $p$, and write $X \sim \text{Geom}(p)$.
 :::
 
@@ -120,10 +120,10 @@ legend("topright", c("Geom(0.2)", "Geom(0.4)"), col = c("blue", "red"), lwd = 4)
 *Let $X \sim \mathrm{Geom}(0.4)$. What is (a) $\mathbb P(X = 3)$? (b) $\mathbb P(X \geq 3)$.*
 
 For part (a), we have
-\[ \mathbb P(X = 3) = (1 - 0.4)^2 \times 0.4 = 0.144 . \]
+$$ \mathbb P(X = 3) = (1 - 0.4)^2 \times 0.4 = 0.144 . $$
 
 For part (b), we have
-\[ \mathbb P(X \geq 3) = 1 - \mathbb P(X =1) - \mathbb P(X = 2) = 1 - 0.4 - (1-0.4)\times 0.4 = 1- 0.64 = 0.36 . \]
+$$ \mathbb P(X \geq 3) = 1 - \mathbb P(X =1) - \mathbb P(X = 2) = 1 - 0.4 - (1-0.4)\times 0.4 = 1- 0.64 = 0.36 . $$
 :::
 
 
@@ -135,35 +135,35 @@ Let $X \sim \text{Geom}(p)$. Then
 :::
 
 So the expected number of rolls until rolling a six is
-\[ \mathbb EX = \frac{1}{\frac16} = 6 , \]
+$$ \mathbb EX = \frac{1}{\frac16} = 6 , $$
 with variance
-\[ \Var(X) = \frac{1 - \frac16}{\big(\frac16\big)^2} = 30 . \]
+$$ \Var(X) = \frac{1 - \frac16}{\big(\frac16\big)^2} = 30 . $$
 
 ::: {.proof}
 *(Non-examinable)*
 For the expectation, we want to calculate
-\[ \mathbb EX = \sum_{x=1}^\infty x (1-p)^{x-1} p = p \sum_{x=0}^\infty x (1-p)^{x-1}. \]
+$$ \mathbb EX = \sum_{x=1}^\infty x (1-p)^{x-1} p = p \sum_{x=0}^\infty x (1-p)^{x-1}. $$
 (We can include the $x = 0$ term in the sum since it is equal to 0.)
 
 At this point we will invoke the identity
-\[ \sum_{x = 0}^\infty x a^{x-1} = \frac{1}{(1-a)^2} , \]
+$$ \sum_{x = 0}^\infty x a^{x-1} = \frac{1}{(1-a)^2} , $$
 which can be proved by differentiating the standard sum of a geometric progression
-\[ \sum_{x = 0}^\infty a^x = \frac{1}{1 - a} \]
+$$ \sum_{x = 0}^\infty a^x = \frac{1}{1 - a} $$
 with respect to $a$.
 
 Using that identity with $a = 1-p$, we get
-\[ \mathbb EX = p \sum_{x=0}^\infty x (1-p)^{x-1} = p\, \frac{1}{\big(1 - (1-p)\big)^2} = \frac{1}{p} , \]
+$$ \mathbb EX = p \sum_{x=0}^\infty x (1-p)^{x-1} = p\, \frac{1}{\big(1 - (1-p)\big)^2} = \frac{1}{p} , $$
 as required.
 
 For the variance, we will use a trick that sometimes comes in useful, which is to start by calculating $\mathbb EX(X-1)$. Here we get
-\[ \mathbb EX(X-1) = \sum_{x=1}^\infty x (x-1) (1-p)^{x-1} p = p(1-p) \sum_{x=0}^\infty x(x-1) (1-p)^{x-2} . \]
+$$ \mathbb EX(X-1) = \sum_{x=1}^\infty x (x-1) (1-p)^{x-1} p = p(1-p) \sum_{x=0}^\infty x(x-1) (1-p)^{x-2} . $$
 To calculate the sum, we note that differentiating the geometric progression formula twice gives
-\[ \sum_{x = 0}^\infty x(x-1) a^{x-2} = \frac{2}{(1-a)^3} , \]
+$$ \sum_{x = 0}^\infty x(x-1) a^{x-2} = \frac{2}{(1-a)^3} , $$
 so we get
-\[ \mathbb EX(X-1) = p(1-p) \sum_{x=0}^\infty x(x-1) (1-p)^{x-2} = p(1 -p) \, \frac{2}{p^3} = \frac{2(1-p)}{p^2} . \]
+$$ \mathbb EX(X-1) = p(1-p) \sum_{x=0}^\infty x(x-1) (1-p)^{x-2} = p(1 -p) \, \frac{2}{p^3} = \frac{2(1-p)}{p^2} . $$
 
 We now want to use the computational formula $\Var(X) = \mathbb EX^2 - \mu^2$ to get the variance. We know $\mu = 1/p$, and from the calculation above, we have
-\[ \mathbb EX(X-1) = \mathbb EX^2 - \mathbb EX = \mathbb EX^2 - \frac{1}{p} = \frac{2(1-p)}{p^2} . \]
+$$ \mathbb EX(X-1) = \mathbb EX^2 - \mathbb EX = \mathbb EX^2 - \frac{1}{p} = \frac{2(1-p)}{p^2} . $$
 So
 \begin{align*}
 \Var(X) = \mathbb EX^2 - \mu^2

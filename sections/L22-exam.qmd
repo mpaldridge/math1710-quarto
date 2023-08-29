@@ -135,7 +135,7 @@ The second type is: "Write down some R code that would calculate...". Here's an 
 :::
 
 By the law of the unconscious statistician, this is calculated by
-\[ \mathbb EX(X-1) = \sum_x x(x-1)\,p(x) . \]
+$$ \mathbb EX(X-1) = \sum_x x(x-1)\,p(x) . $$
 This can be calculated with the R code
 
 ```{r, eval = FALSE}

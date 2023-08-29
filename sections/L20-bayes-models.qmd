@@ -8,9 +8,9 @@ One useful family of distributions to use as a prior distribution for a probabil
 
 ::: {.definition}
 A continuous random variable $X$ is said to have the **Beta distribution** with parameters $\alpha$ and $\beta$ if it has the PDF
-\[ f(x) = \frac{1}{B(\alpha, \beta)} x^{\alpha-1} (1-x)^{\beta - 1} \qquad \text{for $0 \leq x \leq 1$}  \]
+$$ f(x) = \frac{1}{B(\alpha, \beta)} x^{\alpha-1} (1-x)^{\beta - 1} \qquad \text{for $0 \leq x \leq 1$}  $$
 and 0 otherwise. Here, the constant
-\[ B(\alpha, \beta) = \int_0^1 x^{\alpha-1} (1-x)^{\beta - 1} \, \mathrm dx , \]
+$$ B(\alpha, \beta) = \int_0^1 x^{\alpha-1} (1-x)^{\beta - 1} \, \mathrm dx , $$
 known as the "Beta function", ensures that the PDF integrates to 1. We write $X \sim \text{Beta}(\alpha, \beta)$.
 :::
 
@@ -45,17 +45,17 @@ Note also that $\text{Beta}(1,1)$ is the continuous uniform distribution from Ex
 *A statistician is studying the probability $\theta$ that ordinary coins land Heads. She would like to use a prior distribution for $\theta$ with prior expectation $0.5$ and prior standard deviation $0.01$. What Beta distribution would be appropriate to use?*
 
 To get $\mathbb E\theta = 0.5$, we need $\alpha = \beta$. Then the variance, which needs to be $0.01^2 = 0.0001$, is
-\[ \Var(\theta) = \frac{\mu(1-\mu)}{\alpha+\beta+1} = \frac{0.25}{\alpha + \beta + 1} . \]
+$$ \Var(\theta) = \frac{\mu(1-\mu)}{\alpha+\beta+1} = \frac{0.25}{\alpha + \beta + 1} . $$
 This requires $\alpha = \beta = 1250$. (Well, actually $1249.5$.)
 :::
 
 ## Beta--Bernoulli model  {#beta-bern}
 
 Consider a Bernoulli likelihood, where $X_1, X_2, \dots, X_n$ are IID $\text{Bern}(\theta)$, so have joint PMF
-\[ p(\mathbf x \mid \theta) = \prod_{i=1}^n \theta^{x_i} (1-\theta)^{1 - x_i} = \theta^{\sum_i x_i} (1 - \theta)^{n-\sum_i x_i} = \theta^y (1 - \theta)^{n-y}, \]
+$$ p(\mathbf x \mid \theta) = \prod_{i=1}^n \theta^{x_i} (1-\theta)^{1 - x_i} = \theta^{\sum_i x_i} (1 - \theta)^{n-\sum_i x_i} = \theta^y (1 - \theta)^{n-y}, $$
 where we have written $y = \sum_i x_i$ for the total number of successes.
 Consider further using a $\text{Beta}(\alpha, \beta)$ prior for $\theta$, so that
-\[ \pi(\theta) = \frac{1}{B(\alpha, \beta)} \theta^{\alpha-1} (1-\theta)^{\beta - 1} \propto \theta^{\alpha-1} (1-\theta)^{\beta - 1} \]
+$$ \pi(\theta) = \frac{1}{B(\alpha, \beta)} \theta^{\alpha-1} (1-\theta)^{\beta - 1} \propto \theta^{\alpha-1} (1-\theta)^{\beta - 1} $$
 (Because we're going to use the "posterior has to add up to 1" trick at the end, we're free to drop constants whenever we want.) This is known as the **Beta--Bernoulli model**.
 
 Suppose we collect data $\mathbf x = (x_1, x_2, \dots, x_i)$, with $y = \sum_i x_i$ successes. What now is the posterior distribution for $\theta$ given this data?
@@ -71,9 +71,9 @@ We can recognise immediately that this is proportional to the PDF for a $\text{B
 
 So we see that, like the prior, the posterior is also a Beta distribution, where the first parameter has gone from $\alpha$ to $\alpha + y$ and the second parameter has gone from $\beta$ to $\beta + (n-y)$. In other words, $\alpha$ has increased by the number of successes, and $\beta$ has increased by the number of failures.
 The expectation has gone from the prior expectation
-\[ \frac{\alpha}{\alpha + \beta} \]
+$$ \frac{\alpha}{\alpha + \beta} $$
 to the posterior expectation
-\[ \frac{\alpha + y}{\alpha + \beta + n} .\]
+$$ \frac{\alpha + y}{\alpha + \beta + n} .$$
 This can be thought of as a sort of average between the prior expectation $\alpha/(\alpha + \beta)$ and the mean of the data $y/n$.
 
 ## Modern Bayesian statistics  {#modern-bayes}
